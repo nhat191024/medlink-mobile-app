@@ -55,7 +55,7 @@ class SplashScreen extends GetView<SplashController> {
                       height: Get.height * 0.46,
                       padding: const EdgeInsets.all(16.0),
                       decoration: BoxDecoration(
-                        color: AppColors.color3.withOpacity(0.5),
+                        color: AppColors.color3.withValues(alpha: 0.5),
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(30),
                           topRight: Radius.circular(30),
@@ -149,7 +149,7 @@ class SplashScreen extends GetView<SplashController> {
                                     margin: const EdgeInsets.symmetric(horizontal: 10.0),
                                     decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.WHITE, boxShadow: [
                                       BoxShadow(
-                                        color: AppColors.BLACK.withOpacity(0.1),
+                                        color: AppColors.BLACK.withValues(alpha: 0.1),
                                         spreadRadius: 2,
                                         blurRadius: 5,
                                         offset: const Offset(0, 0),
@@ -169,7 +169,7 @@ class SplashScreen extends GetView<SplashController> {
                                   margin: const EdgeInsets.symmetric(horizontal: 10.0),
                                   decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.WHITE, boxShadow: [
                                     BoxShadow(
-                                      color: AppColors.BLACK.withOpacity(0.1),
+                                      color: AppColors.BLACK.withValues(alpha: 0.1),
                                       spreadRadius: 2,
                                       blurRadius: 5,
                                       offset: const Offset(0, 0),
@@ -191,7 +191,7 @@ class SplashScreen extends GetView<SplashController> {
                                   margin: const EdgeInsets.symmetric(horizontal: 10.0),
                                   decoration: BoxDecoration(shape: BoxShape.circle, color: AppColors.WHITE, boxShadow: [
                                     BoxShadow(
-                                      color: AppColors.BLACK.withOpacity(0.1),
+                                      color: AppColors.BLACK.withValues(alpha: 0.1),
                                       spreadRadius: 2,
                                       blurRadius: 5,
                                       offset: const Offset(0, 0),
