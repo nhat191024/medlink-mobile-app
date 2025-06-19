@@ -15,11 +15,12 @@ class AppPages {
       page: () => const SplashScreen(),
       binding: SplashScreenBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.loginScreen,
-    //   page: () => LoginScreen(),
-    //   binding: LoginScreenBinding(),
-    // ),
+    
+    GetPage(
+      name: _Paths.loginScreen,
+      page: () => LoginScreen(),
+      binding: LoginScreenBinding(),
+    ),
 
     // //create account
     // GetPage(
