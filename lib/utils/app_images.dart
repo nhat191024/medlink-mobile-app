@@ -6,7 +6,7 @@ class AppImages {
   static const String linkedinIcon = "assets/icons/linkedinLogo.svg";
 
   // /// login screen
-  // static const String wavingHand = "assets/icons/waving_hand.svg";
+  static const String wavingHand = "assets/icons/waving_hand.svg";
 
   // /// create account screen
   // static const String telephoneReceiver = "assets/icons/telephone_receiver.svg";
@@ -97,7 +97,7 @@ class AppImages {
   // /// icons
   static const String logo = "assets/images/logo.png";
   // static const String backIcon = "assets/image/back.png";
-  // static const String searchIcon = "assets/icons/search.svg";
+  static const String searchIcon = "assets/icons/search.svg";
   // static const String searchUnselect = "assets/icons/search_unselect.svg";
   // static const String searchSelect = "assets/icons/search_select.svg";
   // static const String stethoscope = "assets/icons/stethoscope.svg";
@@ -107,9 +107,9 @@ class AppImages {
   // static const String firstAidKit = "assets/icons/first_aid_kit.svg";
   // static const String pill = "assets/icons/Pill.svg";
   // static const String hospital = "assets/icons/hospital.svg";
-  // static const String upload = "assets/icons/upload.svg";
-  // static const String verify = "assets/image/verify.png";
-  // static const String blood = "assets/image/blood.png";
+  static const String upload = "assets/icons/upload.svg";
+  static const String verify = "assets/images/verify.png";
+  static const String blood = "assets/images/blood.png";
   // static const String paragraph = "assets/icons/paragraph.png";
   // static const String bell = "assets/icons/bell.svg";
   // static const String bellRinging = "assets/icons/bell_ringing.svg";
@@ -171,7 +171,7 @@ class AppImages {
   // static const String walletIcon = "assets/icons/wallet.svg";
   // static const String heart = "assets/icons/heart_straight.svg";
   // static const String heartBeat = "assets/icons/Heartbeat.svg";
-  // static const String inside = "assets/icons/inside.svg";
+  static const String inside = "assets/icons/inside.svg";
   // static const String plus = "assets/icons/plus.svg";
   // static const String faceMark = "assets/icons/FaceMask.svg";
   // static const String star = "assets/icons/star.svg";
