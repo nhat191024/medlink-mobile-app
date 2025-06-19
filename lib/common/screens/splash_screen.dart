@@ -191,7 +191,7 @@ class SplashScreen extends GetView<SplashController> {
       width: double.infinity,
       height: 50,
       child: ElevatedButton(
-        onPressed: () => Get.offNamed(Routes.loginScreen),
+        onPressed: () => Get.toNamed(Routes.loginScreen),
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.BLACK,
           foregroundColor: Colors.white,
