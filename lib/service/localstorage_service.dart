@@ -38,4 +38,5 @@ class StorageService {
 
 class LocalStorageKeys {
   static const String token = "token";
+  static const String isTokenExist = "isTokenExist";
 }
