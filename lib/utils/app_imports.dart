@@ -14,6 +14,10 @@ export 'package:firebase_core/firebase_core.dart';
 export 'package:get_storage/get_storage.dart' hide Data;
 export 'package:http/http.dart' hide MultipartFile;
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:phonecodes/phonecodes.dart';
+export 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
+export 'package:image_picker/image_picker.dart';
+export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 /// utils
 export 'package:medlink/utils/app_colors.dart';
