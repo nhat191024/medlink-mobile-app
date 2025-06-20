@@ -7,3 +7,7 @@ export 'package:medlink/common/screens/splash_screen.dart';
 export 'package:medlink/common/controllers/login_controller.dart';
 export 'package:medlink/common/bindings/login_screen_binding.dart';
 export 'package:medlink/common/screens/login_screen.dart';
+
+//create account
+export 'package:medlink/common/bindings/create_account_binding.dart';
+export 'package:medlink/common/screens/create_account/telephone_screen.dart';
