@@ -22,15 +22,7 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
     return Scaffold(
       backgroundColor: AppColors.WHITE,
       resizeToAvoidBottomInset: true,
-      body: SafeArea(
-        child: Column(
-          children: [
-            _buildHeader(),
-            _buildBody(),
-            _buildFooter(),
-          ],
-        ),
-      ),
+      body: SafeArea(child: Column(children: [_buildHeader(), _buildBody(), _buildFooter()])),
     );
   }
 
@@ -39,10 +31,7 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
       children: [
         ComeBackButton(),
         Spacer(),
-        CircularProgressStep(
-          step: _currentStep,
-          totalSteps: _totalSteps,
-        ),
+        CircularProgressStep(step: _currentStep, totalSteps: _totalSteps),
       ],
     );
   }
@@ -68,20 +57,12 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
   Widget _buildHeaderContent() {
     return Column(
       children: [
-        SvgPicture.asset(
-          AppImages.sms,
-          height: 50,
-          width: 50,
-          fit: BoxFit.fill,
-        ),
+        SvgPicture.asset(AppImages.sms, height: 50, width: 50, fit: BoxFit.fill),
         const SizedBox(height: 16),
         Text(
           'verify_title'.tr,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontSize: 20,
-            fontFamily: AppFontStyleTextStrings.bold,
-          ),
+          style: const TextStyle(fontSize: 20, fontFamily: AppFontStyleTextStrings.bold),
         ),
         const SizedBox(height: 8),
         Obx(
@@ -123,9 +104,7 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
   Widget _buildResendSection() {
     return Center(
       child: Obx(
-        () => controller.isResendEnabled.value
-            ? _buildResendButton()
-            : _buildCountdownText(),
+        () => controller.isResendEnabled.value ? _buildResendButton() : _buildCountdownText(),
       ),
     );
   }
@@ -174,6 +153,7 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
       ],
     );
   }
+
   Widget _buildFooter() {
     return Padding(
       padding: const EdgeInsets.all(20.0),
@@ -192,10 +172,7 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
     return PinTheme(
       width: 48,
       height: 64,
-      textStyle: const TextStyle(
-        fontSize: 24,
-        fontFamily: AppFontStyleTextStrings.regular,
-      ),
+      textStyle: const TextStyle(fontSize: 24, fontFamily: AppFontStyleTextStrings.regular),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: AppColors.dividers),
@@ -208,10 +185,7 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
     return PinTheme(
       width: 48,
       height: 64,
-      textStyle: const TextStyle(
-        fontSize: 24,
-        fontFamily: AppFontStyleTextStrings.regular,
-      ),
+      textStyle: const TextStyle(fontSize: 24, fontFamily: AppFontStyleTextStrings.regular),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border.all(color: AppColors.primaryText, width: 2),
@@ -224,26 +198,24 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
     return PinTheme(
       width: 48,
       height: 64,
-      textStyle: const TextStyle(
-        fontSize: 24,
-        fontFamily: AppFontStyleTextStrings.regular,
-      ),
+      textStyle: const TextStyle(fontSize: 24, fontFamily: AppFontStyleTextStrings.regular),
       decoration: BoxDecoration(
         color: AppColors.errorLight,
         border: Border.all(color: AppColors.errorMain, width: 2),
         borderRadius: BorderRadius.circular(12),
       ),
     );
-  }  // Event handlers
+  } // Event handlers
+
   void _handleCodeChange(String value) {
     controller.verifyCode.value = value;
     controller.step2.value = value.length == _codeLength;
-    
+
     // Clear error when user starts typing
     if (controller.verifyError.value && value.isNotEmpty) {
       controller.verifyError.value = false;
     }
-    
+
     // Auto-verify when code is complete
     if (value.length == _codeLength) {
       // Add haptic feedback
@@ -267,11 +239,7 @@ class VerifyCodeScreen extends GetView<CreateAccountController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
-            Icons.error_outline,
-            color: AppColors.errorMain,
-            size: 16,
-          ),
+          Icon(Icons.error_outline, color: AppColors.errorMain, size: 16),
           const SizedBox(width: 4),
           Text(
             'wrong'.tr,
