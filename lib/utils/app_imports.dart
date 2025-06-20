@@ -18,6 +18,7 @@ export 'package:phonecodes/phonecodes.dart';
 export 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
+export 'package:pinput/pinput.dart';
 
 /// utils
 export 'package:medlink/utils/app_colors.dart';
