@@ -1,6 +1,7 @@
 export 'package:flutter/material.dart' hide RefreshIndicator, RefreshIndicatorState, CarouselController;
 export 'package:flutter/services.dart';
 export 'package:flutter/foundation.dart' hide kIsWasm;
+export 'package:flutter/gestures.dart';
 export 'dart:async';
 export 'dart:typed_data';
 export 'dart:io' hide X509Certificate, Cookie, HttpClient;
