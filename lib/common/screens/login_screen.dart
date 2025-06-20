@@ -1,7 +1,7 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/common/utils/common_imports.dart';
-import 'package:medlink/components/button.dart';
-import 'package:medlink/components/text_field.dart';
+import 'package:medlink/components/button/plus.dart';
+import 'package:medlink/components/field/text.dart';
 
 class LoginScreen extends GetView<LoginController> {
   const LoginScreen({super.key});
