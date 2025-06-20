@@ -58,11 +58,11 @@ class AppPages {
     //   page: () => LicenseScreen(),
     //   binding: CreateAccountBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.addAvatarScreen,
-    //   page: () => AddAvatarScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.addAvatarScreen,
+      page: () => AddAvatarScreen(),
+      binding: CreateAccountBinding(),
+    ),
     // GetPage(
     //   name: _Paths.creatingAccountScreen,
     //   page: () => CreatingAccountScreen(),
