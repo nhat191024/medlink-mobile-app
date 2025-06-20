@@ -28,16 +28,11 @@ class AppPages {
       page: () => TelephoneScreen(),
       binding: CreateAccountBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.countryCodeScreen,
-    //   page: () => const InputCountryCodeScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
-    // GetPage(
-    //   name: _Paths.verifyScreen,
-    //   page: () => VerifyCodeScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.verifyScreen,
+      page: () => VerifyCodeScreen(),
+      binding: CreateAccountBinding(),
+    ),
     // GetPage(
     //   name: _Paths.userTypeScreen,
     //   page: () => UserTypeScreen(),
