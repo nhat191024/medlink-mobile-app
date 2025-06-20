@@ -11,3 +11,4 @@ export 'package:medlink/common/screens/login_screen.dart';
 //create account
 export 'package:medlink/common/bindings/create_account_binding.dart';
 export 'package:medlink/common/screens/create_account/telephone_screen.dart';
+export 'package:medlink/common/screens/create_account/verify_code_screen.dart';
