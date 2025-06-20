@@ -63,21 +63,21 @@ class AppPages {
       page: () => AddAvatarScreen(),
       binding: CreateAccountBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.creatingAccountScreen,
-    //   page: () => CreatingAccountScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.creatingAccountScreen,
+      page: () => CreatingAccountScreen(),
+      binding: CreateAccountBinding(),
+    ),
     // GetPage(
     //   name: _Paths.accountSubmitScreen,
     //   page: () => AccountSubmitScreen(),
     //   binding: CreateAccountBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.accountSuccessScreen,
-    //   page: () => AccountSuccessScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.accountSuccessScreen,
+      page: () => AccountSuccessScreen(),
+      binding: CreateAccountBinding(),
+    ),
 
     // //forgot password
     // GetPage(
