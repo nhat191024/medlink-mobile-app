@@ -33,16 +33,16 @@ class AppPages {
       page: () => VerifyCodeScreen(),
       binding: CreateAccountBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.userTypeScreen,
-    //   page: () => UserTypeScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
-    // GetPage(
-    //   name: _Paths.createAccountScreen,
-    //   page: () => CreateAccountScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.userTypeScreen,
+      page: () => UserTypeScreen(),
+      binding: CreateAccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.createAccountScreen,
+      page: () => CreateAccountScreen(),
+      binding: CreateAccountBinding(),
+    ),
     // GetPage(
     //   name: _Paths.informationScreen,
     //   page: () => InformationScreen(),
