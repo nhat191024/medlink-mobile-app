@@ -1,9 +1,9 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/common/controllers/create_account_controller.dart';
-import 'package:medlink/components/button.dart';
-import 'package:medlink/components/appbar.dart';
+import 'package:medlink/components/button/comback.dart';
+import 'package:medlink/components/widget/circular_progress_step.dart';
 import 'package:medlink/components/field/phone.dart';
-import 'package:medlink/components/screen/country_code.dart';
+import 'package:medlink/components/widget/country_code.dart';
 import 'package:medlink/components/button/default.dart';
 
 class TelephoneScreen extends GetView<CreateAccountController> {
