@@ -5,7 +5,7 @@ class AppImages {
   static const String appleIcon = "assets/icons/appleLogo.svg";
   static const String linkedinIcon = "assets/icons/linkedinLogo.svg";
 
-  // /// login screen
+  /// login screen
   static const String wavingHand = "assets/icons/waving_hand.svg";
 
   // /// create account screen
@@ -14,8 +14,8 @@ class AppImages {
   static const String doctorNurse = "assets/images/doctor_nurse.png";
   static const String key = "assets/icons/key.svg";
   // static const String whoAreYou = "assets/icons/who_are_you.svg";
-  // static const String avatar = "assets/image/avatar.png";
-  // static const String cover = "assets/image/cover.png";
+  static const String avatar = "assets/images/avatar.png";
+  static const String cover = "assets/images/cover.png";
   // static const String clock = "assets/image/clock.png";
   // static const String party = "assets/image/party.png";
   // static const String ellipse1 = "assets/image/ellipse1.png";
