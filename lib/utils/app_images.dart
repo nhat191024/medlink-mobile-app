@@ -17,12 +17,12 @@ class AppImages {
   static const String avatar = "assets/images/avatar.png";
   static const String cover = "assets/images/cover.png";
   // static const String clock = "assets/image/clock.png";
-  // static const String party = "assets/image/party.png";
-  // static const String ellipse1 = "assets/image/ellipse1.png";
-  // static const String ellipse2 = "assets/image/ellipse2.png";
-  // static const String ellipse3 = "assets/image/ellipse3.png";
+  static const String party = "assets/images/party.png";
+  static const String ellipse1 = "assets/images/ellipse1.png";
+  static const String ellipse2 = "assets/images/ellipse2.png";
+  static const String ellipse3 = "assets/images/ellipse3.png";
   static const String warning = "assets/images/warning.png";
-  // static const String confetti = "assets/image/confetti.png";
+  static const String confetti = "assets/images/confetti.png";
   // static const String ambulance = "assets/icons/ambulance.svg";
 
   // /// forgot password screen
