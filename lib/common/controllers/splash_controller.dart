@@ -1,6 +1,9 @@
 import 'package:medlink/utils/app_imports.dart';
 
 class SplashController extends GetxController {
+  static const String _doctorUserType = 'healthcare';
+  static const String _patientUserType = 'patient';
+
   static const Duration _requestTimeout = Duration(seconds: 8);
   static const Duration _splashDelay = Duration(milliseconds: 1500);
 
@@ -29,9 +32,6 @@ class SplashController extends GetxController {
 
       final token = StorageService.readData(key: LocalStorageKeys.token);
 
-      //log the token for debugging
-      debugPrint('Token: $token');
-
       if (token == null || token.isEmpty) {
         return;
       }
@@ -47,12 +47,16 @@ class SplashController extends GetxController {
   Future<void> _validateToken(String token) async {
     try {
       final response = await get(
-        Uri.parse('${Apis.api}token_check'),
-        headers: {'Authorization': 'Bearer $token', 'Content-Type': 'application/json'},
+        Uri.parse('${Apis.api}token-check'),
+        headers: {
+          'Authorization': 'Bearer $token',
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
       ).timeout(_requestTimeout);
 
       if (response.statusCode == 200) {
-        await _handleSuccessfulAuth(response.body);
+        await _handleSuccessfulAuth(response);
       } else if (response.statusCode == 401) {
         _handleUnauthorized();
         return;
@@ -66,15 +70,17 @@ class SplashController extends GetxController {
     }
   }
 
-  Future<void> _handleSuccessfulAuth(String responseBody) async {
+  Future<void> _handleSuccessfulAuth(Response responseBody) async {
     try {
-      final data = jsonDecode(responseBody);
-      final userType = data['userType']?.toString();
+      var data = jsonDecode(responseBody.body);
+      final String? userType = data['userType']?.toString();
 
-      if (userType == '1') {
-        Get.offAllNamed(Routes.doctorHomeScreen);
-      } else if (userType == '2') {
-        Get.offAllNamed(Routes.patientHomeScreen);
+      if (userType == _doctorUserType) {
+        // Uncomment the line below when the route is available
+        // Get.offAllNamed(Routes.doctorHomeScreen);
+      } else if (userType == _patientUserType) {
+        // Uncomment the line below when the route is available
+        // Get.offAllNamed(Routes.patientHomeScreen);
       } else {
         throw Exception('Invalid user type received from server');
       }
@@ -91,7 +97,6 @@ class SplashController extends GetxController {
     isLoading.value = false;
     errorMessage.value = error.toString();
 
-    // Log error for debugging
     debugPrint('SplashController Error: $error');
 
     return;
