@@ -43,11 +43,11 @@ class AppPages {
       page: () => CreateAccountScreen(),
       binding: CreateAccountBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.informationScreen,
-    //   page: () => InformationScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.informationScreen,
+      page: () => InformationScreen(),
+      binding: CreateAccountBinding(),
+    ),
     // GetPage(
     //   name: _Paths.identifyScreen,
     //   page: () => IdentifyScreen(),
