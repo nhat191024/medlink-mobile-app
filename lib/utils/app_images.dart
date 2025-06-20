@@ -21,7 +21,7 @@ class AppImages {
   // static const String ellipse1 = "assets/image/ellipse1.png";
   // static const String ellipse2 = "assets/image/ellipse2.png";
   // static const String ellipse3 = "assets/image/ellipse3.png";
-  // static const String warning = "assets/image/warning.png";
+  static const String warning = "assets/images/warning.png";
   // static const String confetti = "assets/image/confetti.png";
   // static const String ambulance = "assets/icons/ambulance.svg";
 
