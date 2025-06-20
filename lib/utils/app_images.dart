@@ -10,7 +10,7 @@ class AppImages {
 
   // /// create account screen
   static const String telephoneReceiver = "assets/icons/telephone_receiver.svg";
-  // static const String sms = "assets/icons/sms.svg";
+  static const String sms = "assets/icons/sms.svg";
   // static const String doctorNurse = "assets/more_screen/doctor_nurse.png";
   // static const String key = "assets/icons/key.svg";
   // static const String whoAreYou = "assets/icons/who_are_you.svg";
