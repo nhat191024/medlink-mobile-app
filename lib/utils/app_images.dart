@@ -9,7 +9,7 @@ class AppImages {
   static const String wavingHand = "assets/icons/waving_hand.svg";
 
   // /// create account screen
-  // static const String telephoneReceiver = "assets/icons/telephone_receiver.svg";
+  static const String telephoneReceiver = "assets/icons/telephone_receiver.svg";
   // static const String sms = "assets/icons/sms.svg";
   // static const String doctorNurse = "assets/more_screen/doctor_nurse.png";
   // static const String key = "assets/icons/key.svg";
@@ -96,7 +96,7 @@ class AppImages {
 
   // /// icons
   static const String logo = "assets/images/logo.png";
-  // static const String backIcon = "assets/image/back.png";
+  static const String backIcon = "assets/images/back.png";
   static const String searchIcon = "assets/icons/search.svg";
   // static const String searchUnselect = "assets/icons/search_unselect.svg";
   // static const String searchSelect = "assets/icons/search_select.svg";
