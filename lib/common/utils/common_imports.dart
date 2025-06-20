@@ -15,3 +15,4 @@ export 'package:medlink/common/screens/create_account/verify_code_screen.dart';
 export 'package:medlink/common/screens/create_account/user_type_screen.dart';
 export 'package:medlink/common/screens/create_account/create_account_screen.dart';
 export 'package:medlink/common/screens/create_account/information_screen.dart';
+export 'package:medlink/common/screens/create_account/add_avatar_screen.dart';
