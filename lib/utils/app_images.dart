@@ -38,7 +38,7 @@ class AppImages {
 
   // /// message screen
   // static const String pdf = "assets/icons/pdf.svg";
-  // static const String mailBox = "assets/image/mailBox.png";
+  static const String mailBox = "assets/images/mailBox.png";
 
   // ///wallet screen
   // static const String wallet = "assets/icons/walletImg.svg";
