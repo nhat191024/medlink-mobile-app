@@ -22,12 +22,12 @@ class AppPages {
       binding: LoginScreenBinding(),
     ),
 
-    // //create account
-    // GetPage(
-    //   name: _Paths.telephoneScreen,
-    //   page: () => TelephoneScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    //create account
+    GetPage(
+      name: _Paths.telephoneScreen,
+      page: () => TelephoneScreen(),
+      binding: CreateAccountBinding(),
+    ),
     // GetPage(
     //   name: _Paths.countryCodeScreen,
     //   page: () => const InputCountryCodeScreen(),
