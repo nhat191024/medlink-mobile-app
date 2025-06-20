@@ -11,8 +11,8 @@ class AppImages {
   // /// create account screen
   static const String telephoneReceiver = "assets/icons/telephone_receiver.svg";
   static const String sms = "assets/icons/sms.svg";
-  // static const String doctorNurse = "assets/more_screen/doctor_nurse.png";
-  // static const String key = "assets/icons/key.svg";
+  static const String doctorNurse = "assets/images/doctor_nurse.png";
+  static const String key = "assets/icons/key.svg";
   // static const String whoAreYou = "assets/icons/who_are_you.svg";
   // static const String avatar = "assets/image/avatar.png";
   // static const String cover = "assets/image/cover.png";
@@ -100,12 +100,12 @@ class AppImages {
   static const String searchIcon = "assets/icons/search.svg";
   // static const String searchUnselect = "assets/icons/search_unselect.svg";
   // static const String searchSelect = "assets/icons/search_select.svg";
-  // static const String stethoscope = "assets/icons/stethoscope.svg";
+  static const String stethoscope = "assets/icons/stethoscope.svg";
   // static const String stethoscopeRed = "assets/icons/stethoscope_red.svg";
   // static const String firstAidBg = "assets/icons/FirstAid_bg.svg";
-  // static const String firstAid = "assets/icons/FirstAid.svg";
+  static const String firstAid = "assets/icons/FirstAid.svg";
   // static const String firstAidKit = "assets/icons/first_aid_kit.svg";
-  // static const String pill = "assets/icons/Pill.svg";
+  static const String pill = "assets/icons/Pill.svg";
   // static const String hospital = "assets/icons/hospital.svg";
   static const String upload = "assets/icons/upload.svg";
   static const String verify = "assets/images/verify.png";
