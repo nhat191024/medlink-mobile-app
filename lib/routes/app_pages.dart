@@ -15,12 +15,8 @@ class AppPages {
       page: () => const SplashScreen(),
       binding: SplashScreenBinding(),
     ),
-    
-    GetPage(
-      name: _Paths.loginScreen,
-      page: () => LoginScreen(),
-      binding: LoginScreenBinding(),
-    ),
+
+    GetPage(name: _Paths.loginScreen, page: () => LoginScreen(), binding: LoginScreenBinding()),
 
     //create account
     GetPage(
@@ -48,16 +44,16 @@ class AppPages {
       page: () => InformationScreen(),
       binding: CreateAccountBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.identifyScreen,
-    //   page: () => IdentifyScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
-    // GetPage(
-    //   name: _Paths.licenseScreen,
-    //   page: () => LicenseScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.identifyScreen,
+      page: () => IdentifyScreen(),
+      binding: CreateAccountBinding(),
+    ),
+    GetPage(
+      name: _Paths.licenseScreen,
+      page: () => LicenseScreen(),
+      binding: CreateAccountBinding(),
+    ),
     GetPage(
       name: _Paths.addAvatarScreen,
       page: () => AddAvatarScreen(),
@@ -68,11 +64,11 @@ class AppPages {
       page: () => CreatingAccountScreen(),
       binding: CreateAccountBinding(),
     ),
-    // GetPage(
-    //   name: _Paths.accountSubmitScreen,
-    //   page: () => AccountSubmitScreen(),
-    //   binding: CreateAccountBinding(),
-    // ),
+    GetPage(
+      name: _Paths.accountSubmitScreen,
+      page: () => AccountSubmitScreen(),
+      binding: CreateAccountBinding(),
+    ),
     GetPage(
       name: _Paths.accountSuccessScreen,
       page: () => AccountSuccessScreen(),
