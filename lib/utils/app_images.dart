@@ -13,17 +13,17 @@ class AppImages {
   static const String sms = "assets/icons/sms.svg";
   static const String doctorNurse = "assets/images/doctor_nurse.png";
   static const String key = "assets/icons/key.svg";
-  // static const String whoAreYou = "assets/icons/who_are_you.svg";
+  static const String whoAreYou = "assets/icons/who_are_you.svg";
   static const String avatar = "assets/images/avatar.png";
   static const String cover = "assets/images/cover.png";
-  // static const String clock = "assets/image/clock.png";
+  static const String clock = "assets/images/clock.png";
   static const String party = "assets/images/party.png";
   static const String ellipse1 = "assets/images/ellipse1.png";
   static const String ellipse2 = "assets/images/ellipse2.png";
   static const String ellipse3 = "assets/images/ellipse3.png";
   static const String warning = "assets/images/warning.png";
   static const String confetti = "assets/images/confetti.png";
-  // static const String ambulance = "assets/icons/ambulance.svg";
+  static const String ambulance = "assets/icons/ambulance.svg";
 
   // /// forgot password screen
   // static const String unlocked = "assets/icons/unlocked.svg";
@@ -101,12 +101,12 @@ class AppImages {
   // static const String searchUnselect = "assets/icons/search_unselect.svg";
   // static const String searchSelect = "assets/icons/search_select.svg";
   static const String stethoscope = "assets/icons/stethoscope.svg";
-  // static const String stethoscopeRed = "assets/icons/stethoscope_red.svg";
-  // static const String firstAidBg = "assets/icons/FirstAid_bg.svg";
+  static const String stethoscopeRed = "assets/icons/stethoscope_red.svg";
+  static const String firstAidBg = "assets/icons/FirstAid_bg.svg";
   static const String firstAid = "assets/icons/FirstAid.svg";
   // static const String firstAidKit = "assets/icons/first_aid_kit.svg";
   static const String pill = "assets/icons/Pill.svg";
-  // static const String hospital = "assets/icons/hospital.svg";
+  static const String hospital = "assets/icons/hospital.svg";
   static const String upload = "assets/icons/upload.svg";
   static const String verify = "assets/images/verify.png";
   static const String blood = "assets/images/blood.png";
