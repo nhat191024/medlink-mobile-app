@@ -8,6 +8,8 @@ class CreateAccountController extends GetxController {
   static const int _createdStatusCode = 201;
   static const String _doctorUserType = 'healthcare';
   static const String _patientUserType = 'patient';
+  static const String _doctorIdentity = 'doctor';
+  static const String _pharmacyIdentity = 'pharmacy';
   static const double _progressIncrement = 0.01;
   static const int _progressInterval = 100;
   static const int _resendTimerSeconds = 60;
@@ -38,7 +40,7 @@ class CreateAccountController extends GetxController {
   final TextEditingController password = TextEditingController();
 
   //doctor information (not required)
-  final RxInt identify = 1.obs;
+  final RxString identify = 'doctor'.obs;
   final Rx<File?> idImage = Rx<File?>(null);
   final Rx<File?> degreeImage = Rx<File?>(null);
   final TextEditingController professionalNumber = TextEditingController();
@@ -239,12 +241,8 @@ class CreateAccountController extends GetxController {
         return;
       } else {
         isEmailError.value = false;
-        // userType.value == _doctorUserType
-        //     ? Get.toNamed(Routes.identifyScreen)
-        //     :
-        //TODO: uncomment the above line when navigation is ready
         userType.value == _doctorUserType
-            ? debugPrint('Doctor user type selected')
+            ? Get.toNamed(Routes.identifyScreen)
             : Get.toNamed(Routes.informationScreen);
       }
     } catch (error) {
@@ -339,7 +337,7 @@ class CreateAccountController extends GetxController {
     bool hasRequiredDocuments = false;
 
     switch (identify.value) {
-      case 1: // Professional license required
+      case _doctorIdentity: // Professional license required
         hasRequiredDocuments = idImage.value != null && degreeImage.value != null;
         if (hasRequiredDocuments && professionalNumber.text.isEmpty) {
           isProfessionalNumberError.value = true;
@@ -348,7 +346,7 @@ class CreateAccountController extends GetxController {
         }
         isProfessionalNumberError.value = false;
         break;
-      case 2: // ID and degree required
+      case _pharmacyIdentity: // ID and degree required
         hasRequiredDocuments = idImage.value != null && degreeImage.value != null;
         break;
       default: // Only degree required
@@ -535,11 +533,11 @@ class CreateAccountController extends GetxController {
     buttonLoading.value = true;
     try {
       var uri = Uri.parse('${Apis.api}register');
-      var response = http.MultipartRequest(
-        'POST',
-        uri,
-      );
-      response.headers.addAll({'Content-Type': 'multipart/form-data', 'Accept': 'application/json'});
+      var response = http.MultipartRequest('POST', uri);
+      response.headers.addAll({
+        'Content-Type': 'multipart/form-data',
+        'Accept': 'application/json',
+      });
 
       // Add common fields
       response.fields.addAll({
@@ -568,20 +566,9 @@ class CreateAccountController extends GetxController {
         response.files.add(avatarFile);
       }
 
-      //print request details for debugging
-
-      // debugPrint('Request URI: ${response.url}');
-      // debugPrint('Request Fields: ${response.fields}');
-      // debugPrint('Request Files: ${response.files}');
-
       var streamedResponse = await response.send();
       var responseBody = await streamedResponse.stream.bytesToString();
       var data = jsonDecode(responseBody);
-
-      //print response details for debugging
-      // debugPrint('Response Status Code: ${streamedResponse.statusCode}');
-      // debugPrint('Response Body: $data');
-      // debugPrint('Response Headers: ${streamedResponse.headers}');
 
       if (streamedResponse.statusCode == _createdStatusCode) {
         success.value = true;
@@ -703,7 +690,7 @@ class CreateAccountController extends GetxController {
     password.clear();
 
     // Reset doctor fields
-    identify.value = 1;
+    identify.value = 'doctor';
     idImage.value = null;
     degreeImage.value = null;
     professionalNumber.clear();
