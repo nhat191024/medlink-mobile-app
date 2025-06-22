@@ -15,21 +15,21 @@ class StorageService {
     return box.hasData(key);
   }
 
-  static writeStringData({
+  static void writeStringData({
     required String key,
     required String value,
   }) {
     box.write(key, value);
   }
 
-  static writeBoolData({
+  static void writeBoolData({
     required String key,
     required bool value,
   }) {
     box.write(key, value);
   }
 
-  static removeData({
+  static void removeData({
     required String key,
   }) {
     box.remove(key);

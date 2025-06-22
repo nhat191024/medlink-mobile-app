@@ -92,7 +92,7 @@ class LoginController extends GetxController {
         errorMessages[errorMessage] ?? errorMessage ?? 'Unknown error occurred';
   }
 
-  login() async {
+  Future<void> login() async {
     // Validate inputs first
     if (!_validateInputs()) {
       return;
@@ -140,7 +140,7 @@ class LoginController extends GetxController {
     }
   }
 
-  storeToken(String token) async {
+  Future<void> storeToken(String token) async {
     if (StorageService.checkData(key: LocalStorageKeys.token)) {
       StorageService.removeData(key: LocalStorageKeys.token);
     }
@@ -161,7 +161,7 @@ class LoginController extends GetxController {
     super.onClose();
   }
 
-  clear() {
+  void clear() {
     loginInfo.clear();
     password.clear();
     isLoginError.value = false;
