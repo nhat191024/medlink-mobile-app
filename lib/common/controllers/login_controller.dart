@@ -124,7 +124,7 @@ class LoginController extends GetxController {
           debugPrint('Doctor logged in successfully');
           // Get.toNamed(Routes.doctorHomeScreen);
         } else {
-          // Get.toNamed(Routes.patientHomeScreen);
+          Get.toNamed(Routes.patientHomeScreen);
         }
       } else {
         _handleApiError(message);
