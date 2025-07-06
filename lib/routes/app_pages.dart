@@ -1,7 +1,8 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/common/utils/common_imports.dart';
+import 'package:medlink/patient/utils/patient_imports.dart';
+
 // import 'package:videocalling_medical/doctor/utils/doctor_imports.dart';
-// import 'package:videocalling_medical/patient/utils/patient_imports.dart';
 part 'app_routes.dart';
 
 class AppPages {
@@ -206,12 +207,12 @@ class AppPages {
     //   binding: NotificationBinding(),
     // ),
 
-    // //patient home screen
-    // GetPage(
-    //   name: _Paths.patientHomeScreen,
-    //   page: () => const PatientBottomNav(),
-    //   binding: PatientBottomTabBinding(),
-    // ),
+    //patient home screen
+    GetPage(
+      name: _Paths.patientHomeScreen,
+      page: () => const PatientBottomNav(),
+      binding: PatientBottomTabBinding(),
+    ),
 
     // //patient my appointment screen
     // GetPage(
