@@ -270,7 +270,12 @@ class DoctorDetail extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildInfoColumn(city, 'location'.tr, AppColors.primaryText),
+          // Giới hạn độ dài city, nếu dài quá thì thành ...
+          _buildInfoColumn(
+            city.length > 15 ? '${city.substring(0, 15)}...' : city,
+            'location'.tr,
+            AppColors.primaryText,
+          ),
           _buildInfoColumn(
             rating,
             'rating'.tr,
