@@ -214,6 +214,12 @@ class SearchHeathCareController extends GetxController {
   //   }
   // }
 
+  String formatDate(String dateString) {
+    DateTime dateTime = DateTime.parse(dateString);
+    DateFormat formatter = DateFormat('MMM dd, yyyy HH:mm');
+    return formatter.format(dateTime);
+  }
+
   bool checkIfDefaultAvatar(String avatar) {
     return avatar.split('/').last.contains('default.png');
   }
