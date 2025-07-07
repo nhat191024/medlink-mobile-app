@@ -151,8 +151,6 @@ class SearchHeathCareController extends GetxController {
           doctorList.add(doctorModel);
         }
 
-        debugPrint('fetched doctors: ${doctorList.length}');
-
         _updateSelectedDate();
         currentDoctorPage.value++;
       } else {
