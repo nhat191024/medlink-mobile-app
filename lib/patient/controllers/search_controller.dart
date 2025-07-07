@@ -32,6 +32,8 @@ class SearchHeathCareController extends GetxController {
   // Date lists - computed once
   late final RxList<String> listDate;
   late final RxList<String> listDay;
+  final RxString selectedDate = ''.obs;
+  final RxString selectedTime = ''.obs;
 
   // Static data
   static const List<String> testimonialsTitle = [
@@ -144,10 +146,7 @@ class SearchHeathCareController extends GetxController {
         totalDoctorPage.value = responseData['total_page'] ?? 1;
 
         for (var doctor in responseData['data']) {
-          // debugPrint(DoctorModel.fromJson(doctor).toString());
-          // debugPrint(doctor.toString());
           final doctorModel = DoctorModel.fromJson(doctor);
-          // debugPrint('doctor: ${doctorModel.workSchedule?.toJson()}');
           doctorList.add(doctorModel);
         }
 
@@ -172,7 +171,7 @@ class SearchHeathCareController extends GetxController {
     };
   }
 
-void _updateSelectedDate() {
+  void _updateSelectedDate() {
     if (doctorList.isNotEmpty) {
       final doctorWorkSchedule = doctorList[0].workSchedule;
 
@@ -217,86 +216,5 @@ void _updateSelectedDate() {
 
   bool checkIfDefaultAvatar(String avatar) {
     return avatar.split('/').last.contains('default.png');
-  }
-
-  String formatDate(String dateString) {
-    final DateTime dateTime = DateTime.parse(dateString);
-    final DateFormat formatter = DateFormat('MMM dd, yyyy HH:mm');
-    return formatter.format(dateTime);
-  }
-
-  Map<String, List<Map<String, dynamic>>> _extractTimeSlots(Map<String, dynamic> workSchedule) {
-    final Map<String, List<Map<String, dynamic>>> timeSlots = {};
-
-    List<Map<String, dynamic>> generateAllDaySlots(List<Map<String, dynamic>> bookedSlots) {
-      final List<Map<String, dynamic>> slots = [];
-      DateTime time = DateFormat('hh:mm a').parse('07:00 AM');
-
-      for (int i = 0; i < 8; i++) {
-        final DateTime currentSlot = time.add(Duration(minutes: 45 * i));
-        final String formattedTime = DateFormat('hh:mm a').format(currentSlot);
-
-        // Check if current time slot conflicts with any booked appointments
-        bool isAvailable = true;
-        for (final bookedSlot in bookedSlots) {
-          if (bookedSlot['time'] == null || bookedSlot['time'] == 'All day') continue;
-
-          final DateTime bookedTime = DateFormat('hh:mm a').parse(bookedSlot['time']);
-          final int appointmentDuration = bookedSlot['appointment_time'] ?? 30;
-
-          // Calculate start and end times of the booked appointment
-          final DateTime bookedEndTime = bookedTime.add(Duration(minutes: appointmentDuration));
-
-          // Check if current slot falls within any booked appointment's time range
-          if (currentSlot.isAtSameMomentAs(bookedTime) ||
-              (currentSlot.isAfter(bookedTime) && currentSlot.isBefore(bookedEndTime)) ||
-              currentSlot.add(const Duration(minutes: 45)).isAfter(bookedTime) &&
-                  currentSlot.isBefore(bookedTime)) {
-            isAvailable = false;
-            break;
-          }
-        }
-
-        slots.add({'time': formattedTime, 'is_available': isAvailable});
-      }
-      return slots;
-    }
-
-    try {
-      workSchedule.forEach((month, days) {
-        if (days is Map) {
-          days.forEach((day, schedules) {
-            if (!timeSlots.containsKey(day)) {
-              timeSlots[day] = [];
-            }
-
-            if (schedules is List) {
-              final bool hasAllDay = schedules.any((schedule) => schedule['time'] == 'All day');
-
-              if (hasAllDay) {
-                // Generate all day slots but consider booked appointments
-                timeSlots[day] = generateAllDaySlots(schedules.cast<Map<String, dynamic>>());
-              } else {
-                // Handle regular time slots
-                for (final schedule in schedules) {
-                  final bool isAvailable = schedule['is_available'] ?? false;
-                  final String time = schedule['time'] ?? '';
-
-                  if (time.isNotEmpty && time != 'null') {
-                    timeSlots[day]!.add({'time': time, 'is_available': isAvailable});
-                  }
-                }
-              }
-            }
-          });
-        }
-      });
-    } catch (e) {
-      if (kDebugMode) {
-        print('Error extracting time slots: $e');
-      }
-    }
-
-    return timeSlots;
   }
 }
