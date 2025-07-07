@@ -60,6 +60,9 @@ abstract class Routes {
   static const patientMyAppointmentScreen = _Paths.patientMyAppointmentScreen;
   static const searchDoctorScreen = _Paths.searchDoctorScreen;
 
+  //booking screen
+  static const bookingScreen = _Paths.bookingScreen;
+
   static const doctorTabScreen = _Paths.doctorTabScreen;
   static const photoViewerScreen = _Paths.photoViewerScreen;
   static const videoPlayerScreen = _Paths.videoPlayerScreen;
@@ -123,6 +126,9 @@ abstract class _Paths {
   static const patientHomeScreen = '/patient-home-screen';
   static const patientMyAppointmentScreen = '/patient-my-appointment-screen';
   static const searchDoctorScreen = '/search-doctor-screen';
+
+  //booking screen
+  static const bookingScreen = '/booking-screen';
 
   //notification screen
   static const notificationScreen = '/notification-screen';

@@ -222,6 +222,13 @@ class AppPages {
       binding: SearchDoctorBinding(),
     ),
 
+    //booking screen
+    GetPage(
+      name: _Paths.bookingScreen,
+      page: () => const BookingStepOneSceen(),
+      binding: BookingBinding(),
+    ),
+
     // //patient my appointment screen
     // GetPage(
     //   name: _Paths.patientMyAppointmentScreen,
