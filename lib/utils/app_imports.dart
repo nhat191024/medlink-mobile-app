@@ -20,6 +20,7 @@ export 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 export 'package:image_picker/image_picker.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 export 'package:pinput/pinput.dart';
+export 'package:url_launcher/url_launcher.dart';
 
 /// utils
 export 'package:medlink/utils/app_colors.dart';
