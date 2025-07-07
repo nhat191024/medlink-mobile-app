@@ -7,7 +7,7 @@ class PatientBottomNavController extends GetxController {
 
   final List<Widget> screens = [
     PatientHomeScreen(),
-    // SearchScreen(),
+    SearchCategoryScreen(),
     // MessagesScreen(),
     // PatientMyAppointmentsScreen(),
     // SettingScreen(),
