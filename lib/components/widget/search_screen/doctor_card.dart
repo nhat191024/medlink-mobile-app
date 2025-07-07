@@ -58,6 +58,7 @@ class DoctorCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    
     return Container(
       margin: EdgeInsets.fromLTRB(
         _cardMarginHorizontal,
@@ -322,7 +323,7 @@ class DoctorCard extends StatelessWidget {
 
   Widget _buildBookingButton() {
     return CustomButtonPlus(
-      onTap: () => {},
+      onTap: () => Get.toNamed(Routes.bookingScreen, arguments: {'doctorIndex': index}),
       btnText: 'book_appointment'.tr,
       textSize: _titleFontSize,
       fontFamily: AppFontStyleTextStrings.medium,
