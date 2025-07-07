@@ -1,3 +1,4 @@
+import 'package:medlink/patient/screens/search_doctor_screen.dart';
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/common/utils/common_imports.dart';
 import 'package:medlink/patient/utils/patient_imports.dart';
@@ -212,6 +213,13 @@ class AppPages {
       name: _Paths.patientHomeScreen,
       page: () => const PatientBottomNav(),
       binding: PatientBottomTabBinding(),
+    ),
+
+    //patient search doctor screen
+    GetPage(
+      name: _Paths.searchDoctorScreen,
+      page: () => SearchDoctorScreen(),
+      binding: SearchDoctorBinding(),
     ),
 
     // //patient my appointment screen
