@@ -116,7 +116,7 @@ class AppImages {
   // static const String calendar = "assets/icons/calendar.svg";
   // static const String edit = "assets/icons/edit.png";
   static const String home = "assets/icons/home.svg";
-  // static const String home2 = "assets/icons/home_2.svg";
+  static const String home2 = "assets/icons/home_2.svg";
   static const String homeSelect = "assets/icons/home_select.svg";
   static const String messageTyping = "assets/icons/message_typing.svg";
   static const String messageSelect = "assets/icons/message_select.svg";
@@ -160,9 +160,8 @@ class AppImages {
   // static const String question = "assets/icons/question.svg";
   // static const String shieldCheck = "assets/icons/shield_check.svg";
   // static const String logout = "assets/icons/logout.svg";
-  // static const String french = "assets/icons/french.svg";
-  // static const String english = "assets/icons/english.svg";
-  // static const String vietnamese = "assets/icons/vietnamese.svg";
+  static const String english = "assets/icons/english.svg";
+  static const String vietnamese = "assets/icons/vietnamese.svg";
   // static const String trash = "assets/icons/trash.svg";
   // static const String trash2 = "assets/image/trash.png";
   // static const String online = "assets/icons/online.svg";
@@ -175,7 +174,7 @@ class AppImages {
   // static const String plus = "assets/icons/plus.svg";
   static const String faceMark = "assets/icons/FaceMask.svg";
   // static const String star = "assets/icons/star.svg";
-  // static const String heartIcon = "assets/icons/heart.svg";
+  static const String heartIcon = "assets/icons/heart.svg";
   // static const String loudSpeaker = "assets/icons/loudspeaker.svg";
   // static const String comment = "assets/icons/comment.svg";
   // static const String pencilSimpleLine = "assets/icons/PencilSimpleLine.svg";
