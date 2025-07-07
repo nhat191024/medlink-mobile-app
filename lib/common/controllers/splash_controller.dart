@@ -79,8 +79,7 @@ class SplashController extends GetxController {
         // Uncomment the line below when the route is available
         // Get.offAllNamed(Routes.doctorHomeScreen);
       } else if (userType == _patientUserType) {
-        // Uncomment the line below when the route is available
-        // Get.offAllNamed(Routes.patientHomeScreen);
+        Get.offAllNamed(Routes.patientHomeScreen);
       } else {
         throw Exception('Invalid user type received from server');
       }
