@@ -32,6 +32,7 @@ class AppImages {
   // /// home screen
   static const String demoAvt = "assets/images/doctor.png";
   // static const String banner = "assets/image/banner.png";
+  static const String mapDemo = "assets/images/mapDemo.png";
 
   // /// my appointment screen
   // static const String reject = "assets/image/reject.png";
