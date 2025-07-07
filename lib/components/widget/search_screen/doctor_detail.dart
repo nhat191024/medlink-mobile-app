@@ -785,21 +785,14 @@ class DoctorDetail extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-                      decoration: BoxDecoration(
-                        color: isSelected ? AppColors.primary600 : Colors.transparent,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                        controller.listDate[index],
-                        style: TextStyle(
-                          color: isSelected
-                              ? AppColors.white
-                              : (isAvailable ? AppColors.secondaryText : AppColors.disable),
-                          fontFamily: AppFontStyleTextStrings.regular,
-                          fontSize: _smallFontSize,
-                        ),
+                    Text(
+                      controller.listDate[index],
+                      style: TextStyle(
+                        color: isSelected
+                            ? AppColors.primary600
+                            : (isAvailable ? AppColors.secondaryText : AppColors.disable),
+                        fontFamily: AppFontStyleTextStrings.regular,
+                        fontSize: _smallFontSize,
                       ),
                     ),
                     const SizedBox(height: 6),
