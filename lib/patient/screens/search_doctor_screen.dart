@@ -2,6 +2,7 @@ import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/patient/utils/patient_imports.dart';
 
 import 'package:medlink/components/widget/search_screen/doctor_card.dart';
+import 'package:medlink/components/widget/search_screen/doctor_detail.dart';
 
 import 'package:medlink/model/work_schedule_model.dart';
 
@@ -221,7 +222,7 @@ class SearchDoctorScreen extends GetView<SearchHeathCareController> {
           physics: const AlwaysScrollableScrollPhysics(),
           padding: EdgeInsets.fromLTRB(0, _listPaddingTop, 0, _listPaddingBottom),
           itemCount: _getItemCount(),
-          itemBuilder: (context, index) => _buildListItem(index),
+          itemBuilder: (context, index) => _buildListItem(context, index),
         ),
       ),
     );
@@ -241,7 +242,7 @@ class SearchDoctorScreen extends GetView<SearchHeathCareController> {
     }
   }
 
-  Widget _buildListItem(int index) {
+  Widget _buildListItem(BuildContext context, int index) {
     if (controller.isDoctorLoading.value && index == controller.doctorList.length) {
       return Padding(
         padding: const EdgeInsets.symmetric(vertical: 60.0),
@@ -253,7 +254,7 @@ class SearchDoctorScreen extends GetView<SearchHeathCareController> {
 
     switch (selectedCategory) {
       case "Doctors":
-        return _buildDoctorItem(index);
+        return _buildDoctorItem(context, index);
       case "Hospitals":
         return _buildHospitalItem(index);
       case "Pharmacy":
@@ -265,11 +266,11 @@ class SearchDoctorScreen extends GetView<SearchHeathCareController> {
     }
   }
 
-  Widget _buildDoctorItem(int index) {
+  Widget _buildDoctorItem(BuildContext context, int index) {
     final doctor = controller.doctorList[index];
     return GestureDetector(
-      // onTap: () => _navigateToDoctorDetail(doctor, index),
-      onTap: () {},
+      onTap: () => _navigateToDoctorDetail(context, doctor, index),
+      // onTap: () {},
       child: DoctorCard(
         index: index,
         services: doctor.services ?? [],
@@ -316,5 +317,31 @@ class SearchDoctorScreen extends GetView<SearchHeathCareController> {
     //   phone: ambulance.phone,
     // );
     return Container(); // Placeholder
+  }
+
+  void _navigateToDoctorDetail(BuildContext context, doctor, index) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => DoctorDetail(
+          index: index,
+          avatar: doctor.avatar,
+          fullName: doctor.name,
+          speciality: doctor.specialty,
+          introduce: doctor.introduce,
+          city: doctor.location,
+          rating: doctor.rating.toString(),
+          totalRate: doctor.totalRate,
+          isAvailable: doctor.isAvailable,
+          languages: doctor.languages,
+          services: doctor.services,
+          latitude: doctor.latitude,
+          longitude: doctor.longitude,
+          testimonials: doctor.testimonials,
+          topReviews: doctor.topReviews,
+          timeSlots: doctor.workSchedule,
+        ),
+      ),
+    );
   }
 }
