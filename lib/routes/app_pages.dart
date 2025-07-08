@@ -225,7 +225,7 @@ class AppPages {
     //booking screen
     GetPage(
       name: _Paths.bookingScreen,
-      page: () => const BookingStepOneSceen(),
+      page: () => const BookingSceen(),
       binding: BookingBinding(),
     ),
 
