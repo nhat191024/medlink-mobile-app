@@ -145,8 +145,8 @@ class AppImages {
   // static const String email = "assets/icons/email.svg";
   // static const String link = "assets/icons/link.svg";
   // static const String building = "assets/icons/building.svg";
-  // static const String videoOn = "assets/icons/video_on.svg";
-  // static const String checkBroken = "assets/icons/check_broken.svg";
+  static const String videoOn = "assets/icons/video_on.svg";
+  // static const String checkBroken = "assets/ifcons/check_broken.svg";
   // static const String cancel = "assets/icons/cancel.svg";
   // static const String xCircle = "assets/icons/x_circle.svg";
   // static const String send = "assets/icons/send.svg";
@@ -165,7 +165,7 @@ class AppImages {
   static const String vietnamese = "assets/icons/vietnamese.svg";
   // static const String trash = "assets/icons/trash.svg";
   // static const String trash2 = "assets/image/trash.png";
-  // static const String online = "assets/icons/online.svg";
+  static const String online = "assets/icons/online.svg";
   // static const String gift = "assets/icons/gift.svg";
   // static const String confettiIcon = "assets/icons/confetti.svg";
   // static const String walletIcon = "assets/icons/wallet.svg";
