@@ -150,7 +150,7 @@ class AppImages {
   // static const String cancel = "assets/icons/cancel.svg";
   // static const String xCircle = "assets/icons/x_circle.svg";
   // static const String send = "assets/icons/send.svg";
-  // static const String attachment = "assets/icons/attachment.svg";
+  static const String attachment = "assets/icons/attachment.svg";
   // static const String download = "assets/icons/download.svg";
   // static const String briefcase = "assets/icons/briefcase.svg";
   // static const String file = "assets/icons/file.svg";
