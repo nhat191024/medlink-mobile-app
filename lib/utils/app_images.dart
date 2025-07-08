@@ -132,8 +132,8 @@ class AppImages {
   static const String mapPinLine = "assets/icons/MapPinLine.svg";
   // static const String checkCircle = "assets/image/CheckCircle.png";
   static const String calendarIcon = "assets/icons/calendar_icon.svg";
-  // static const String bankCard = "assets/icons/bank_card.svg";
-  // static const String cardUp = "assets/icons/card_up.svg";
+  static const String bankCard = "assets/icons/bank_card.svg";
+  static const String cardUp = "assets/icons/card_up.svg";
   // static const String calendarPlus = "assets/icons/calendar_plus.svg";
   // static const String clockCounter = "assets/icons/clock4.svg";
   // static const String phoneCall = "assets/icons/phone_call.svg";
@@ -178,8 +178,8 @@ class AppImages {
   static const String heartIcon = "assets/icons/heart.svg";
   // static const String loudSpeaker = "assets/icons/loudspeaker.svg";
   // static const String comment = "assets/icons/comment.svg";
-  // static const String pencilSimpleLine = "assets/icons/PencilSimpleLine.svg";
-  // static const String card = "assets/icons/card.svg";
+  static const String pencilSimpleLine = "assets/icons/PencilSimpleLine.svg";
+  static const String card = "assets/icons/card.svg";
   // static const String confettiBall = "assets/icons/confetti2.svg";
 
   // static const String specialityBg = "assets/more_screen/speciality_bg.png";
