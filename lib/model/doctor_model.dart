@@ -62,8 +62,8 @@ class DoctorModel {
     totalRate = json['total_rate'];
     location = json['location'];
     minPrice = json['min_price'];
-    isAvailable = json['is_available'] == 'false' ? false : true;
-    isFavorite = RxBool(json['is_favorite'] == 'false' ? false : true);
+    isAvailable = json['is_available'];
+    isFavorite = RxBool(json['is_favorite']);
     languages = List<LanguageModel>.from(
       json['languages']?.map((x) => LanguageModel.fromJson(x)) ?? [],
     );
