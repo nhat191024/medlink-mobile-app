@@ -175,7 +175,7 @@ class DoctorCard extends StatelessWidget {
           Icon(Icons.star_rounded, color: Colors.amber, size: _ratingIconSize),
           SizedBox(width: _spacingMedium),
           Text(
-            rating.toString(),
+            rating == 0.0 ? "not_rated".tr : rating.toStringAsFixed(1),
             style: const TextStyle(
               color: AppColors.primaryText,
               fontSize: _subtitleFontSize,

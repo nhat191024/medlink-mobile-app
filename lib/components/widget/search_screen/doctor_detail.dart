@@ -277,7 +277,7 @@ class DoctorDetail extends StatelessWidget {
             AppColors.primaryText,
           ),
           _buildInfoColumn(
-            rating,
+            rating == '0.0' ? 'not_rated'.tr : rating,
             'rating'.tr,
             AppColors.primaryText,
             needDivider: true,
