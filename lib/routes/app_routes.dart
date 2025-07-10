@@ -6,7 +6,7 @@ abstract class Routes {
   static const splashScreen = _Paths.splashScreen;
   static const loginScreen = _Paths.loginScreen;
 
-// create account
+  // create account
   static const telephoneScreen = _Paths.telephoneScreen;
   static const countryCodeScreen = _Paths.countryCodeScreen;
   static const verifyScreen = _Paths.verifyScreen;
@@ -20,11 +20,14 @@ abstract class Routes {
   static const accountSubmitScreen = _Paths.accountSubmitScreen;
   static const accountSuccessScreen = _Paths.accountSuccessScreen;
 
-// forget password
+  // forget password
   static const forgetPasswordTelephoneScreen = _Paths.forgetPasswordTelephoneScreen;
   static const forgetPasswordInputCountryScreen = _Paths.forgetPasswordInputCountryScreen;
   static const forgetPasswordVerifyScreen = _Paths.forgetPasswordVerifyScreen;
   static const forgetPasswordNewPasswordScreen = _Paths.forgetPasswordNewPasswordScreen;
+
+  //webview
+  static const webViewScreen = _Paths.webViewScreen;
 
   //doctor home screen
   static const doctorHomeScreen = _Paths.doctorHomeScreen;
@@ -69,14 +72,13 @@ abstract class Routes {
   // static const videoThumbnailScreenScreen = _Paths.videoThumbnailScreenScreen;
   static const incomingCallScreen = _Paths.incomingCallScreen;
   static const callScreen = _Paths.callScreen;
-
 }
 
 abstract class _Paths {
   static const splashScreen = '/splash-screen';
   static const loginScreen = '/login-screen';
 
-// create account
+  // create account
   static const telephoneScreen = '/telephone-screen';
   static const countryCodeScreen = '/country-screen';
   static const verifyScreen = '/verify-screen';
@@ -90,23 +92,26 @@ abstract class _Paths {
   static const accountSubmitScreen = '/account-submit-screen';
   static const accountSuccessScreen = '/account-success-screen';
 
-//forgot password
+  //forgot password
   static const forgetPasswordTelephoneScreen = '/forget-password-telephone-screen';
   static const forgetPasswordInputCountryScreen = '/forget-password-country-screen';
   static const forgetPasswordVerifyScreen = '/forget-password-verify-screen';
   static const forgetPasswordNewPasswordScreen = '/forget-password-new-password-screen';
 
-//doctor home screen
+  //webview
+  static const webViewScreen = '/web-view-screen';
+
+  //doctor home screen
   static const doctorHomeScreen = '/doctor-home-screen';
 
-//doctor my appointment screen
+  //doctor my appointment screen
   static const doctorMyAppointmentScreen = '/doctor-my-appointment-screen';
 
-//message screen
+  //message screen
   static const messageScreen = '/chat-screen';
   static const detailMessageScreen = '/detail-message-screen';
 
-//setting screen
+  //setting screen
   static const doctorSettingScreen = '/setting-screen';
   static const profileScreen = '/profile-screen';
   static const profileEditScreen = '/profile-edit-screen';

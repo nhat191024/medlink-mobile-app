@@ -99,6 +99,13 @@ class AppPages {
     //   binding: ForgotPasswordBinding(),
     // ),
 
+    //webview
+    GetPage(
+      name: _Paths.webViewScreen,
+      page: () => WebViewScreen(),
+      binding: WebViewBinding(),
+    ),
+
     // //doctor home screen
     // GetPage(
     //   name: _Paths.doctorHomeScreen,
