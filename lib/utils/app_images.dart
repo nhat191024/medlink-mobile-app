@@ -134,6 +134,7 @@ class AppImages {
   static const String calendarIcon = "assets/icons/calendar_icon.svg";
   static const String bankCard = "assets/icons/bank_card.svg";
   static const String cardUp = "assets/icons/card_up.svg";
+  static const String money = "assets/icons/Money.svg";
   // static const String calendarPlus = "assets/icons/calendar_plus.svg";
   // static const String clockCounter = "assets/icons/clock4.svg";
   // static const String phoneCall = "assets/icons/phone_call.svg";
