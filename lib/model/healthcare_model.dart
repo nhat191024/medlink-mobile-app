@@ -23,8 +23,8 @@ class HospitalModel {
       name: json['name'] ?? '',
       address: json['address'] ?? '',
       rating: double.tryParse(json['rating'].toString()) ?? 0.0,
-      isAvailable: json['is_available'] ?? false,
-      isFavorite: RxBool(json['is_favorite'] ?? false),
+      isAvailable: json['is_available'],
+      isFavorite: RxBool(json['is_favorite']),
     );
   }
 

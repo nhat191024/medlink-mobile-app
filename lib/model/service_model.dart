@@ -20,7 +20,7 @@ class ServiceModel {
     duration = json['duration'];
     bufferTime = json['buffer_time'];
     seat = json['seat'];
-    isActive = json['is_active'] == 'false' ? false : true;
+    isActive = json['is_active'];
   }
 
   Map<String, dynamic> toJson() {
