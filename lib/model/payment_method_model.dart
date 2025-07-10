@@ -24,7 +24,7 @@ class PaymentMethodModel {
       info = json['info'],
       provider = json['provider'],
       expiry = json['expiry'],
-      isCard = json['is_Card'];
+      isCard = json['is_card'];
 
   Map<String, dynamic> toJson() {
     return {'name': name, 'icon': icon, 'info': info, 'provider': provider, 'expiry': expiry};
