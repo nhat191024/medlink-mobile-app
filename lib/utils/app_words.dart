@@ -443,6 +443,10 @@ class Words extends Translations {
           "address_label": "Address",
           "address_hint": "Enter",
           "address_error": "Address cannot be blank",
+
+          //payment result
+          'payment_success': "Thanks, your appointment has been booked successfully!",
+          'payment_success_description': "Please check your appointment history for receipt and booking details.",
         },
       };
 }
