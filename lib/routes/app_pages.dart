@@ -103,6 +103,7 @@ class AppPages {
     GetPage(
       name: _Paths.webViewScreen,
       page: () => WebViewScreen(),
+      binding: WebViewBinding(),
       participatesInRootNavigator: true,
       preventDuplicates: true,
     ),
