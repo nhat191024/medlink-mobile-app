@@ -66,6 +66,9 @@ abstract class Routes {
   //booking screen
   static const bookingScreen = _Paths.bookingScreen;
 
+  //payment result screen
+  static const paymentResultScreen = _Paths.paymentResultScreen;
+
   static const doctorTabScreen = _Paths.doctorTabScreen;
   static const photoViewerScreen = _Paths.photoViewerScreen;
   static const videoPlayerScreen = _Paths.videoPlayerScreen;
@@ -134,6 +137,9 @@ abstract class _Paths {
 
   //booking screen
   static const bookingScreen = '/booking-screen';
+  
+  //payment result screen
+  static const paymentResultScreen = '/payment-result-screen';
 
   //notification screen
   static const notificationScreen = '/notification-screen';

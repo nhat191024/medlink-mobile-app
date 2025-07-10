@@ -103,7 +103,8 @@ class AppPages {
     GetPage(
       name: _Paths.webViewScreen,
       page: () => WebViewScreen(),
-      binding: WebViewBinding(),
+      participatesInRootNavigator: true,
+      preventDuplicates: true,
     ),
 
     // //doctor home screen
@@ -233,6 +234,13 @@ class AppPages {
     GetPage(
       name: _Paths.bookingScreen,
       page: () => const BookingSceen(),
+      binding: BookingBinding(),
+    ),
+
+    //payment result screen
+    GetPage(
+      name: _Paths.paymentResultScreen,
+      page: () => PaymentResultScreen(),
       binding: BookingBinding(),
     ),
 
