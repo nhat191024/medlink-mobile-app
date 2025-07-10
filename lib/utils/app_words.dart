@@ -314,6 +314,7 @@ class Words extends Translations {
           "view_direction": "View direction",
           "available_time": "Available time",
           "all_schedules_available": "All schedules available",
+          "not_rated": "Not rated",
 
           //booking screen
           "choose_services": "Choose services",
