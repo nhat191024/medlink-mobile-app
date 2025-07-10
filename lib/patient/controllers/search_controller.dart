@@ -1,13 +1,10 @@
 import 'package:medlink/utils/app_imports.dart';
-import 'package:medlink/patient/utils/patient_imports.dart';
 
 import 'package:medlink/model/doctor_model.dart';
 import 'package:medlink/model/healthcare_model.dart';
 import 'package:intl/intl.dart';
 
 class SearchHeathCareController extends GetxController {
-  // final BookingController bookingController = Get.put(BookingController());
-
   // Core properties
   final String? _token = StorageService.readData(key: LocalStorageKeys.token);
 
