@@ -332,6 +332,7 @@ class Words extends Translations {
           "time&date": "Time & Date",
           "gps_location": "GPS location",
           "payment_method": "Payment method",
+          "payment": "Payment",
           "add_new_card": "Add new card",
           "choose_a_method": "Choose a method",
           "no_card": "Haven't added any card yet",
