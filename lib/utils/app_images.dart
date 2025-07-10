@@ -181,7 +181,7 @@ class AppImages {
   // static const String comment = "assets/icons/comment.svg";
   static const String pencilSimpleLine = "assets/icons/PencilSimpleLine.svg";
   static const String card = "assets/icons/card.svg";
-  // static const String confettiBall = "assets/icons/confetti2.svg";
+  static const String confettiBall = "assets/icons/confetti2.svg";
 
   // static const String specialityBg = "assets/more_screen/speciality_bg.png";
   // static const String dotsIcon = "assets/more_screen/dots.png";
