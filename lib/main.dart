@@ -16,6 +16,7 @@ void main() async {
     // await Firebase.initializeApp();
   }
   await GetStorage.init();
+  _listenDeepLinks();
   // await Get.putAsync<DBHelperCart>(() async {
   //   DBHelperCart cart = DBHelperCart();
   //   await cart.initDb();
@@ -33,4 +34,15 @@ void main() async {
   //   DeviceOrientation.portraitDown,
   // ]);
   runApp(MyApp());
+}
+
+void _listenDeepLinks() {
+  final AppLinks appLinks = AppLinks();
+  appLinks.uriLinkStream.listen((Uri? uri) {
+    if (uri != null) {
+      if (uri.path == '/payment-result') {
+        Get.toNamed(Routes.paymentResultScreen);
+      }
+    }
+  });
 }
