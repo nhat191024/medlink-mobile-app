@@ -21,3 +21,8 @@ export 'package:medlink/common/screens/create_account/add_avatar_screen.dart';
 export 'package:medlink/common/screens/create_account/creating_account_screen.dart';
 export 'package:medlink/common/screens/create_account/account_success_screen.dart';
 export 'package:medlink/common/screens/create_account/account_submit_screen.dart';
+
+//webview
+export 'package:medlink/common/controllers/web_view_controller.dart';
+export 'package:medlink/common/bindings/web_view_binding.dart';
+export 'package:medlink/common/screens/web_view_screen.dart';
