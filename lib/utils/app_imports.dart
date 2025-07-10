@@ -22,6 +22,7 @@ export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 export 'package:pinput/pinput.dart';
 export 'package:url_launcher/url_launcher.dart';
 export 'package:flutter_swipe_button/flutter_swipe_button.dart';
+export 'package:app_links/app_links.dart';
 
 /// utils
 export 'package:medlink/utils/app_colors.dart';
