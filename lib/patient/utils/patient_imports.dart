@@ -17,3 +17,5 @@ export 'package:medlink/patient/screens/booking_screen.dart';
 
 //payment result screen
 export 'package:medlink/patient/screens/payment_result_screen.dart';
+export 'package:medlink/patient/bindings/payment_result_binding.dart';
+export 'package:medlink/patient/controllers/payment_result_controller.dart';
