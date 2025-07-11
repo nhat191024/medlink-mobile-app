@@ -89,7 +89,7 @@ class DoctorDetail extends StatelessWidget {
   static const double _containerBorderRadius = 18.0;
   static const double _largeBorderRadius = 24.0;
   static const double _containerMarginHorizontal = 20.0;
-  static const double _containerPadding = 20.0;
+  static const double _containerPadding =15.0;
   static const double _spacingSmall = 5.0;
   static const double _spacingMedium = 10.0;
   static const double _spacingLarge = 15.0;
@@ -260,7 +260,7 @@ class DoctorDetail extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(
         _containerPadding,
         _spacingLarge,
-        _containerPadding + 10,
+        _containerPadding,
         _spacingLarge,
       ),
       decoration: BoxDecoration(
