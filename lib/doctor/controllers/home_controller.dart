@@ -93,7 +93,8 @@ class DoctorHomeController extends GetxController {
 
   /// Updates setup status based on introduction completion
   void _updateSetupStatus(Map<String, dynamic> data) {
-    setup.value = !(data['introduce'] ?? false);
+    final introduceValue = data['introduce'];
+    setup.value = introduceValue == 'true' || introduceValue == true;
   }
 
   /// Handles API error by setting default state
