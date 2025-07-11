@@ -31,7 +31,7 @@ class AppImages {
 
   // /// home screen
   static const String demoAvt = "assets/images/doctor.png";
-  // static const String banner = "assets/image/banner.png";
+  static const String banner = "assets/images/banner.png";
   static const String mapDemo = "assets/images/mapDemo.png";
 
   // /// my appointment screen
@@ -114,8 +114,8 @@ class AppImages {
   // static const String paragraph = "assets/icons/paragraph.png";
   static const String bell = "assets/icons/bell.svg";
   // static const String bellRinging = "assets/icons/bell_ringing.svg";
-  // static const String calendar = "assets/icons/calendar.svg";
-  // static const String edit = "assets/icons/edit.png";
+  static const String calendar = "assets/icons/calendar.svg";
+  static const String edit = "assets/icons/edit.png";
   static const String home = "assets/icons/home.svg";
   static const String home2 = "assets/icons/home_2.svg";
   static const String homeSelect = "assets/icons/home_select.svg";
@@ -126,7 +126,7 @@ class AppImages {
   static const String calenderSelect = "assets/icons/calendar_select.svg";
   static const String gearSix = "assets/icons/gear_six.svg";
   static const String gearSixSelect = "assets/icons/gear_six_select.svg";
-  // static const String btn = "assets/image/btn.png";
+  static const String btn = "assets/images/btn.png";
   static const String clock2 = "assets/icons/clock_2.svg";
   static const String clock3 = "assets/icons/clock_3.svg";
   static const String mapPinLine = "assets/icons/MapPinLine.svg";
