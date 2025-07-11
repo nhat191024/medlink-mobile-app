@@ -1,8 +1,9 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/components/button/plus.dart';
 import 'package:medlink/patient/controllers/booking_controller.dart';
+import 'package:medlink/patient/controllers/payment_result_controller.dart';
 
-class PaymentResultScreen extends GetView<BookingController> {
+class PaymentResultScreen extends GetView<PaymentResultController> {
   const PaymentResultScreen({super.key});
 
   @override
@@ -10,6 +11,11 @@ class PaymentResultScreen extends GetView<BookingController> {
     final arguments = Get.arguments as Map<String, dynamic>?;
     final status = arguments?['status'] ?? 'success';
     final isSuccess = status == 'PAID';
+    final orderCode = arguments?['orderCode'] ?? 'N/A';
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      controller.changeBillStatus(orderCode, status);
+    });
 
     return Scaffold(
       backgroundColor: isSuccess ? AppColors.successLight : AppColors.errorLight,
@@ -97,8 +103,10 @@ class PaymentResultScreen extends GetView<BookingController> {
               ),
               CustomButtonPlus(
                 onTap: () {
-                  Get.delete<BookingController>();
                   Get.offNamed(Routes.patientHomeScreen);
+                  Future.delayed(Duration(milliseconds: 100), () {
+                    Get.delete<BookingController>();
+                  });
                 },
                 btnText: 'back_to_home'.tr,
                 height: 54,
