@@ -75,7 +75,7 @@ class PatientHomeController extends GetxController {
   }
 
   void _parseUserData(Map<String, dynamic> data) {
-    userName.value = data['userName'] ?? '';
+    userName.value = data['name'] ?? '';
     email.value = data['email'] ?? '';
     phone.value = data['phone'] ?? '';
     address.value = data['address'] ?? '';
@@ -86,7 +86,7 @@ class PatientHomeController extends GetxController {
     zipCode.value = data['zip_code'] ?? '';
     userType.value = data['userType'] ?? '';
     location.value = data['location'] ?? '';
-    avatar.value = data['userAvatar'] ?? '';
+    avatar.value = data['avatar'] ?? '';
     isHaveNotificationUnread.value = data['isHaveNotification'] ?? false;
   }
 
