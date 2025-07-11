@@ -35,10 +35,10 @@ class AppImages {
   static const String mapDemo = "assets/images/mapDemo.png";
 
   // /// my appointment screen
-  // static const String reject = "assets/image/reject.png";
+  static const String reject = "assets/images/reject.png";
 
   // /// message screen
-  // static const String pdf = "assets/icons/pdf.svg";
+  static const String pdf = "assets/icons/pdf.svg";
   static const String mailBox = "assets/images/mailBox.png";
 
   // ///wallet screen
@@ -130,29 +130,29 @@ class AppImages {
   static const String clock2 = "assets/icons/clock_2.svg";
   static const String clock3 = "assets/icons/clock_3.svg";
   static const String mapPinLine = "assets/icons/MapPinLine.svg";
-  // static const String checkCircle = "assets/image/CheckCircle.png";
+  static const String checkCircle = "assets/images/CheckCircle.png";
   static const String calendarIcon = "assets/icons/calendar_icon.svg";
   static const String bankCard = "assets/icons/bank_card.svg";
   static const String cardUp = "assets/icons/card_up.svg";
   static const String money = "assets/icons/Money.svg";
-  // static const String calendarPlus = "assets/icons/calendar_plus.svg";
-  // static const String clockCounter = "assets/icons/clock4.svg";
-  // static const String phoneCall = "assets/icons/phone_call.svg";
-  // static const String messageSquare = "assets/icons/message_square.svg";
-  // static const String headPhone = "assets/icons/headphones.svg";
-  // static const String alarm = "assets/icons/alarm.svg";
-  // static const String userProfile = "assets/icons/user_profile.svg";
+  static const String calendarPlus = "assets/icons/calendar_plus.svg";
+  static const String clockCounter = "assets/icons/clock4.svg";
+  static const String phoneCall = "assets/icons/phone_call.svg";
+  static const String messageSquare = "assets/icons/message_square.svg";
+  static const String headPhone = "assets/icons/headphones.svg";
+  static const String alarm = "assets/icons/alarm.svg";
+  static const String userProfile = "assets/icons/user_profile.svg";
   // static const String userProfile2 = "assets/icons/user_profile_2.svg";
-  // static const String email = "assets/icons/email.svg";
-  // static const String link = "assets/icons/link.svg";
-  // static const String building = "assets/icons/building.svg";
+  static const String email = "assets/icons/email.svg";
+  static const String link = "assets/icons/link.svg";
+  static const String building = "assets/icons/building.svg";
   static const String videoOn = "assets/icons/video_on.svg";
-  // static const String checkBroken = "assets/ifcons/check_broken.svg";
-  // static const String cancel = "assets/icons/cancel.svg";
-  // static const String xCircle = "assets/icons/x_circle.svg";
-  // static const String send = "assets/icons/send.svg";
+  static const String checkBroken = "assets/icons/check_broken.svg";
+  static const String cancel = "assets/icons/cancel.svg";
+  static const String xCircle = "assets/icons/x_circle.svg";
+  static const String send = "assets/icons/send.svg";
   static const String attachment = "assets/icons/attachment.svg";
-  // static const String download = "assets/icons/download.svg";
+  static const String download = "assets/icons/download.svg";
   // static const String briefcase = "assets/icons/briefcase.svg";
   // static const String file = "assets/icons/file.svg";
   // static const String fileDown = "assets/icons/file_down.svg";
@@ -182,33 +182,4 @@ class AppImages {
   static const String pencilSimpleLine = "assets/icons/PencilSimpleLine.svg";
   static const String card = "assets/icons/card.svg";
   static const String confettiBall = "assets/icons/confetti2.svg";
-
-  // static const String specialityBg = "assets/more_screen/speciality_bg.png";
-  // static const String dotsIcon = "assets/more_screen/dots.png";
-  // static const String defaultDoctor = "assets/default-doctor.svg";
-  // static const String defaultUser = "assets/default-user.png";
-  // static const String emailIcon = "assets/appointment_detail_screen/email_btn.png";
-  // static const String phoneIcon = "assets/appointment_detail_screen/phone_button.png";
-  // static const String timeIcon = "assets/appointment_detail_screen/time.png";
-  // static const String closeIcon = "assets/more_screen/close.png";
-  // static const String doneIcon = "assets/more_screen/done_icon.png";
-  // static const String searchIconPng = "assets/appointment_detail_screen/search.svg";
-  // static const String dropdownIcon = "assets/home_screen/dropdown.png";
-  // static const String editYellowBg = "assets/more_screen/edit_yellow_bg.png";
-  // static const String deleteRectangle = "assets/home_screen/delete_icon.png";
-
-  // /// pharmacy assets
-  // static const String medicine1 = "assets/pharmacy_assets/medicine_placeholder.png";
-  // static const String plusSvg = "assets/pharmacy_assets/add.svg";
-  // static const String minusSvg = "assets/pharmacy_assets/minus.svg";
-  // static const String pinSvg = "assets/pharmacy_assets/pin.png";
-  // static const String orderMedicines = "assets/pharmacy_assets/ordermedicine.png";
-  // static const String prescription = "assets/pharmacy_assets/addprescription.png";
-  // static const String carticon = "assets/pharmacy_assets/carticon.png";
-  // static const String deleteicon = "assets/pharmacy_assets/deleteicon.png";
-  // static const String editicon = "assets/pharmacy_assets/editicon.png";
-  // static const String editicon_medicine = "assets/pharmacy_assets/edit_medicine.png";
-
-  // static const String doctornewimage = "assets/pharmacy_assets/doctor.png";
-  // static const String pharmacy = "assets/pharmacy_assets/pharmacy.png";
 }
