@@ -133,11 +133,11 @@ class AppPages {
     //   },
     //   binding: MessagesBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.detailMessageScreen,
-    //   page: () => MessagesDetailScreen(),
-    //   binding: MessagesBinding(),
-    // ),
+    GetPage(
+      name: _Paths.detailMessageScreen,
+      page: () => MessagesDetailScreen(),
+      binding: MessagesBinding(),
+    ),
 
     // //setting screen
     // GetPage(
