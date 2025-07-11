@@ -121,8 +121,7 @@ class LoginController extends GetxController {
         clear();
 
         if (responseData['userType'] == _doctorUserType) {
-          debugPrint('Doctor logged in successfully');
-          // Get.toNamed(Routes.doctorHomeScreen);
+          Get.toNamed(Routes.doctorHomeScreen);
         } else {
           Get.toNamed(Routes.patientHomeScreen);
         }
