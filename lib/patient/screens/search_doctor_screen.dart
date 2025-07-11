@@ -7,9 +7,7 @@ import 'package:medlink/components/widget/search_screen/doctor_detail.dart';
 import 'package:medlink/model/work_schedule_model.dart';
 
 class SearchDoctorScreen extends GetView<SearchHeathCareController> {
-  SearchDoctorScreen({super.key});
-
-  final SearchHeathCareController controllers = Get.put(SearchHeathCareController());
+  const SearchDoctorScreen({super.key});
 
   // Constants for better maintainability
   static const double _searchPaddingTop = 40.0;
