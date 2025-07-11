@@ -76,8 +76,7 @@ class SplashController extends GetxController {
       final String? userType = data['userType']?.toString();
 
       if (userType == _doctorUserType) {
-        // Uncomment the line below when the route is available
-        // Get.offAllNamed(Routes.doctorHomeScreen);
+        Get.offAllNamed(Routes.doctorHomeScreen);
       } else if (userType == _patientUserType) {
         Get.offAllNamed(Routes.patientHomeScreen);
       } else {
