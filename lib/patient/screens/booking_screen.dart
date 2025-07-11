@@ -10,22 +10,44 @@ import 'package:medlink/patient/screens/booking/step_one.dart';
 import 'package:medlink/patient/screens/booking/step_two.dart';
 import 'package:medlink/patient/screens/booking/step_three.dart';
 
-class BookingSceen extends GetView<BookingController> {
+class BookingSceen extends StatefulWidget {
   const BookingSceen({super.key});
 
-  BookingController get bookingController {
+  @override
+  State<BookingSceen> createState() => _BookingSceenState();
+}
+
+class _BookingSceenState extends State<BookingSceen> {
+  late final BookingController controller;
+  late final SearchHeathCareController searchHeathCareController;
+  late final int doctorIndex;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize controller safely
     if (Get.isRegistered<BookingController>()) {
-      return Get.find<BookingController>();
+      controller = Get.find<BookingController>();
     } else {
-      return Get.put(BookingController());
+      controller = Get.put(BookingController());
     }
+
+    // Get search controller
+    searchHeathCareController = Get.find<SearchHeathCareController>();
+
+    // Get doctorIndex from arguments
+    doctorIndex = Get.arguments['doctorIndex'] ?? 0;
   }
 
-  // Add getter for searchHeathCareController
-  SearchHeathCareController get searchHeathCareController => Get.find<SearchHeathCareController>();
-
-  // Get doctorIndex from arguments
-  int get doctorIndex => Get.arguments['doctorIndex'] ?? 0;
+  @override
+  void dispose() {
+    // Clean up controller when widget is disposed
+    if (Get.isRegistered<BookingController>()) {
+      Get.delete<BookingController>();
+    }
+    super.dispose();
+  }
 
   // Get services from doctorList
   List<ServiceModel> get services =>
