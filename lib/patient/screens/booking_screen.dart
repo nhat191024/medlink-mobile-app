@@ -13,6 +13,14 @@ import 'package:medlink/patient/screens/booking/step_three.dart';
 class BookingSceen extends GetView<BookingController> {
   const BookingSceen({super.key});
 
+  BookingController get bookingController {
+    if (Get.isRegistered<BookingController>()) {
+      return Get.find<BookingController>();
+    } else {
+      return Get.put(BookingController());
+    }
+  }
+
   // Add getter for searchHeathCareController
   SearchHeathCareController get searchHeathCareController => Get.find<SearchHeathCareController>();
 
