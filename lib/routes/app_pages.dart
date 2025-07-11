@@ -242,7 +242,7 @@ class AppPages {
     GetPage(
       name: _Paths.paymentResultScreen,
       page: () => PaymentResultScreen(),
-      binding: BookingBinding(),
+      binding: PaymentResultBinding(),
     ),
 
     // //patient my appointment screen
