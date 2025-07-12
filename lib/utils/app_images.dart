@@ -8,7 +8,7 @@ class AppImages {
   /// login screen
   static const String wavingHand = "assets/icons/waving_hand.svg";
 
-  // /// create account screen
+  /// create account screen
   static const String telephoneReceiver = "assets/icons/telephone_receiver.svg";
   static const String sms = "assets/icons/sms.svg";
   static const String doctorNurse = "assets/images/doctor_nurse.png";
@@ -25,9 +25,9 @@ class AppImages {
   static const String confetti = "assets/images/confetti.png";
   static const String ambulance = "assets/icons/ambulance.svg";
 
-  // /// forgot password screen
-  // static const String unlocked = "assets/icons/unlocked.svg";
-  // static const String locked = "assets/image/locked.png";
+  /// forgot password screen
+  static const String unlocked = "assets/icons/unlocked.svg";
+  static const String locked = "assets/image/locked.png";
 
   // /// home screen
   static const String demoAvt = "assets/images/doctor.png";
@@ -41,61 +41,14 @@ class AppImages {
   static const String pdf = "assets/icons/pdf.svg";
   static const String mailBox = "assets/images/mailBox.png";
 
-  // ///wallet screen
-  // static const String wallet = "assets/icons/walletImg.svg";
+  ///wallet screen
+  static const String wallet = "assets/icons/walletImg.svg";
 
-  // /// tabs screen
-  // static const String tab1Select = "assets/tabs/tab1_select.png";
-  // static const String tab1Unselect = "assets/tabs/tab1_unselect.png";
-  // static const String tab2Select = "assets/tabs/tab2_select.png";
-  // static const String tab2Unselect = "assets/tabs/tab2_unselect.png";
-  // static const String tab3dSelect = "assets/tabs/tab3d_select.png";
-  // static const String tab3dUnselect = "assets/tabs/tab3d_unselect.png";
-  // static const String tab3uSelect = "assets/tabs/tab3u_select.png";
-  // static const String tab3uUnselect = "assets/tabs/tab3u_unselect.png";
-  // static const String tab4Select = "assets/tabs/tab4_select.png";
-  // static const String tab4Unselect = "assets/tabs/tab4_unselect.png";
-  // static const String tab5Select = "assets/tabs/tab5_select.png";
-  // static const String tab5Unselect = "assets/tabs/tab5_unselect.png";
-  // static const String sliderPlaceholder = "assets/home_screen/slider_placeholder.png";
-  // static const String sliderError = "assets/home_screen/slider_error.png";
-
-  // /// patient make appointment screen
-  // static const String dayActive = "assets/make_appointment/day_active.png";
-  // static const String dayUnActive = "assets/make_appointment/day_unactive.png";
-  // static const String timeActive = "assets/make_appointment/time_active.png";
-  // static const String timeUnActive = "assets/make_appointment/time_unactive.png";
-
-  // /// appointment detail screen
-  // static const String medicineIcon = "assets/appointment_detail_screen/medicine.svg";
-  // static const String reportIcon = "assets/appointment_detail_screen/report.svg";
-  // static const String editIconSvg = "assets/appointment_detail_screen/edit.svg";
-  // static const String deleteIconSvg = "assets/appointment_detail_screen/delete.svg";
-
-  // /// patient more screen
-  // static const String bgImage = "assets/more_screen/bgImage.jpg";
-  // static const String arrowIcon = "assets/more_screen/detail_arrow.png";
-  // static const String editIcon = "assets/more_screen/edit.png";
-  // static const String noChatVector = "assets/more_screen/no chat vector.png";
-  // static const String noAppointment = "assets/home_screen/no_appointment.png";
-  // static const String calender = "assets/home_screen/calender.png";
-  // static const String loginDoctor = "assets/login_screen/login_doctor.png";
-  // static const String forgetIcon = "assets/login_screen/forgetIcon.png";
-  // static const String loginIcon = "assets/login_screen/login_icon.png";
-  // static const String editHomeScreen = "assets/home_screen/edit.png";
-
-  // /// patient doctor detail screen
-  // static const String locationPin = "assets/detail_screen/location_pin.png";
-  // static const String mapIcon = "assets/detail_screen/map_icon.png";
-  // static const String starFill = "assets/detail_screen/star_fill.png";
-  // static const String starNoFill = "assets/detail_screen/star_no_fill.png";
-  // static const String time = "assets/detail_screen/time.png";
-
-  // /// images
+  /// images
   static const String doctor2 = "assets/images/doctor2.png";
   // static const String callToAction = "assets/image/callToAction.png";
 
-  // /// icons
+  /// icons
   static const String logo = "assets/images/logo.png";
   static const String backIcon = "assets/images/back.png";
   static const String searchIcon = "assets/icons/search.svg";
@@ -111,9 +64,9 @@ class AppImages {
   static const String upload = "assets/icons/upload.svg";
   static const String verify = "assets/images/verify.png";
   static const String blood = "assets/images/blood.png";
-  // static const String paragraph = "assets/icons/paragraph.png";
+  static const String paragraph = "assets/icons/paragraph.png";
   static const String bell = "assets/icons/bell.svg";
-  // static const String bellRinging = "assets/icons/bell_ringing.svg";
+  static const String bellRinging = "assets/icons/bell_ringing.svg";
   static const String calendar = "assets/icons/calendar.svg";
   static const String edit = "assets/icons/edit.png";
   static const String home = "assets/icons/home.svg";
@@ -121,7 +74,7 @@ class AppImages {
   static const String homeSelect = "assets/icons/home_select.svg";
   static const String messageTyping = "assets/icons/message_typing.svg";
   static const String messageSelect = "assets/icons/message_select.svg";
-  // static const String messageNotifySquare = "assets/icons/message_notify_square.svg";
+  static const String messageNotifySquare = "assets/icons/message_notify_square.svg";
   static const String calenderCheck = "assets/icons/calendar_check.svg";
   static const String calenderSelect = "assets/icons/calendar_select.svg";
   static const String gearSix = "assets/icons/gear_six.svg";
@@ -142,7 +95,7 @@ class AppImages {
   static const String headPhone = "assets/icons/headphones.svg";
   static const String alarm = "assets/icons/alarm.svg";
   static const String userProfile = "assets/icons/user_profile.svg";
-  // static const String userProfile2 = "assets/icons/user_profile_2.svg";
+  static const String userProfile2 = "assets/icons/user_profile_2.svg";
   static const String email = "assets/icons/email.svg";
   static const String link = "assets/icons/link.svg";
   static const String building = "assets/icons/building.svg";
@@ -153,32 +106,32 @@ class AppImages {
   static const String send = "assets/icons/send.svg";
   static const String attachment = "assets/icons/attachment.svg";
   static const String download = "assets/icons/download.svg";
-  // static const String briefcase = "assets/icons/briefcase.svg";
-  // static const String file = "assets/icons/file.svg";
-  // static const String fileDown = "assets/icons/file_down.svg";
-  // static const String megaphone = "assets/icons/megaphone.svg";
-  // static const String lockOpened = "assets/icons/lock_open.svg";
-  // static const String translate = "assets/icons/translate.svg";
-  // static const String question = "assets/icons/question.svg";
-  // static const String shieldCheck = "assets/icons/shield_check.svg";
-  // static const String logout = "assets/icons/logout.svg";
+  static const String briefcase = "assets/icons/briefcase.svg";
+  static const String file = "assets/icons/file.svg";
+  static const String fileDown = "assets/icons/file_down.svg";
+  static const String megaphone = "assets/icons/megaphone.svg";
+  static const String lockOpened = "assets/icons/lock_open.svg";
+  static const String translate = "assets/icons/translate.svg";
+  static const String question = "assets/icons/question.svg";
+  static const String shieldCheck = "assets/icons/shield_check.svg";
+  static const String logout = "assets/icons/logout.svg";
   static const String english = "assets/icons/english.svg";
   static const String vietnamese = "assets/icons/vietnamese.svg";
-  // static const String trash = "assets/icons/trash.svg";
-  // static const String trash2 = "assets/image/trash.png";
+  static const String trash = "assets/icons/trash.svg";
+  static const String trash2 = "assets/images/trash.png";
   static const String online = "assets/icons/online.svg";
-  // static const String gift = "assets/icons/gift.svg";
-  // static const String confettiIcon = "assets/icons/confetti.svg";
-  // static const String walletIcon = "assets/icons/wallet.svg";
+  static const String gift = "assets/icons/gift.svg";
+  static const String confettiIcon = "assets/icons/confetti.svg";
+  static const String walletIcon = "assets/icons/wallet.svg";
   static const String heart = "assets/icons/heart_straight.svg";
   static const String heartBeat = "assets/icons/Heartbeat.svg";
   static const String inside = "assets/icons/inside.svg";
-  // static const String plus = "assets/icons/plus.svg";
+  static const String plus = "assets/icons/plus.svg";
   static const String faceMark = "assets/icons/FaceMask.svg";
-  // static const String star = "assets/icons/star.svg";
+  static const String star = "assets/icons/star.svg";
   static const String heartIcon = "assets/icons/heart.svg";
-  // static const String loudSpeaker = "assets/icons/loudspeaker.svg";
-  // static const String comment = "assets/icons/comment.svg";
+  static const String loudSpeaker = "assets/icons/loudspeaker.svg";
+  static const String comment = "assets/icons/comment.svg";
   static const String pencilSimpleLine = "assets/icons/PencilSimpleLine.svg";
   static const String card = "assets/icons/card.svg";
   static const String confettiBall = "assets/icons/confetti2.svg";
