@@ -40,7 +40,6 @@ abstract class Routes {
   static const detailMessageScreen = _Paths.detailMessageScreen;
 
   //setting screen
-  static const doctorSettingScreen = _Paths.doctorSettingScreen;
   static const profileScreen = _Paths.profileScreen;
   static const profileEditScreen = _Paths.profileEditScreen;
   static const changePasswordScreen = _Paths.changePasswordScreen;
@@ -115,7 +114,6 @@ abstract class _Paths {
   static const detailMessageScreen = '/detail-message-screen';
 
   //setting screen
-  static const doctorSettingScreen = '/setting-screen';
   static const profileScreen = '/profile-screen';
   static const profileEditScreen = '/profile-edit-screen';
   static const changePasswordScreen = '/change-password-screen';

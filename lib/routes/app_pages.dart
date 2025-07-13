@@ -139,7 +139,7 @@ class AppPages {
       binding: MessagesBinding(),
     ),
 
-    // //setting screen
+    //setting screen
     // GetPage(
     //   name: _Paths.doctorSettingScreen,
     //   page: () => SettingScreen(),
@@ -151,11 +151,11 @@ class AppPages {
     //   page: () => const AllReviewScreen(),
     //   binding: ProfileBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.editProfileScreen,
-    //   page: () => ProfileEditScreen(),
-    //   binding: SettingBinding(),
-    // ),
+    GetPage(
+      name: _Paths.profileEditScreen,
+      page: () => ProfileEditScreen(),
+      binding: ProfileBinding(),
+    ),
     // GetPage(
     //   name: _Paths.changePasswordScreen,
     //   page: () => ChangePasswordScreen(),
@@ -372,11 +372,6 @@ class AppPages {
     //   name: _Paths.reportIssuesScreen,
     //   page: () => ReportIssuesScreen(),
     //   binding: ReportIssueBinding(),
-    // ),
-    // GetPage(
-    //   name: _Paths.editProfileScreen,
-    //   page: () => UserEditProfile(),
-    //   binding: UserEditBinding(),
     // ),
     // GetPage(
     //   name: _Paths.specialityScreen,
