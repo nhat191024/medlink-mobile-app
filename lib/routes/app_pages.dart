@@ -200,11 +200,11 @@ class AppPages {
     //   page: () => PatientDetailRecordScreen(),
     //   binding: DoctorSettingBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.workSchedulesScreen,
-    //   page: () => WorkSchedulesScreen(),
-    //   binding: DoctorSettingBinding(),
-    // ),
+    GetPage(
+      name: _Paths.workSchedulesScreen,
+      page: () => WorkSchedulesScreen(),
+      binding: WorkingScheduleBinding(),
+    ),
     GetPage(
       name: _Paths.myServiceScreen,
       page: () => MyServiceScreen(),
