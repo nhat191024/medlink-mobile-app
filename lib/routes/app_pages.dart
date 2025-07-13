@@ -205,11 +205,11 @@ class AppPages {
     //   page: () => WorkSchedulesScreen(),
     //   binding: DoctorSettingBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.myServiceScreen,
-    //   page: () => MyServiceScreen(),
-    //   binding: DoctorSettingBinding(),
-    // ),
+    GetPage(
+      name: _Paths.myServiceScreen,
+      page: () => MyServiceScreen(),
+      binding: ServiceSettingBinding(),
+    ),
 
     // //notification screen
     // GetPage(
