@@ -17,7 +17,7 @@ class TopReviewModel {
 
   TopReviewModel.fromJson(Map<String, dynamic> json)
     : id = json['id'],
-      rate = json['rate'] != null ? (json['rate'] as num).toDouble() : 0.0,
+      rate = (json['rate'] as num).toDouble(),
       review = json['review'],
       name = json['name'],
       avatar = json['avatar'],
