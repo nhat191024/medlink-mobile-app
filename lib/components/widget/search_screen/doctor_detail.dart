@@ -89,7 +89,7 @@ class DoctorDetail extends StatelessWidget {
   static const double _containerBorderRadius = 18.0;
   static const double _largeBorderRadius = 24.0;
   static const double _containerMarginHorizontal = 20.0;
-  static const double _containerPadding =15.0;
+  static const double _containerPadding = 15.0;
   static const double _spacingSmall = 5.0;
   static const double _spacingMedium = 10.0;
   static const double _spacingLarge = 15.0;
@@ -973,7 +973,7 @@ class DoctorDetail extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          service.name ?? '',
+          service.name,
           style: const TextStyle(
             color: AppColors.primaryText,
             fontSize: _bodyFontSize,
@@ -982,7 +982,7 @@ class DoctorDetail extends StatelessWidget {
         ),
         SizedBox(height: _spacingSmall / 2.5),
         Text(
-          service.description ?? '',
+          service.description,
           style: const TextStyle(
             color: AppColors.secondaryText,
             fontSize: _smallFontSize,
@@ -995,7 +995,7 @@ class DoctorDetail extends StatelessWidget {
 
   Widget _buildServicePrice(ServiceModel service) {
     return Text(
-      '\$${service.price ?? 0}',
+      '\$${service.price}',
       style: const TextStyle(
         color: AppColors.primaryText,
         fontSize: _bodyFontSize,
