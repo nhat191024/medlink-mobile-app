@@ -380,7 +380,7 @@ class BookingController extends GetxController {
       // Remove AM/PM from start time
       final startTime = DateFormat('jm').parse(selectedTime.value);
       final formattedStartTime = DateFormat('HH:mm').format(startTime);
-      final endTime = addMinutesToTime(selectedTime.value, selectedServiceModel.duration ?? 30);
+      final endTime = addMinutesToTime(selectedTime.value, selectedServiceModel.duration);
       final paymentMethod = selectedPaymentMethod;
       final time = "${selectedTime.value} - $endTime";
 
@@ -398,7 +398,7 @@ class BookingController extends GetxController {
 
       response.fields.addAll({
         'doctor_profile_id': doctor.doctorProfileId?.toString() ?? '1',
-        'service_id': selectedServiceModel.id?.toString() ?? '0',
+        'service_id': selectedServiceModel.id.toString(),
         'medical_problem': medicalProblem.text,
         'date': date,
         'day_of_week': dayOfWeek,
