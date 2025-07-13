@@ -88,6 +88,7 @@ class DoctorHomeController extends GetxController {
     StorageService.writeStringData(key: "name", value: userName.value);
     StorageService.writeStringData(key: "specialty", value: specialty.value);
     StorageService.writeStringData(key: "identity", value: identity.value);
+    StorageService.writeStringData(key: "userType", value: userType.value);
     StorageService.writeBoolData(key: "haveNotification", value: isHaveNotificationUnread.value);
   }
 
