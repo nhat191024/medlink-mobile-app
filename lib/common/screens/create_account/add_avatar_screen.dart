@@ -64,7 +64,7 @@ class AddAvatarScreen extends GetView<CreateAccountController> {
 
   Widget _buildProgressIndicator() {
     return Obx(() {
-      final isPatient = controller.userType.value == 1;
+      final isPatient = controller.userType.value.contains('patient');
       return CircularProgressStep(step: isPatient ? 7 : 6, totalSteps: isPatient ? 7 : 6);
     });
   }
@@ -130,7 +130,7 @@ class AddAvatarScreen extends GetView<CreateAccountController> {
 
   Widget _buildAvatarContainer() {
     return Obx(() {
-      final isPatient = controller.identify.value == 1;
+      final isPatient = controller.userType.value.contains('patient');
       return Container(
         height: _avatarSize,
         width: _avatarSize,
@@ -147,7 +147,7 @@ class AddAvatarScreen extends GetView<CreateAccountController> {
   Widget _buildAvatarImage() {
     return Obx(() {
       final hasImage = controller.avatarImage.value != null;
-      final isPatient = controller.identify.value == 1;
+      final isPatient = controller.userType.value.contains('patient');
 
       if (hasImage) {
         return Image.file(controller.avatarImage.value!, fit: BoxFit.cover);
@@ -180,7 +180,7 @@ class AddAvatarScreen extends GetView<CreateAccountController> {
 
   Widget _buildTitle() {
     return Obx(() {
-      final isPatient = controller.identify.value == 1;
+      final isPatient = controller.userType.value.contains('patient');
       return Text(
         isPatient ? 'add_avatar_title'.tr : 'add_cover_title'.tr,
         style: const TextStyle(
@@ -194,7 +194,7 @@ class AddAvatarScreen extends GetView<CreateAccountController> {
 
   Widget _buildDescription() {
     return Obx(() {
-      final isPatient = controller.identify.value == 1;
+      final isPatient = controller.userType.value.contains('patient');
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30),
         child: Text(
