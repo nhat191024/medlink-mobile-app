@@ -144,7 +144,7 @@ class ButtonWithBottomModal extends StatelessWidget {
                         onTap: () => Navigator.pop(context),
                         child: BackdropFilter(
                           filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                          child: Container(color: Colors.black.withOpacity(0.1)),
+                          child: Container(color: Colors.black.withValues(alpha: 0.1)),
                         ),
                       ),
                       SlideTransition(
