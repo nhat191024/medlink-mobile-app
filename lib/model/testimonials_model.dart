@@ -1,19 +1,23 @@
 class TestimonialsModel {
-  int? start;
-  String? title;
-  int? total;
-  String? fraction;
+  int star;
+  String title;
+  int total;
+  String fraction;
 
-  TestimonialsModel({this.start, this.title, this.total, this.fraction});
+  TestimonialsModel({
+    required this.star,
+    required this.title,
+    required this.total,
+    required this.fraction,
+  });
 
-  TestimonialsModel.fromJson(Map<String, dynamic> json) {
-    start = json['start'];
-    title = json['title'];
-    total = json['total'];
-    fraction = json['fraction'];
-  }
+  TestimonialsModel.fromJson(Map<String, dynamic> json)
+    : star = json['star'],
+      title = json['title'],
+      total = json['total'],
+      fraction = json['fraction'];
 
   Map<String, dynamic> toJson() {
-    return {'start': start, 'title': title, 'total': total, 'fraction': fraction};
+    return {'start': star, 'title': title, 'total': total, 'fraction': fraction};
   }
 }
