@@ -106,7 +106,7 @@ class StepOne extends StatelessWidget {
                               shape: BoxShape.circle,
                             ),
                             child: SvgPicture.asset(
-                              service.icon ?? '',
+                              service.icon,
                               width: 38,
                               height: 38,
                               colorFilter: const ColorFilter.mode(
@@ -122,7 +122,7 @@ class StepOne extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  service.name ?? '',
+                                  service.name,
                                   style: TextStyle(
                                     color:
                                         controller.selectedService.value ==
@@ -135,7 +135,7 @@ class StepOne extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 6),
                                 Text(
-                                  '${service.price ?? 0} €',
+                                  '${service.price} €',
                                   style: TextStyle(
                                     color:
                                         controller.selectedService.value ==
