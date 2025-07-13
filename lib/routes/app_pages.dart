@@ -165,16 +165,16 @@ class AppPages {
     //   page: () => ChangePasswordScreen(),
     //   binding: SettingBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.notificationsSettingScreen,
-    //   page: () => NotificationsSettingScreen(),
-    //   binding: SettingBinding(),
-    // ),
-    // GetPage(
-    //   name: _Paths.messageSettingScreen,
-    //   page: () => MessageSettingScreen(),
-    //   binding: SettingBinding(),
-    // ),
+    GetPage(
+      name: _Paths.notificationsSettingScreen,
+      page: () => NotificationsSettingScreen(),
+      binding: SettingBinding(),
+    ),
+    GetPage(
+      name: _Paths.messageSettingScreen,
+      page: () => MessageSettingScreen(),
+      binding: SettingBinding(),
+    ),
     // GetPage(
     //   name: _Paths.supportScreen,
     //   page: () => const SupportScreen(),
