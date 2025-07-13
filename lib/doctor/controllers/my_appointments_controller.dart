@@ -40,6 +40,9 @@ class DoctorMyAppointmentsControllers extends GetxController
   RxString selectedHistoryAppointmentId = "".obs;
   RxString selectedUpcomingAppointmentId = "".obs;
 
+  //=================
+  //LIFECYCLE METHODS
+  //=================
   @override
   void onInit() {
     super.onInit();
@@ -59,6 +62,9 @@ class DoctorMyAppointmentsControllers extends GetxController
     super.onClose();
   }
 
+  //=================
+  //DETAIL METHODS
+  //=================
   void showHistoryDetail(BuildContext context) {
     var appointment = historyAppointments.firstWhere(
       (element) => element.id == selectedHistoryAppointmentId.value,
@@ -74,6 +80,9 @@ class DoctorMyAppointmentsControllers extends GetxController
     buildUpcomingAppointmentDetail(context, appointment, index);
   }
 
+  //=================
+  //DATA METHODS
+  //=================
   Future<void> fetchData() async {
     isLoading.value = true;
     var response = await get(
@@ -118,6 +127,9 @@ class DoctorMyAppointmentsControllers extends GetxController
     isLoading.value = false;
   }
 
+  //=================
+  //APPOINTMENT ACTION METHODS
+  //=================
   Future<void> acceptRejectAppointment(
     AppointmentModel appointment,
     int index,
@@ -177,6 +189,9 @@ class DoctorMyAppointmentsControllers extends GetxController
     }
   }
 
+  //=================
+  //UTILITY METHODS
+  //=================
   String formatDateTime(String date, String dayOfWeek) {
     DateTime parsedDate = DateTime.parse(date);
     String formattedDate = DateFormat('EEEE, dd MMMM yyyy').format(parsedDate);
@@ -259,6 +274,9 @@ class DoctorMyAppointmentsControllers extends GetxController
     }
   }
 
+  //=================
+  //SEARCH METHODS
+  //=================
   void appointmentFilter(String query) {
     if (query.isNotEmpty) {
       List<AppointmentModel> sourceList;
@@ -310,6 +328,9 @@ class DoctorMyAppointmentsControllers extends GetxController
     }
   }
 
+  //=================
+  //DIALOG METHODS
+  //=================
   void showBlurDialog(
     BuildContext context,
     AppointmentModel appointment,
