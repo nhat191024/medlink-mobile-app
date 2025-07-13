@@ -43,3 +43,4 @@ export 'package:medlink/common/screens/settings/message_setting_screen.dart';
 export 'package:medlink/common/controllers/profile_controller.dart';
 export 'package:medlink/common/bindings/profile_binding.dart';
 export 'package:medlink/common/screens/settings/profile_screen.dart';
+export 'package:medlink/common/screens/settings/profile_edit_screen.dart';
