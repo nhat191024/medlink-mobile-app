@@ -316,7 +316,7 @@ class DoctorDetail extends StatelessWidget {
                 height: 30,
                 child: VerticalDivider(color: AppColors.border, thickness: 1),
               ),
-            _buildLanguageItem(language.name ?? ''),
+            _buildLanguageItem(language.name),
           ],
         ],
       ),
@@ -501,9 +501,9 @@ class DoctorDetail extends StatelessWidget {
           SizedBox(height: _spacingMedium),
           for (var testimonial in testimonials) ...[
             _buildRatingRow(
-              testimonial.start ?? 0,
-              testimonial.title ?? '',
-              double.tryParse(testimonial.fraction ?? '0') ?? 0.0,
+              testimonial.star,
+              testimonial.title,
+              double.tryParse(testimonial.fraction) ?? 0.0,
             ),
           ],
           SizedBox(height: _spacingMedium),
@@ -534,7 +534,7 @@ class DoctorDetail extends StatelessWidget {
                 _buildReviewHeader(review),
                 SizedBox(height: _spacingExtraLarge),
                 Text(
-                  review.review ?? '',
+                  review.review,
                   style: const TextStyle(
                     color: AppColors.secondaryText,
                     fontSize: _bodyFontSize,
@@ -551,13 +551,13 @@ class DoctorDetail extends StatelessWidget {
   Widget _buildReviewHeader(TopReviewModel review) {
     return Row(
       children: [
-        CircleAvatar(radius: 25, backgroundImage: Image.network(review.avatar ?? '').image),
+        CircleAvatar(radius: 25, backgroundImage: Image.network(review.avatar).image),
         SizedBox(width: _spacingMedium),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              review.name ?? '',
+              review.name,
               style: const TextStyle(
                 color: AppColors.primaryText,
                 fontSize: _bodyFontSize,
@@ -565,7 +565,7 @@ class DoctorDetail extends StatelessWidget {
               ),
             ),
             Text(
-              controller.formatDate(review.createdAt ?? ''),
+              controller.formatDate(review.createdAt),
               style: const TextStyle(
                 color: AppColors.secondaryText,
                 fontSize: _smallFontSize,
@@ -586,7 +586,7 @@ class DoctorDetail extends StatelessWidget {
               Icon(Icons.star, color: Colors.amber, size: _ratingIconSize + 2),
               const SizedBox(width: 4),
               Text(
-                review.rate?.toString() ?? '0',
+                review.rate.toString(),
                 style: const TextStyle(
                   color: AppColors.primaryText,
                   fontSize: _bodyFontSize,
