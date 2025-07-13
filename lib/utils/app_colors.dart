@@ -90,8 +90,8 @@ class AppColors {
   static Color appointmentDetailsReportBgColor = const Color(0xFFFFB146);
   static Color noPrescriptionTextColor = const Color(0xFF7B7B7B);
   static Color reportTextColor = const Color(0xFF323232);
-  static Color chatUnSendBarrierColor = Colors.black87.withOpacity(0.7);
-  static Color dSubscriptionPriceBg = const Color(0xffEEEEEE).withOpacity(0.9);
+  static Color chatUnSendBarrierColor = Colors.black87.withValues(alpha: 0.7);
+  static Color dSubscriptionPriceBg = const Color(0xffEEEEEE).withValues(alpha: 0.9);
   static Color tileColorIncomeReport = const Color(0xFF1e1e1e);
   static Color tileBgColorIncomeReport = const Color(0xFFeeeeee);
   static Color incomeReportBgColor = const Color(0xFFe3fffd);
