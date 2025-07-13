@@ -145,11 +145,7 @@ class AppPages {
     //   page: () => SettingScreen(),
     //   binding: DoctorSettingBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.profileScreen,
-    //   page: () => ProfileScreen(),
-    //   binding: SettingBinding(),
-    // ),
+    GetPage(name: _Paths.profileScreen, page: () => ProfileScreen(), binding: ProfileBinding()),
     // GetPage(
     //   name: _Paths.allReviewScreen,
     //   page: () => const AllReviewScreen(),
