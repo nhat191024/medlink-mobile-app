@@ -24,6 +24,7 @@ export 'package:url_launcher/url_launcher.dart';
 export 'package:flutter_swipe_button/flutter_swipe_button.dart';
 export 'package:app_links/app_links.dart';
 export 'package:file_picker/file_picker.dart';
+export 'package:pull_to_refresh/pull_to_refresh.dart';
 
 /// utils
 export 'package:medlink/utils/app_colors.dart';
