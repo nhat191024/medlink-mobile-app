@@ -273,6 +273,7 @@ class Words extends Translations {
           "rating": "Rating",
           "view_all_review": "View all reviews",
           "edit_profile": "Edit profile",
+          "atttach_photo_btn": "Attach Photo",
 
           //edit profile screen
           "full_name_hint_long": "Enter your full name",
@@ -285,6 +286,10 @@ class Words extends Translations {
           "medical_category": "Medical category",
           "office_address_label": "Office address",
           "office_address_hint": "Enter your office address",
+          "country_label": "Country",
+          "country_hint": "Enter your country",
+          "city_label": "City",
+          "city_hint": "Enter your city",
           "GPS_label": "GPS",
           "GPS_hint": "Enter your latitude, Longitude",
           "company_name_label": "Company - Institution",
@@ -453,6 +458,9 @@ class Words extends Translations {
           //payment result
           'payment_success': "Thanks, your appointment has been booked successfully!",
           'payment_success_description': "Please check your appointment history for receipt and booking details.",
+
+          //error messages
+          "full_fill_required": "Please full fill all require fields"
         },
         'vi_VN': {
           //splash screen
@@ -508,9 +516,9 @@ class Words extends Translations {
           "id_card": "Thẻ căn cước",
           "medical_degree": "Bằng y khoa",
           "exploitation_license": "Giấy phép hành nghề",
-          "professional_number": "Số chuyên nghiệp",
+          "professional_number": "Số bác sĩ",
           "professional_number_hint": "Nhập",
-          "professional_number_error": "Số chuyên nghiệp không thể để trống",
+          "professional_number_error": "Số bác sĩ không thể để trống",
           "license_info": "Hãy kiên nhẫn trong khi chúng tôi xác minh thông tin của bạn, quá trình này mất trung bình 2-4 ngày.",
           "add_avatar_title": "Thêm ảnh đại diện",
           "add_cover_title": "Thêm ảnh bìa",
@@ -539,7 +547,7 @@ class Words extends Translations {
           "reset_password": "Đặt lại mật khẩu",
 
           //doctor home
-          "close": "Đóng cửa",
+          "close": "Nghỉ ngơi",
           "nothing_to_measure": "Không có gì để đo",
           "setup_profile": "Thiết lập thông tin hồ sơ trước để đo lường nỗ lực trực tuyến của bạn ở đây.",
           "setup_profile_btn": "Thiết lập hồ sơ",
@@ -712,7 +720,7 @@ class Words extends Translations {
 
           //profile screen
           "profile": "Hồ sơ của tôi",
-          "testimonials": "Lời chứng thực",
+          "testimonials": "Tổng quan đánh giá",
           "service": "Dịch vụ",
           "introduce": "Giới thiệu",
           "schedule": "Lịch trình",
@@ -721,6 +729,7 @@ class Words extends Translations {
           "rating": "Đánh giá",
           "view_all_review": "Xem tất cả đánh giá",
           "edit_profile": "Chỉnh sửa hồ sơ",
+          "atttach_photo_btn": "Đính kèm ảnh",
 
           //edit profile screen
           "full_name_hint_long": "Nhập họ tên đầy đủ",
@@ -733,6 +742,10 @@ class Words extends Translations {
           "medical_category": "Danh mục y tế",
           "office_address_label": "Địa chỉ văn phòng",
           "office_address_hint": "Nhập địa chỉ văn phòng",
+          "country_label": "Quốc gia",
+          "country_hint": "Nhập quốc gia",
+          "city_label": "Thành phố",
+          "city_hint": "Nhập thành phố",
           "GPS_label": "GPS",
           "GPS_hint": "Nhập vĩ độ, kinh độ",
           "company_name_label": "Công ty - Tổ chức",
@@ -901,6 +914,9 @@ class Words extends Translations {
           //payment result
           'payment_success': "Cảm ơn, cuộc hẹn của bạn đã được đặt thành công!",
           'payment_success_description': "Vui lòng kiểm tra lịch sử cuộc hẹn để xem biên lai và chi tiết đặt lịch.",
+
+          //error
+          "full_fill_required": "Xin vui lòng điền đầy đủ các trường bắt buộc.",
         },
       };
 }
