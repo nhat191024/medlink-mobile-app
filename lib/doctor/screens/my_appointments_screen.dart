@@ -38,16 +38,24 @@ class DoctorMyAppointmentsScreen extends GetView<DoctorMyAppointmentsControllers
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.background,
-      body: Stack(
-        children: [
-          Column(
-            children: [
-              _buildHeader(),
-              AppointmentTabContent(controller: myAppointmentsControllers),
-            ],
-          ),
-          AppointmentSuggestions(controller: controller),
-        ],
+      body: SmartRefresher(
+        controller: controller.refreshController,
+        enablePullDown: true,
+        enablePullUp: false,
+        header: const ClassicHeader(),
+        onRefresh: controller.onRefresh,
+        onLoading: controller.onLoadMore,
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                _buildHeader(),
+                AppointmentTabContent(controller: myAppointmentsControllers),
+              ],
+            ),
+            AppointmentSuggestions(controller: controller),
+          ],
+        ),
       ),
     );
   }
