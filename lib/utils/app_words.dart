@@ -103,7 +103,7 @@ class Words extends Translations {
           "messages": "Messages",
           "appointments": "Appointments",
           "settings": "Settings",
-          "search": "Search",
+          "search_nav": "Search",
 
           //my appointment
           "my_appointment": "My Appointments",
@@ -551,7 +551,7 @@ class Words extends Translations {
           "messages": "Tin nhắn",
           "appointments": "Cuộc hẹn",
           "settings": "Cài đặt",
-          "search": "Tìm kiếm",
+          "search_nav": "Tìm kiếm",
 
           //my appointment
           "my_appointment": "Cuộc hẹn của tôi",
