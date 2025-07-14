@@ -64,8 +64,8 @@ class AttachPhotoButton extends StatelessWidget {
           color: AppColors.primary600,
         ),
         alignment: Alignment.center,
-        child: const Text(
-          "Attach photo",
+        child: Text(
+          "atttach_photo_btn".tr,
           style: TextStyle(
             color: AppColors.white,
             fontSize: 16,
