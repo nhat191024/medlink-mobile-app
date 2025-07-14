@@ -46,7 +46,7 @@ class MessageSettingScreen extends GetView<SettingControllers> {
         padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         child: Obx(
           () => controller.isLoading.value
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator(color: AppColors.primary600))
               : Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [

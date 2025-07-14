@@ -52,7 +52,7 @@ class SplashScreen extends GetView<SplashController> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const CircularProgressIndicator(),
+              const CircularProgressIndicator(color: AppColors.primary600),
               const SizedBox(height: 16),
               Text(
                 'loading'.tr,
