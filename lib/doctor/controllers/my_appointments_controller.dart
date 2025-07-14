@@ -40,6 +40,8 @@ class DoctorMyAppointmentsControllers extends GetxController
   RxString selectedHistoryAppointmentId = "".obs;
   RxString selectedUpcomingAppointmentId = "".obs;
 
+  RefreshController refreshController = RefreshController(initialRefresh: false);
+
   //=================
   //LIFECYCLE METHODS
   //=================
@@ -59,7 +61,19 @@ class DoctorMyAppointmentsControllers extends GetxController
   void onClose() {
     _timer.cancel();
     tabController.dispose();
+    refreshController.dispose();
+    searchController.dispose();
     super.onClose();
+  }
+
+  void onRefresh() {
+    fetchData();
+    refreshController.refreshCompleted();
+  }
+
+  void onLoadMore() async {
+    fetchData();
+    refreshController.loadComplete();
   }
 
   //=================
