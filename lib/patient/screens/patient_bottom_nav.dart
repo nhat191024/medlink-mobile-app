@@ -25,7 +25,7 @@ class PatientBottomNav extends GetView<PatientBottomNavController> {
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 1 ? AppImages.searchSelect : AppImages.searchUnselect,
                 ),
-                label: 'search'.tr,
+                label: 'search_nav'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
