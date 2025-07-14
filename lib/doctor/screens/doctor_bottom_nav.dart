@@ -19,25 +19,25 @@ class DoctorBottomNav extends GetView<DoctorBottomNavController> {
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 0 ? AppImages.homeSelect : AppImages.home,
                 ),
-                label: 'Dashboard',
+                label: 'dashboard'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 1 ? AppImages.messageSelect : AppImages.messageTyping,
                 ),
-                label: 'Messages',
+                label: 'messages'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 2 ? AppImages.calenderSelect : AppImages.calenderCheck,
                 ),
-                label: 'Appointment',
+                label: 'appointments'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 3 ? AppImages.gearSixSelect : AppImages.gearSix,
                 ),
-                label: 'Settings',
+                label: 'settings'.tr,
               ),
             ],
             selectedItemColor: AppColors.primary600,

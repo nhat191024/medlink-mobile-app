@@ -19,31 +19,31 @@ class PatientBottomNav extends GetView<PatientBottomNavController> {
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 0 ? AppImages.homeSelect : AppImages.home,
                 ),
-                label: 'Dashboard',
+                label: 'dashboard'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 1 ? AppImages.searchSelect : AppImages.searchUnselect,
                 ),
-                label: 'Search',
+                label: 'search'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 2 ? AppImages.messageSelect : AppImages.messageTyping,
                 ),
-                label: 'Messages',
+                label: 'messages'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 3 ? AppImages.calenderSelect : AppImages.calenderCheck,
                 ),
-                label: 'Appointment',
+                label: 'appointments'.tr,
               ),
               BottomNavigationBarItem(
                 icon: SvgPicture.asset(
                   controller.selectedIndex.value == 4 ? AppImages.gearSixSelect : AppImages.gearSix,
                 ),
-                label: 'Settings',
+                label: 'settings'.tr,
               ),
             ],
             selectedItemColor: AppColors.primary600,
