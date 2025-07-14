@@ -16,7 +16,7 @@ class DoctorNewAppointmentsScreen extends GetView<DoctorMyAppointmentsController
         children: [
           Obx(() {
             if (controller.isLoading.value) {
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator(color: AppColors.primary600));
             } else if (controller.newQuantity.value == 0) {
               return Center(
                 child: Column(

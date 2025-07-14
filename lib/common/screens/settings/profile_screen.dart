@@ -24,7 +24,7 @@ class ProfileScreen extends GetView<ProfileController> {
         onPopInvokedWithResult: _onPopInvoked,
         child: Obx(
           () => controller.isLoading.value
-              ? const Center(child: CircularProgressIndicator())
+              ? const Center(child: CircularProgressIndicator(color: AppColors.primary600))
               : SingleChildScrollView(
                   child: Stack(children: [_buildMainContent(), _buildHeader()]),
                 ),

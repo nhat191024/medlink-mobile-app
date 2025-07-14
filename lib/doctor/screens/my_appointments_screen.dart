@@ -271,7 +271,7 @@ class AppointmentTabContent extends StatelessWidget {
     return Expanded(
       child: Obx(() {
         if (controller.isLoading.value) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator(color: AppColors.primary600));
         } else {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15),

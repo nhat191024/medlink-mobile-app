@@ -14,7 +14,7 @@ class PatientHomeScreen extends GetView<PatientHomeController> {
       body: SafeArea(
         child: Obx(() {
           if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator(color: AppColors.primary600));
           }
 
           if (controller.errorMessage.isNotEmpty) {
