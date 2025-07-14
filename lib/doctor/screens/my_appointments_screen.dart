@@ -192,8 +192,8 @@ class AppointmentTabBar extends StatelessWidget {
       labelPadding: const EdgeInsets.symmetric(horizontal: 2),
       tabs: [
         Obx(() => Tab(text: '${"new".tr} (${controller.newQuantity.value})')),
-        Obx(() => Tab(text: '${"Upcoming".tr} (${controller.upcomingQuantity.value})')),
-        Obx(() => Tab(text: '${"History".tr} (${controller.historyQuantity.value})')),
+        Obx(() => Tab(text: '${"upcoming".tr} (${controller.upcomingQuantity.value})')),
+        Obx(() => Tab(text: '${"history".tr} (${controller.historyQuantity.value})')),
       ],
     );
   }
