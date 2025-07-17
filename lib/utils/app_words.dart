@@ -780,7 +780,7 @@ class Words extends Translations {
           "view_direction": "Xem hướng",
           "available_time": "Thời gian có sẵn",
           "all_schedules_available": "Tất cả lịch trình có sẵn",
-          "not_rated": "Chưa được đánh giá",
+          "not_rated": "Mới",
 
           //booking screen
           "choose_services": "Chọn dịch vụ",
