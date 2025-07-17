@@ -566,9 +566,14 @@ class CreateAccountController extends GetxController {
         response.files.add(avatarFile);
       }
 
+      debugPrint('Creating account with fields: ${response.fields}');
+
       var streamedResponse = await response.send();
       var responseBody = await streamedResponse.stream.bytesToString();
       var data = jsonDecode(responseBody);
+
+      debugPrint('Response status: ${streamedResponse.statusCode}');
+      debugPrint('Response body: $data');
 
       if (streamedResponse.statusCode == _createdStatusCode) {
         success.value = true;
@@ -581,9 +586,8 @@ class CreateAccountController extends GetxController {
     } catch (error) {
       this.error.value = 'network_error'.tr;
       success.value = false;
-      if (kDebugMode) {
-        print('Create account error: $error');
-      }
+
+      debugPrint('Error creating account: $error');
     } finally {
       buttonLoading.value = false;
     }
@@ -617,11 +621,23 @@ class CreateAccountController extends GetxController {
   }
 
   void _addPatientFields(http.MultipartRequest response) {
+    // If localization is Vietnamese, auto map gender from Vietnamese to English
+    if (Get.locale?.languageCode == 'vi') {
+      if (gender.value == 'Nam') {
+        response.fields['gender'] = 'Male';
+      } else if (gender.value == 'Nữ') {
+        response.fields['gender'] = 'Female';
+      } else if (gender.value == 'Khác') {
+        response.fields['gender'] = 'Other';
+      }
+    } else {
+      response.fields['gender'] = gender.value;
+    }
+
     response.fields.addAll({
       'name': fullName.text,
       'address': address.text,
       'age': age.value.toString(),
-      'gender': gender.value,
       'height': height.value.toInt().toString(),
       'weight': weight.value.toInt().toString(),
       'bloodGroup': bloodGroup.value,
@@ -633,12 +649,10 @@ class CreateAccountController extends GetxController {
   }
 
   void _addInsuranceFields(http.MultipartRequest response) {
+    response.fields['insuranceNumber'] = insuranceNumber.text;
     if (insuranceType.value.contains('insurance_type_option_1'.tr)) {
-      response.fields['insuranceNumber'] = insuranceNumber.text;
       if (assuranceType.value.isNotEmpty) response.fields['assuranceType'] = assuranceType.value;
     } else if (insuranceType.value.contains('insurance_type_option_2'.tr)) {
-      response.fields['insuranceNumber'] = insuranceNumber.text;
-
       if (assuranceType.value.isNotEmpty) response.fields['assuranceType'] = assuranceType.value;
 
       response.fields['mainInsurance'] = mainInsurance.text;
