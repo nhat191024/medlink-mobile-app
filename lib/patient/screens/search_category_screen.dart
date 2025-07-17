@@ -4,7 +4,9 @@ import 'package:medlink/patient/utils/patient_imports.dart';
 import 'package:medlink/components/widget/grid_category.dart';
 
 class SearchCategoryScreen extends GetView<SearchHeathCareController> {
-  const SearchCategoryScreen({super.key});
+  SearchCategoryScreen({super.key});
+
+  final SearchHeathCareController controllers = Get.put(SearchHeathCareController());
 
   static const double _headerPaddingTop = 40.0;
   static const double _headerPaddingHorizontal = 20.0;
