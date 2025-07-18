@@ -85,8 +85,10 @@ class SettingControllers extends GetxController {
   //============================================================================
   @override
   Future<void> onInit() async {
+    isLoading.value = true;
     _loadSettings();
     await loadInfo();
+    isLoading.value = false;
     super.onInit();
   }
 
@@ -262,7 +264,6 @@ class SettingControllers extends GetxController {
   // SETTINGS MANAGEMENT METHODS
   //============================================================================
   Future<void> _loadSettings() async {
-    isLoading.value = true;
     try {
       final response = await get(
         Uri.parse('${Apis.api}settings'),
@@ -278,8 +279,6 @@ class SettingControllers extends GetxController {
     } catch (e) {
       Get.snackbar('Error', 'Failed to load settings');
       debugPrint('Error loading settings: $e');
-    } finally {
-      isLoading.value = false;
     }
   }
 

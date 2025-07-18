@@ -15,292 +15,312 @@ class SettingScreen extends GetView<SettingControllers> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      appBar: AppBar(
-        toolbarHeight: 80,
-        backgroundColor: AppColors.background,
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Stack(
-              children: [
-                Obx(
-                  () => Container(
-                    height: 64,
-                    width: 64,
-                    decoration: const BoxDecoration(
-                      color: AppColors.primary50,
-                      shape: BoxShape.circle,
-                    ),
-                    clipBehavior: Clip.antiAlias,
-                    child: Image.network(
-                      controller.avatar.value,
-                      fit: controller.checkIfDefaultAvatar(controller.avatar.value)
-                          ? BoxFit.scaleDown
-                          : BoxFit.cover,
-                    ),
-                  ),
-                ),
-                Positioned(
-                  right: 0,
-                  bottom: 0,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: AppColors.primary600,
-                      shape: BoxShape.circle,
-                    ),
-                    child: IconButton(
-                      icon: const Icon(Icons.arrow_forward, color: Colors.white, size: 16),
-                      onPressed: () {
-                        Get.toNamed(Routes.profileScreen);
-                      },
-                      padding: EdgeInsets.zero,
-                      constraints: const BoxConstraints(),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Obx(
+      () => Stack(
+        children: [
+          Scaffold(
+            resizeToAvoidBottomInset: false,
+            appBar: AppBar(
+              toolbarHeight: 80,
+              backgroundColor: AppColors.background,
+              automaticallyImplyLeading: false,
+              elevation: 0,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Obx(
-                    () => Column(
+                  Stack(
+                    children: [
+                      Obx(
+                        () => Container(
+                          height: 64,
+                          width: 64,
+                          decoration: const BoxDecoration(
+                            color: AppColors.primary50,
+                            shape: BoxShape.circle,
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          child: Image.network(
+                            controller.avatar.value,
+                            fit: controller.checkIfDefaultAvatar(controller.avatar.value)
+                                ? BoxFit.scaleDown
+                                : BoxFit.cover,
+                          ),
+                        ),
+                      ),
+                      Positioned(
+                        right: 0,
+                        bottom: 0,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            color: AppColors.primary600,
+                            shape: BoxShape.circle,
+                          ),
+                          child: IconButton(
+                            icon: const Icon(Icons.arrow_forward, color: Colors.white, size: 16),
+                            onPressed: () {
+                              Get.toNamed(Routes.profileScreen);
+                            },
+                            padding: EdgeInsets.zero,
+                            constraints: const BoxConstraints(),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          controller.username.value,
-                          style: const TextStyle(
-                            color: AppColors.primaryText,
-                            fontSize: 16,
-                            fontFamily: AppFontStyleTextStrings.bold,
+                        Obx(
+                          () => Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                controller.username.value,
+                                style: const TextStyle(
+                                  color: AppColors.primaryText,
+                                  fontSize: 16,
+                                  fontFamily: AppFontStyleTextStrings.bold,
+                                ),
+                                maxLines: 2,
+                              ),
+                              if (controller.identity.contains("doctor"))
+                                Text(
+                                  controller.specialty.value,
+                                  style: const TextStyle(
+                                    color: AppColors.secondaryText,
+                                    fontSize: 14,
+                                    fontFamily: AppFontStyleTextStrings.regular,
+                                  ),
+                                ),
+                            ],
                           ),
-                          maxLines: 2,
                         ),
-                        if (controller.identity.contains("doctor"))
-                          Text(
-                            controller.specialty.value,
-                            style: const TextStyle(
-                              color: AppColors.secondaryText,
-                              fontSize: 14,
-                              fontFamily: AppFontStyleTextStrings.regular,
-                            ),
-                          ),
                       ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.notificationScreen);
+                    },
+                    child: Container(
+                      decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                      padding: const EdgeInsets.all(12),
+                      child: Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          SvgPicture.asset(AppImages.bell),
+                          if (controller.isHaveNotificationUnread.value)
+                            const Positioned(
+                              top: 4,
+                              right: 0,
+                              child: CircleAvatar(backgroundColor: AppColors.errorMain, radius: 4),
+                            ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
               ),
             ),
-            GestureDetector(
-              onTap: () {
-                Get.toNamed(Routes.notificationScreen);
-              },
-              child: Container(
-                decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
-                padding: const EdgeInsets.all(12),
-                child: Stack(
-                  alignment: Alignment.center,
+            backgroundColor: AppColors.background,
+            body: Stack(
+              children: [
+                if (controller.identity.contains("doctor"))
+                  DoctorWalletHeader(
+                    doctorController: doctorController ?? DoctorSettingControllers(),
+                  ),
+
+                Column(
                   children: [
-                    SvgPicture.asset(AppImages.bell),
-                    if (controller.isHaveNotificationUnread.value)
-                      const Positioned(
-                        top: 4,
-                        right: 0,
-                        child: CircleAvatar(backgroundColor: AppColors.errorMain, radius: 4),
+                    Expanded(
+                      child: Container(
+                        width: Get.width,
+                        margin: EdgeInsets.only(
+                          top: controller.identity.contains("doctor") ? 100 : 10,
+                        ),
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(32),
+                            topRight: Radius.circular(32),
+                          ),
+                        ),
+                        child: SingleChildScrollView(
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                  child: Text(
+                                    'general'.tr,
+                                    style: const TextStyle(
+                                      color: AppColors.secondaryText,
+                                      fontFamily: AppFontStyleTextStrings.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                _buildListItem(
+                                  'my_profile'.tr,
+                                  AppImages.userProfile2,
+                                  AppColors.primaryText,
+                                  () {
+                                    Get.toNamed(Routes.profileScreen);
+                                  },
+                                ),
+                                if (controller.userType.value == 'healthcare')
+                                  _buildListItem(
+                                    'working_schedule'.tr,
+                                    AppImages.briefcase,
+                                    AppColors.primaryText,
+                                    () {
+                                      Get.toNamed(Routes.workSchedulesScreen);
+                                    },
+                                  ),
+                                if (controller.userType.value == 'healthcare') ...[
+                                  if (controller.identity.contains("doctor"))
+                                    _buildListItem(
+                                      'my_services'.tr,
+                                      AppImages.firstAidKit,
+                                      AppColors.primaryText,
+                                      () {
+                                        Get.toNamed(Routes.myServiceScreen);
+                                      },
+                                    ),
+                                ] else ...[
+                                  _buildListItem(
+                                    'favorite_doctor'.tr,
+                                    AppImages.heart,
+                                    AppColors.primaryText,
+                                    () {},
+                                  ),
+                                ],
+                                if (controller.userType.value == 'healthcare') ...[
+                                  _buildListItem(
+                                    'patient_records'.tr,
+                                    AppImages.file,
+                                    AppColors.primaryText,
+                                    () {
+                                      Get.toNamed(Routes.patientListRecordScreen);
+                                    },
+                                  ),
+                                ] else ...[
+                                  _buildListItem(
+                                    'medical_records'.tr,
+                                    AppImages.file,
+                                    AppColors.primaryText,
+                                    () {},
+                                  ),
+                                ],
+                                if (controller.userType.value == 'healthcare')
+                                  _buildListItem(
+                                    'marketing'.tr,
+                                    AppImages.megaphone,
+                                    AppColors.primaryText,
+                                    () {},
+                                    isDisabled: true,
+                                  ),
+                                _buildListItem(
+                                  'change_password'.tr,
+                                  AppImages.lockOpened,
+                                  AppColors.primaryText,
+                                  () {
+                                    Get.toNamed(Routes.changePasswordScreen);
+                                  },
+                                ),
+                                _buildListItem(
+                                  'change_language'.tr,
+                                  AppImages.translate,
+                                  AppColors.primaryText,
+                                  () {
+                                    _languagePick(
+                                      context,
+                                      'select_language'.tr,
+                                      controller.languages,
+                                      controller.flag,
+                                      controller.language,
+                                    );
+                                  },
+                                ),
+                                const Divider(color: AppColors.dividers, thickness: 1),
+                                Padding(
+                                  padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
+                                  child: Text(
+                                    'more_setting'.tr,
+                                    style: const TextStyle(
+                                      color: AppColors.secondaryText,
+                                      fontFamily: AppFontStyleTextStrings.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                ),
+                                _buildListItem(
+                                  'notification_setting'.tr,
+                                  AppImages.bellRinging,
+                                  AppColors.primaryText,
+                                  () {
+                                    Get.toNamed(Routes.notificationsSettingScreen);
+                                  },
+                                ),
+                                _buildListItem(
+                                  'message_setting'.tr,
+                                  AppImages.messageSquare,
+                                  AppColors.primaryText,
+                                  () {
+                                    Get.toNamed(Routes.messageSettingScreen);
+                                  },
+                                ),
+                                _buildListItem(
+                                  'support'.tr,
+                                  AppImages.question,
+                                  AppColors.primaryText,
+                                  () {
+                                    Get.toNamed(Routes.supportScreen);
+                                  },
+                                ),
+                                _buildListItem(
+                                  'privacy_policy'.tr,
+                                  AppImages.shieldCheck,
+                                  AppColors.primaryText,
+                                  () {},
+                                  isDisabled: true,
+                                ),
+                                const Divider(color: AppColors.dividers, thickness: 1),
+                                _buildListItem(
+                                  'logout'.tr,
+                                  AppImages.logout,
+                                  AppColors.primary600,
+                                  iconColor: AppColors.errorMain,
+                                  () {
+                                    Get.toNamed(Routes.logoutScreen);
+                                  },
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ),
+                    ),
                   ],
                 ),
-              ),
-            ),
-          ],
-        ),
-      ),
-      backgroundColor: AppColors.background,
-      body: Stack(
-        children: [
-          if (controller.identity.contains("doctor"))
-            DoctorWalletHeader(doctorController: doctorController ?? DoctorSettingControllers()),
-
-          Column(
-            children: [
-              Expanded(
-                child: Container(
-                  width: Get.width,
-                  margin: EdgeInsets.only(top: controller.identity.contains("doctor") ? 100 : 10),
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(32),
-                      topRight: Radius.circular(32),
-                    ),
-                  ),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 25, 0, 20),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
-                            child: Text(
-                              'general'.tr,
-                              style: const TextStyle(
-                                color: AppColors.secondaryText,
-                                fontFamily: AppFontStyleTextStrings.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                          _buildListItem(
-                            'my_profile'.tr,
-                            AppImages.userProfile2,
-                            AppColors.primaryText,
-                            () {
-                              Get.toNamed(Routes.profileScreen);
-                            },
-                          ),
-                          if (controller.userType.value == 'healthcare')
-                            _buildListItem(
-                              'working_schedule'.tr,
-                              AppImages.briefcase,
-                              AppColors.primaryText,
-                              () {
-                                Get.toNamed(Routes.workSchedulesScreen);
-                              },
-                            ),
-                          if (controller.userType.value == 'healthcare') ...[
-                            if (controller.identity.contains("doctor"))
-                              _buildListItem(
-                                'my_services'.tr,
-                                AppImages.firstAidKit,
-                                AppColors.primaryText,
-                                () {
-                                  Get.toNamed(Routes.myServiceScreen);
-                                },
-                              ),
-                          ] else ...[
-                            _buildListItem(
-                              'favorite_doctor'.tr,
-                              AppImages.heart,
-                              AppColors.primaryText,
-                              () {},
-                            ),
-                          ],
-                          if (controller.userType.value == 'healthcare') ...[
-                            _buildListItem(
-                              'patient_records'.tr,
-                              AppImages.file,
-                              AppColors.primaryText,
-                              () {
-                                Get.toNamed(Routes.patientListRecordScreen);
-                              },
-                            ),
-                          ] else ...[
-                            _buildListItem(
-                              'medical_records'.tr,
-                              AppImages.file,
-                              AppColors.primaryText,
-                              () {},
-                            ),
-                          ],
-                          if (controller.userType.value == 'healthcare')
-                            _buildListItem(
-                              'marketing'.tr,
-                              AppImages.megaphone,
-                              AppColors.primaryText,
-                              () {},
-                              isDisabled: true,
-                            ),
-                          _buildListItem(
-                            'change_password'.tr,
-                            AppImages.lockOpened,
-                            AppColors.primaryText,
-                            () {
-                              Get.toNamed(Routes.changePasswordScreen);
-                            },
-                          ),
-                          _buildListItem(
-                            'change_language'.tr,
-                            AppImages.translate,
-                            AppColors.primaryText,
-                            () {
-                              _languagePick(
-                                context,
-                                'select_language'.tr,
-                                controller.languages,
-                                controller.flag,
-                                controller.language,
-                              );
-                            },
-                          ),
-                          const Divider(color: AppColors.dividers, thickness: 1),
-                          Padding(
-                            padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                            child: Text(
-                              'more_setting'.tr,
-                              style: const TextStyle(
-                                color: AppColors.secondaryText,
-                                fontFamily: AppFontStyleTextStrings.bold,
-                                fontSize: 16,
-                              ),
-                            ),
-                          ),
-                          _buildListItem(
-                            'notification_setting'.tr,
-                            AppImages.bellRinging,
-                            AppColors.primaryText,
-                            () {
-                              Get.toNamed(Routes.notificationsSettingScreen);
-                            },
-                          ),
-                          _buildListItem(
-                            'message_setting'.tr,
-                            AppImages.messageSquare,
-                            AppColors.primaryText,
-                            () {
-                              Get.toNamed(Routes.messageSettingScreen);
-                            },
-                          ),
-                          _buildListItem(
-                            'support'.tr,
-                            AppImages.question,
-                            AppColors.primaryText,
-                            () {
-                              Get.toNamed(Routes.supportScreen);
-                            },
-                          ),
-                          _buildListItem(
-                            'privacy_policy'.tr,
-                            AppImages.shieldCheck,
-                            AppColors.primaryText,
-                            () {},
-                            isDisabled: true,
-                          ),
-                          const Divider(color: AppColors.dividers, thickness: 1),
-                          _buildListItem(
-                            'logout'.tr,
-                            AppImages.logout,
-                            AppColors.primary600,
-                            iconColor: AppColors.errorMain,
-                            () {
-                              Get.toNamed(Routes.logoutScreen);
-                            },
-                          ),
-                        ],
+                // Loading overlay
+                if (controller.isLoading.value)
+                  Container(
+                    color: Colors.black.withValues(alpha: 0.5),
+                    child: const Center(
+                      child: CircularProgressIndicator(
+                        valueColor: AlwaysStoppedAnimation<Color>(AppColors.primary600),
                       ),
                     ),
                   ),
-                ),
-              ),
-            ],
+              ],
+            ),
           ),
         ],
       ),
