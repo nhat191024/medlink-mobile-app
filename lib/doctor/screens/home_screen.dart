@@ -14,7 +14,9 @@ class DoctorHomeScreen extends GetView<DoctorHomeController> {
             const _HeaderSection(),
             Expanded(
               child: Obx(
-                () => controller.setup.value ? const _SetupProfileView() : const _HomeContentView(),
+                () => controller.isProfileSetuped.value
+                    ? const _HomeContentView()
+                    : const _SetupProfileView(),
               ),
             ),
           ],

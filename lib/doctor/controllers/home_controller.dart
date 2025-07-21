@@ -7,9 +7,10 @@ class DoctorHomeController extends GetxController {
   final RxString identity = ''.obs;
   final RxString userType = ''.obs;
   final RxString specialty = ''.obs;
+  final RxString balance = ''.obs;
 
   // App state observables
-  final RxBool setup = true.obs;
+  final RxBool isProfileSetuped = false.obs;
   final RxBool isHaveNotificationUnread = false.obs;
 
   // Statistics observables
@@ -24,6 +25,7 @@ class DoctorHomeController extends GetxController {
   @override
   void onInit() async {
     await fetchData();
+    debugPrint(isProfileSetuped.value.toString());
     super.onInit();
   }
 
@@ -39,13 +41,11 @@ class DoctorHomeController extends GetxController {
         _updateStatistics(data);
         _updateReviewers(data);
         _saveDataToStorage();
-        _updateSetupStatus(data);
       } else {
-        _handleApiError();
+        isProfileSetuped.value = false;
       }
     } catch (e) {
-      // Log error and set default state
-      setup.value = true;
+      isProfileSetuped.value = false;
     }
   }
 
@@ -65,6 +65,14 @@ class DoctorHomeController extends GetxController {
     specialty.value = data['specialty'] ?? '';
     userType.value = data['userType'] ?? '';
     isHaveNotificationUnread.value = data['isHaveNotification'] ?? false;
+    balance.value = data['balance'] ?? '0.0';
+    isProfileSetuped.value = double.tryParse(data['profileSetupPoint'])! < 100 ? false : true;
+
+    if (int.tryParse(balance.value)! < 1000000) {
+      isProfileSetuped.value = false;
+    } else {
+      isProfileSetuped.value = true;
+    }
   }
 
   /// Updates statistics data from API response
@@ -90,17 +98,7 @@ class DoctorHomeController extends GetxController {
     StorageService.writeStringData(key: "identity", value: identity.value);
     StorageService.writeStringData(key: "userType", value: userType.value);
     StorageService.writeBoolData(key: "haveNotification", value: isHaveNotificationUnread.value);
-  }
-
-  /// Updates setup status based on introduction completion
-  void _updateSetupStatus(Map<String, dynamic> data) {
-    final introduceValue = data['introduce'];
-    setup.value = introduceValue == 'true' || introduceValue == true;
-  }
-
-  /// Handles API error by setting default state
-  void _handleApiError() {
-    setup.value = true;
+    StorageService.writeStringData(key: "balance", value: balance.value.toString());
   }
 
   /// Checks if the avatar is the default avatar
