@@ -25,7 +25,6 @@ class DoctorHomeController extends GetxController {
   @override
   void onInit() async {
     await fetchData();
-    debugPrint(isProfileSetuped.value.toString());
     super.onInit();
   }
 
