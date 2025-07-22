@@ -1,5 +1,7 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
+import 'package:medlink/model/transaction_history_model.dart';
 
 class SettingControllers extends GetxController {
   final token = StorageService.readData(key: LocalStorageKeys.token);
@@ -25,6 +27,28 @@ class SettingControllers extends GetxController {
   final RxBool isHaveNotificationUnread = false.obs;
   final RxBool saveBankInfo = false.obs;
   final RxString language = 'English'.obs;
+
+  //============================================================================
+  // WALLET & TRANSACTIONS
+  //============================================================================
+  final RxDouble balance = 0.00.obs;
+  final RxList<TransactionHistoryModel> transactionHistories = <TransactionHistoryModel>[].obs;
+  final filterDate = DateTime.now().obs;
+  final RxInt selectedBank = 0.obs;
+  final TextEditingController withdrawAmount = TextEditingController();
+  final RxBool isLoadingWallet = false.obs;
+
+  //============================================================================
+  // CARD INFORMATION
+  //============================================================================
+  final TextEditingController cardName = TextEditingController();
+  final RxBool isCardNameError = false.obs;
+  final TextEditingController cardNumber = TextEditingController();
+  final RxBool isCardNumberError = false.obs;
+  final TextEditingController cardExpiry = TextEditingController();
+  final RxBool isCardExpiryError = false.obs;
+  final TextEditingController cardCvv = TextEditingController();
+  final RxBool isCardCvvError = false.obs;
 
   //============================================================================
   // TEXT CONTROLLERS
@@ -95,6 +119,10 @@ class SettingControllers extends GetxController {
   @override
   void onClose() {
     _disposeControllers();
+    cardName.dispose();
+    cardNumber.dispose();
+    cardExpiry.dispose();
+    cardCvv.dispose();
     super.onClose();
   }
 
@@ -211,6 +239,11 @@ class SettingControllers extends GetxController {
     if (StorageService.checkData(key: 'haveNotification')) {
       isHaveNotificationUnread.value = StorageService.readData(key: 'haveNotification');
     }
+
+    if (StorageService.checkData(key: 'balance')) {
+      balance.value = double.tryParse(StorageService.readData(key: 'balance')) ?? 0.0;
+      debugPrint('Balance: ${balance.value}');
+    }
   }
 
   //============================================================================
@@ -258,6 +291,40 @@ class SettingControllers extends GetxController {
     oldPasswordErrText.value = '';
     newPasswordErrText.value = '';
     confirmPasswordErrText.value = '';
+  }
+
+  //============================================================================
+  // WALLET & TRANSACTION METHODS
+  //============================================================================
+  Future<void> fetchTransactionHistory() async {
+    isLoadingWallet.value = true;
+    try {
+      final response = await get(
+        Uri.parse('${Apis.api}wallet/transactions'),
+        headers: {'Authorization': 'Bearer $_token'},
+      );
+
+      final data = jsonDecode(response.body);
+
+      transactionHistories.clear();
+      if (response.statusCode == 200 && data['transactions'] != null) {
+        for (var item in data['transactions']) {
+          transactionHistories.add(
+            TransactionHistoryModel(
+              id: item['id'],
+              type: int.parse(item['type'].toString()),
+              name: item['reason'],
+              amount: item['amount'].toDouble(),
+              date: DateFormat('dd/MM/yyyy').format(DateTime.parse(item['created_at'])),
+            ),
+          );
+        }
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to load transaction history');
+    } finally {
+      isLoadingWallet.value = false;
+    }
   }
 
   //============================================================================
@@ -376,8 +443,75 @@ class SettingControllers extends GetxController {
   }
 
   //============================================================================
+  // BANK ACCOUNT DATA
+  //============================================================================
+  //TODO - Replace with actual API call to fetch bank accounts
+  final List<Map<String, dynamic>> bankAccounts = [
+    {
+      'id': 1,
+      'bank': 'PayOs',
+      'number': 'Nạp qua mã QR',
+      'expiry': 'N/A',
+      'name': 'PayOs',
+    }
+  ];
+
+  //============================================================================
+  // CARD VALIDATION METHODS
+  //============================================================================
+  void checkCardInfo() {
+    _validateCardName();
+    _validateCardNumber();
+    _validateCardExpiry();
+    _validateCardCvv();
+  }
+
+  void _validateCardName() {
+    isCardNameError.value = cardName.text.isEmpty;
+  }
+
+  void _validateCardNumber() {
+    isCardNumberError.value = cardNumber.text.isEmpty;
+  }
+
+  void _validateCardExpiry() {
+    isCardExpiryError.value = cardExpiry.text.isEmpty;
+  }
+
+  void _validateCardCvv() {
+    isCardCvvError.value = cardCvv.text.isEmpty;
+  }
+
+  bool get isCardFormValid {
+    return !isCardNameError.value &&
+        !isCardNumberError.value &&
+        !isCardExpiryError.value &&
+        !isCardCvvError.value &&
+        cardName.text.isNotEmpty &&
+        cardNumber.text.isNotEmpty &&
+        cardExpiry.text.isNotEmpty &&
+        cardCvv.text.isNotEmpty;
+  }
+
+  //============================================================================
   // HELPER METHODS
   //============================================================================
+  // void clearCardForm() {
+  //   cardName.clear();
+  //   cardNumber.clear();
+  //   cardExpiry.clear();
+  //   cardCvv.clear();
+  //   isCardNameError.value = false;
+  //   isCardNumberError.value = false;
+  //   isCardExpiryError.value = false;
+  //   isCardCvvError.value = false;
+  // }
+
+  void filterTransactionsByDate(DateTime date) {
+    filterDate.value = date;
+    // Add logic to filter transactions by date
+  }
+
   void _clearUserData() {
     StorageService.removeData(key: LocalStorageKeys.token);
     StorageService.removeData(key: 'avatar');
