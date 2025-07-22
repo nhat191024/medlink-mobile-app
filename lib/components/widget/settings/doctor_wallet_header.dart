@@ -3,15 +3,15 @@ import 'dart:ui';
 import 'package:intl/intl.dart';
 import 'package:medlink/utils/app_imports.dart';
 
-import 'package:medlink/doctor/controllers/setting_controllers.dart';
+import 'package:medlink/common/controllers/setting_controller.dart';
 
 import 'package:medlink/components/button/plus.dart';
 import 'package:medlink/components/widget/dashed_divider.dart';
 import 'package:medlink/components/field/text.dart';
 
 class DoctorWalletHeader extends StatelessWidget {
-  final DoctorSettingControllers doctorController;
-  DoctorWalletHeader({super.key, required this.doctorController});
+  final SettingControllers controller;
+  DoctorWalletHeader({super.key, required this.controller});
 
   final expireFormatter = MaskTextInputFormatter(mask: '##/##', filter: {"#": RegExp(r'[0-9]')});
 
@@ -66,7 +66,8 @@ class DoctorWalletHeader extends StatelessWidget {
 
   Widget _buildBalanceInfo() {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           'my_balance_wallet'.tr,
@@ -79,7 +80,7 @@ class DoctorWalletHeader extends StatelessWidget {
         const SizedBox(height: 4),
         Obx(
           () => Text(
-            '${doctorController.balance.value} EUR',
+            '${controller.balance.value} ${"currency".tr}',
             style: const TextStyle(
               color: AppColors.white,
               fontSize: 18,
@@ -151,7 +152,7 @@ class DoctorWalletHeader extends StatelessWidget {
             const SizedBox(height: 4),
             Obx(
               () => Text(
-                '${doctorController.balance.value} EUR',
+                '${controller.balance.value} ${"currency".tr}',
                 style: const TextStyle(
                   color: AppColors.white,
                   fontSize: 28,
@@ -209,8 +210,8 @@ class DoctorWalletHeader extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    if (doctorController.transactionHistories.isEmpty) _buildEmptyState(),
-                    if (doctorController.transactionHistories.isNotEmpty)
+                    if (controller.transactionHistories.isEmpty) _buildEmptyState(),
+                    if (controller.transactionHistories.isNotEmpty)
                       _buildTransactionHistorySection(),
                   ],
                 ),
@@ -307,7 +308,7 @@ class DoctorWalletHeader extends StatelessWidget {
             const SizedBox(width: 5),
             Obx(
               () => Text(
-                DateFormat('MMMM yyyy').format(doctorController.filterDate.value),
+                DateFormat('MMMM yyyy').format(controller.filterDate.value),
                 style: const TextStyle(
                   color: AppColors.primaryText,
                   fontSize: 14,
@@ -325,9 +326,9 @@ class DoctorWalletHeader extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
-      itemCount: doctorController.transactionHistories.length,
+      itemCount: controller.transactionHistories.length,
       itemBuilder: (context, index) {
-        final transaction = doctorController.transactionHistories[index];
+        final transaction = controller.transactionHistories[index];
         return _buildTransactionItem(transaction);
       },
     );
@@ -410,12 +411,12 @@ class DoctorWalletHeader extends StatelessWidget {
   void _showDatePicker() async {
     DateTime? pickedDate = await showDatePicker(
       context: Get.context!,
-      initialDate: doctorController.filterDate.value,
+      initialDate: controller.filterDate.value,
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
     );
     if (pickedDate != null) {
-      doctorController.filterDate.value = pickedDate;
+      controller.filterDate.value = pickedDate;
     }
   }
 
@@ -430,8 +431,8 @@ class DoctorWalletHeader extends StatelessWidget {
         canPop: true,
         onPopInvokedWithResult: (bool didPop, Object? result) async {
           if (didPop) {
-            doctorController.withdrawAmount.clear();
-            doctorController.selectedBank.value = 0;
+            controller.withdrawAmount.clear();
+            controller.selectedBank.value = 0;
           }
         },
         child: BackdropFilter(
@@ -490,7 +491,7 @@ class DoctorWalletHeader extends StatelessWidget {
                             isError: false.obs,
                             obscureText: false.obs,
                             keyboardType: TextInputType.number,
-                            controller: doctorController.withdrawAmount,
+                            controller: controller.withdrawAmount,
                             onChanged: (value) {},
                             rightPadding: 0,
                             leftPadding: 0,
@@ -552,23 +553,23 @@ class DoctorWalletHeader extends StatelessWidget {
           padding: const EdgeInsets.only(top: 0),
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
-          itemCount: doctorController.bankAccounts.length,
+          itemCount: controller.bankAccounts.length,
           itemBuilder: (context, index) {
-            final bank = doctorController.bankAccounts[index];
+            final bank = controller.bankAccounts[index];
             return Obx(
               () => GestureDetector(
                 onTap: () {
-                  doctorController.selectedBank.value = bank['id'];
+                  controller.selectedBank.value = bank['id'];
                 },
                 child: Container(
                   margin: const EdgeInsets.only(top: 15),
                   padding: const EdgeInsets.fromLTRB(20, 10, 20, 10),
                   decoration: BoxDecoration(
-                    color: doctorController.selectedBank.value == bank['id']
+                    color: controller.selectedBank.value == bank['id']
                         ? AppColors.errorLight
                         : AppColors.transparentColor,
                     border: Border.all(
-                      color: doctorController.selectedBank.value == bank['id']
+                      color: controller.selectedBank.value == bank['id']
                           ? AppColors.errorMain
                           : AppColors.dividers,
                       width: 1,
@@ -604,9 +605,9 @@ class DoctorWalletHeader extends StatelessWidget {
                         child: Radio(
                           value: bank['id'],
                           activeColor: AppColors.errorMain,
-                          groupValue: doctorController.selectedBank.value,
+                          groupValue: controller.selectedBank.value,
                           onChanged: (value) {
-                            doctorController.selectedBank.value = value;
+                            controller.selectedBank.value = value;
                           },
                         ),
                       ),
@@ -632,10 +633,10 @@ class DoctorWalletHeader extends StatelessWidget {
         canPop: true,
         onPopInvokedWithResult: (bool didPop, Object? result) async {
           if (didPop) {
-            doctorController.isCardNameError.value = false;
-            doctorController.isCardNumberError.value = false;
-            doctorController.isCardExpiryError.value = false;
-            doctorController.isCardCvvError.value = false;
+            controller.isCardNameError.value = false;
+            controller.isCardNumberError.value = false;
+            controller.isCardExpiryError.value = false;
+            controller.isCardCvvError.value = false;
           }
         },
         child: BackdropFilter(
@@ -686,9 +687,9 @@ class DoctorWalletHeader extends StatelessWidget {
                                       'cardholder_name'.tr,
                                       'cardholder_hint'.tr,
                                       TextInputType.text,
-                                      doctorController.cardName,
+                                      controller.cardName,
                                       false,
-                                      doctorController.isCardNameError,
+                                      controller.isCardNameError,
                                     ),
                                   ),
                                   const Divider(color: AppColors.dividers, thickness: 1, height: 1),
@@ -698,9 +699,9 @@ class DoctorWalletHeader extends StatelessWidget {
                                       'card_number'.tr,
                                       'card_number_hint'.tr,
                                       TextInputType.number,
-                                      doctorController.cardNumber,
+                                      controller.cardNumber,
                                       true,
-                                      doctorController.isCardNumberError,
+                                      controller.isCardNumberError,
                                     ),
                                   ),
                                   const Divider(color: AppColors.dividers, thickness: 1, height: 1),
@@ -715,9 +716,9 @@ class DoctorWalletHeader extends StatelessWidget {
                                             'expire_date'.tr,
                                             "mm/yy",
                                             TextInputType.datetime,
-                                            doctorController.cardExpiry,
+                                            controller.cardExpiry,
                                             true,
-                                            doctorController.isCardExpiryError,
+                                            controller.isCardExpiryError,
                                           ),
                                         ),
                                       ),
@@ -736,9 +737,9 @@ class DoctorWalletHeader extends StatelessWidget {
                                             'cvv'.tr,
                                             'cvv_hint'.tr,
                                             TextInputType.datetime,
-                                            doctorController.cardCvv,
+                                            controller.cardCvv,
                                             true,
-                                            doctorController.isCardCvvError,
+                                            controller.isCardCvvError,
                                           ),
                                         ),
                                       ),
@@ -754,8 +755,8 @@ class DoctorWalletHeader extends StatelessWidget {
                                   Obx(
                                     () => GestureDetector(
                                       onTap: () {
-                                        doctorController.saveBankInfo.value =
-                                            !doctorController.saveBankInfo.value;
+                                        controller.saveBankInfo.value =
+                                            !controller.saveBankInfo.value;
                                       },
                                       child: AnimatedContainer(
                                         duration: const Duration(milliseconds: 200),
@@ -763,14 +764,14 @@ class DoctorWalletHeader extends StatelessWidget {
                                         height: 25,
                                         padding: const EdgeInsets.all(2),
                                         decoration: BoxDecoration(
-                                          color: doctorController.saveBankInfo.value
+                                          color: controller.saveBankInfo.value
                                               ? Colors.red
                                               : Colors.grey.withValues(alpha: 0.5),
                                           borderRadius: BorderRadius.circular(100),
                                         ),
                                         child: AnimatedAlign(
                                           duration: const Duration(milliseconds: 200),
-                                          alignment: doctorController.saveBankInfo.value
+                                          alignment: controller.saveBankInfo.value
                                               ? Alignment.centerRight
                                               : Alignment.centerLeft,
                                           child: Container(
@@ -799,7 +800,7 @@ class DoctorWalletHeader extends StatelessWidget {
                             ),
                             CustomButtonPlus(
                               onTap: () {
-                                doctorController.checkCardInfo();
+                                controller.checkCardInfo();
                               },
                               btnText: "add".tr,
                               color: AppColors.primaryText,
@@ -836,8 +837,8 @@ class DoctorWalletHeader extends StatelessWidget {
           canPop: true,
           onPopInvokedWithResult: (bool didPop, Object? result) async {
             if (didPop) {
-              doctorController.withdrawAmount.clear();
-              doctorController.selectedBank.value = 0;
+              controller.withdrawAmount.clear();
+              controller.selectedBank.value = 0;
             }
           },
           child: BackdropFilter(
@@ -923,7 +924,7 @@ class DoctorWalletHeader extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      "${doctorController.balance} EUR",
+                                      "${controller.balance} EUR",
                                       style: const TextStyle(
                                         color: AppColors.primary600,
                                         fontSize: 18,
@@ -943,7 +944,7 @@ class DoctorWalletHeader extends StatelessWidget {
                             isError: false.obs,
                             obscureText: false.obs,
                             keyboardType: TextInputType.number,
-                            controller: doctorController.withdrawAmount,
+                            controller: controller.withdrawAmount,
                             onChanged: (value) {},
                             rightPadding: 0,
                             leftPadding: 0,
