@@ -4,6 +4,7 @@ class Words extends Translations {
   @override
   Map<String, Map<String, String>> get keys => {
         'en_US': {
+          "currency": "\$",
           //splash screen
           "splash_title": "Health Care is a\ntouch away",
           "login": "Log In",
@@ -463,6 +464,7 @@ class Words extends Translations {
           "full_fill_required": "Please full fill all require fields"
         },
         'vi_VN': {
+          "currency": "₫",
           //splash screen
           "splash_title": "Chăm sóc sức khỏe chỉ\nmột chạm",
           "login": "Đăng nhập",
