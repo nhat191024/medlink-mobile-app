@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/common/controllers/setting_controller.dart';
-import 'package:medlink/doctor/controllers/setting_controllers.dart';
 
 import 'package:medlink/components/widget/settings/doctor_wallet_header.dart';
 
@@ -10,8 +9,6 @@ class SettingScreen extends GetView<SettingControllers> {
   SettingScreen({super.key});
 
   final SettingControllers controllers = Get.put(SettingControllers());
-  DoctorSettingControllers? get doctorController =>
-      controllers.identity.contains("doctor") ? Get.put(DoctorSettingControllers()) : null;
 
   @override
   Widget build(BuildContext context) {
@@ -128,11 +125,7 @@ class SettingScreen extends GetView<SettingControllers> {
             backgroundColor: AppColors.background,
             body: Stack(
               children: [
-                if (controller.identity.contains("doctor"))
-                  DoctorWalletHeader(
-                    doctorController: doctorController ?? DoctorSettingControllers(),
-                  ),
-
+                DoctorWalletHeader(controller: controller),
                 Column(
                   children: [
                     Expanded(
