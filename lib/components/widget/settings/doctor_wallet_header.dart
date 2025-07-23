@@ -488,13 +488,21 @@ class DoctorWalletHeader extends StatelessWidget {
                             labelText: "enter_amount".tr,
                             hintText: "enter".tr,
                             errorText: "",
-                            isError: false.obs,
+                            isError: controller.iswithdrawAmountError,
                             obscureText: false.obs,
                             keyboardType: TextInputType.number,
                             controller: controller.withdrawAmount,
-                            onChanged: (value) {},
+                            onChanged: (value) {
+                              var amount = double.tryParse(value);
+                              if (value.isNotEmpty) {
+                                controller.iswithdrawAmountError.value = false;
+                              } else if (amount! <= 0) {
+                                controller.iswithdrawAmountError.value = true;
+                              }
+                            },
                             rightPadding: 0,
                             leftPadding: 0,
+                            isRequire: false,
                           ),
                           const SizedBox(height: 15),
                           _buildBankSelectBox(false),
@@ -514,7 +522,9 @@ class DoctorWalletHeader extends StatelessWidget {
                             rightPadding: 0,
                           ),
                           CustomButtonPlus(
-                            onTap: () {},
+                            onTap: () {
+                              controller.checkWithdrawAmount();
+                            },
                             btnText: "add".tr,
                             color: AppColors.primaryText,
                             textColor: AppColors.white,
@@ -556,6 +566,7 @@ class DoctorWalletHeader extends StatelessWidget {
           itemCount: controller.bankAccounts.length,
           itemBuilder: (context, index) {
             final bank = controller.bankAccounts[index];
+            if (isWithdraw && bank['id'] == 1) return SizedBox.shrink();
             return Obx(
               () => GestureDetector(
                 onTap: () {
