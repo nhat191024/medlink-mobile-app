@@ -36,6 +36,7 @@ class SettingControllers extends GetxController {
   final filterDate = DateTime.now().obs;
   final RxInt selectedBank = 0.obs;
   final TextEditingController withdrawAmount = TextEditingController();
+  final RxBool iswithdrawAmountError = false.obs;
   final RxBool isLoadingWallet = false.obs;
 
   //============================================================================
@@ -447,13 +448,7 @@ class SettingControllers extends GetxController {
   //============================================================================
   //TODO - Replace with actual API call to fetch bank accounts
   final List<Map<String, dynamic>> bankAccounts = [
-    {
-      'id': 1,
-      'bank': 'PayOs',
-      'number': 'Nạp qua mã QR',
-      'expiry': 'N/A',
-      'name': 'PayOs',
-    }
+    {'id': 1, 'bank': 'PayOs', 'number': 'Nạp qua mã QR', 'expiry': 'N/A', 'name': 'PayOs'},
   ];
 
   //============================================================================
@@ -532,6 +527,37 @@ class SettingControllers extends GetxController {
 
   void updateLanguage(String newLanguage) {
     language.value = newLanguage;
+  }
+
+  void checkWithdrawAmount() {
+    if (withdrawAmount.text.isEmpty) {
+      iswithdrawAmountError.value = true;
+      Get.snackbar(
+        'Error',
+        'ammount_required'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
+      return;
+    }
+    double amount = double.tryParse(withdrawAmount.text) ?? 0.0;
+    if (amount > balance.value) {
+      iswithdrawAmountError.value = true;
+      Get.snackbar(
+        'Error',
+        'insufficient_funds'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
+    } else if (balance.value - amount <= 1000000) {
+      iswithdrawAmountError.value = true;
+      Get.snackbar(
+        'Error',
+        'minimum_balance'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
+    }
   }
 
   void debug(String text) {
