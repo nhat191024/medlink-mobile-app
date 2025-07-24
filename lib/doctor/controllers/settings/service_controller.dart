@@ -96,15 +96,15 @@ class ServiceController extends GetxController {
       if (index != -1) updateService(index, id);
       Get.back();
       Get.snackbar(
-        'Success',
-        'Service saved successfully',
+        'success'.tr,
+        'service_save_success'.tr,
         colorText: AppColors.successMain,
         backgroundColor: AppColors.white,
       );
     } else {
       Get.snackbar(
-        'Error',
-        'Failed to save service',
+        'error'.tr,
+        'service_save_error'.tr,
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
       );

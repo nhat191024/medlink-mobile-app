@@ -229,9 +229,10 @@ class _BookingSceenState extends State<BookingSceen> {
         return () {
           if (controller.selectedMethod.value == 999) {
             Get.snackbar(
-              'Warning',
-              'Please select a payment method',
+              'warning'.tr,
+              'please_select_a_payment_method'.tr,
               colorText: AppColors.errorMain,
+              backgroundColor: AppColors.white,
             );
           } else {
             controller.bookAppointment(doctorIndex);

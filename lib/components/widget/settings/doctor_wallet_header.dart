@@ -231,17 +231,27 @@ class DoctorWalletHeader extends StatelessWidget {
           children: [
             SvgPicture.asset(AppImages.wallet, width: 60, height: 70, fit: BoxFit.fill),
             const SizedBox(height: 20),
-            Text(
-              'no_balance'.tr,
-              style: const TextStyle(
-                color: AppColors.primaryText,
-                fontSize: 20,
-                fontFamily: AppFontStyleTextStrings.bold,
+            if (controller.balance.value > 0)
+              Text(
+                'no_transaction_history'.tr,
+                style: const TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 20,
+                  fontFamily: AppFontStyleTextStrings.bold,
+                ),
+              )
+            else
+              Text(
+                'no_balance'.tr,
+                style: const TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 20,
+                  fontFamily: AppFontStyleTextStrings.bold,
+                ),
               ),
-            ),
             const SizedBox(height: 10),
             Text(
-              'no_balance_description'.tr,
+              "${"no_balance_description_1".tr} ${controller.balance.value} ${"currency".tr}\n${"no_balance_description_2".tr}",
               style: const TextStyle(color: AppColors.secondaryText, fontSize: 14),
               textAlign: TextAlign.center,
             ),

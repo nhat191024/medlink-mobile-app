@@ -288,7 +288,7 @@ class BookingController extends GetxController {
   }
 
   void _showError(String message) {
-    Get.snackbar('error'.tr, message, colorText: AppColors.errorMain);
+    Get.snackbar('error'.tr, message, colorText: AppColors.errorMain, backgroundColor: AppColors.white);
   }
 
   // ============================================================================

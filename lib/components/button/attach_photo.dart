@@ -26,20 +26,22 @@ class AttachPhotoButton extends StatelessWidget {
 
       if (!isValidExtension) {
         Get.snackbar(
-          'Invalid File Type',
-          'Please select a JPG or PNG image',
+          "invalid_file_type".tr,
+          "please_select_file".tr,
           snackPosition: SnackPosition.TOP,
           colorText: AppColors.errorMain,
+          backgroundColor: AppColors.white,
         );
         return;
       }
 
       if (!isValidSize) {
         Get.snackbar(
-          'File Too Large',
-          'Image size should be less than 5MB',
+          'invalid_file_type'.tr,
+          'image_size_limit'.tr,
           snackPosition: SnackPosition.TOP,
           colorText: AppColors.errorMain,
+          backgroundColor: AppColors.white,
         );
         return;
       }

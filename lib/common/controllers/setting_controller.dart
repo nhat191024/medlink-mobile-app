@@ -273,10 +273,15 @@ class SettingControllers extends GetxController {
       } else if (response.statusCode == 200) {
         _clearPasswordFields();
         Get.back();
-        Get.snackbar('Success', data['message']);
+        Get.snackbar('success'.tr, data['message']);
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to change password');
+      Get.snackbar(
+        'erorr'.tr,
+        'failed_to_change_password'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
     } finally {
       isChangingPassword.value = false;
     }
@@ -322,7 +327,12 @@ class SettingControllers extends GetxController {
         }
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to load transaction history');
+      Get.snackbar(
+        'error'.tr,
+        'failed_to_load_transactions_history'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
     } finally {
       isLoadingWallet.value = false;
     }
@@ -345,7 +355,12 @@ class SettingControllers extends GetxController {
         _updateMessageSettings((data['messageSettings'] as Map).values.toList());
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to load settings');
+      Get.snackbar(
+        'error'.tr,
+        'failed_to_load_settings'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
       debugPrint('Error loading settings: $e');
     }
   }
@@ -381,10 +396,20 @@ class SettingControllers extends GetxController {
       if (streamedResponse.statusCode == 200) {
         //
       } else {
-        Get.snackbar('Error', 'Failed to update setting');
+        Get.snackbar(
+          'error'.tr,
+          'failed_to_update_settings'.tr,
+          colorText: AppColors.errorMain,
+          backgroundColor: AppColors.white,
+        );
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to update setting');
+      Get.snackbar(
+        'error'.tr,
+        'failed_to_update_settings'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
     }
   }
 
@@ -410,12 +435,27 @@ class SettingControllers extends GetxController {
       if (response.statusCode == 201) {
         support.clear();
         Get.back();
-        Get.snackbar('Success', 'Support sent successfully');
+        Get.snackbar(
+          'success'.tr,
+          'support_sent_successfully'.tr,
+          colorText: AppColors.successMain,
+          backgroundColor: AppColors.white,
+        );
       } else {
-        Get.snackbar('Error', 'Failed to send support message');
+        Get.snackbar(
+          'error'.tr,
+          'failed_to_send_support'.tr,
+          colorText: AppColors.errorMain,
+          backgroundColor: AppColors.white,
+        );
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to send support message');
+      Get.snackbar(
+        'error'.tr,
+        'failed_to_send_support'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
     } finally {
       isSendingSupport.value = false;
     }
@@ -436,10 +476,20 @@ class SettingControllers extends GetxController {
         Get.deleteAll();
         Get.toNamed(Routes.splashScreen);
       } else {
-        Get.snackbar('Error', 'Failed to logout');
+        Get.snackbar(
+          'error'.tr,
+          'failed_to_logout'.tr,
+          colorText: AppColors.errorMain,
+          backgroundColor: AppColors.white,
+        );
       }
     } catch (e) {
-      Get.snackbar('Error', 'Failed to logout');
+      Get.snackbar(
+        'error'.tr,
+        'failed_to_logout'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
     }
   }
 
@@ -533,7 +583,7 @@ class SettingControllers extends GetxController {
     if (withdrawAmount.text.isEmpty) {
       iswithdrawAmountError.value = true;
       Get.snackbar(
-        'Error',
+        'error'.tr,
         'ammount_required'.tr,
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
@@ -544,7 +594,7 @@ class SettingControllers extends GetxController {
     if (amount > balance.value) {
       iswithdrawAmountError.value = true;
       Get.snackbar(
-        'Error',
+        'error'.tr,
         'insufficient_funds'.tr,
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
@@ -552,7 +602,7 @@ class SettingControllers extends GetxController {
     } else if (balance.value - amount <= 1000000) {
       iswithdrawAmountError.value = true;
       Get.snackbar(
-        'Error',
+        'error'.tr,
         'minimum_balance'.tr,
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,

@@ -194,7 +194,12 @@ class WorkSchedulesScreen extends GetView<WorkSchedulesController> {
             if (controller.isEndTimeValid(startTime!, formattedTime)) {
               timeObservable.value = formattedTime;
             } else {
-              Get.snackbar('Error', 'End time cannot be earlier than start time');
+              Get.snackbar(
+                "error".tr,
+                "work_schedule_error_4".tr,
+                colorText: AppColors.errorMain,
+                backgroundColor: AppColors.white,
+              );
             }
           }
         }

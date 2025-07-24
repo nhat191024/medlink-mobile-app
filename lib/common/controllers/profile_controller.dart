@@ -293,7 +293,12 @@ class ProfileController extends GetxController {
   //========================================
   Future<void> updateProfile() async {
     if (!validation()) {
-      Get.snackbar('error'.tr, "full_fill_required".tr, colorText: AppColors.errorMain);
+      Get.snackbar(
+        'error'.tr,
+        "full_fill_required".tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
       return;
     }
 
@@ -384,7 +389,12 @@ class ProfileController extends GetxController {
     isEdit.value = true;
     oldAvatar.value = userData.value.avatar;
     Get.back();
-    Get.snackbar('Success', 'Profile updated successfully');
+    Get.snackbar(
+      'success'.tr,
+      'profile_update_success'.tr,
+      colorText: AppColors.successMain,
+      backgroundColor: AppColors.white,
+    );
   }
 
   //========================================

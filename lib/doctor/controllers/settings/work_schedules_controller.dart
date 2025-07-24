@@ -77,8 +77,8 @@ class WorkSchedulesController extends GetxController {
             continue;
           } else {
             Get.snackbar(
-              'Error',
-              'Please add time slots for $day or set it as all day',
+              'error'.tr,
+              '${"work_schedule_error_1".tr} $day ${"work_schedule_error_2".tr}',
               colorText: AppColors.errorMain,
               backgroundColor: AppColors.white,
             );
@@ -88,8 +88,8 @@ class WorkSchedulesController extends GetxController {
         for (var timeSlot in weeklySchedule[day]!.timeSlots) {
           if (timeSlot.startTime.value == 'From' || timeSlot.endTime.value == 'To') {
             Get.snackbar(
-              'Error',
-              'Please fill in all start and end times for $day',
+              'error'.tr,
+              '${'work_schedule_error_3'.tr} $day',
               colorText: AppColors.errorMain,
               backgroundColor: AppColors.white,
             );
@@ -123,16 +123,16 @@ class WorkSchedulesController extends GetxController {
     if (streamedResponse.statusCode == 201) {
       Get.back();
       Get.snackbar(
-        'Success',
-        'Work schedule saved successfully',
+        'success'.tr,
+        'work_schedule_save_success'.tr,
         colorText: AppColors.successMain,
         backgroundColor: AppColors.white,
       );
     } else {
       debugPrint('Error saving work schedule: ${json['message']}');
       Get.snackbar(
-        'Error',
-        'Failed to save work schedule',
+        'error'.tr,
+        'work_schedule_save_error'.tr,
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
       );
