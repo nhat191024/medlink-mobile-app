@@ -7,7 +7,7 @@ import 'package:medlink/model/appointment_model.dart';
 
 import 'package:medlink/components/widget/appointments/doctor/history_appointment_detail.dart';
 import 'package:medlink/components/widget/appointments/doctor/upcoming_appointment_detail.dart';
-import 'package:medlink/components/widget/appointments/blur_dialog.dart';
+import 'package:medlink/components/widget/appointments/doctor/blur_dialog.dart';
 
 class DoctorMyAppointmentsControllers extends GetxController
     with GetSingleTickerProviderStateMixin {
