@@ -1,6 +1,6 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/doctor/controllers/my_appointments_controller.dart';
-import 'package:medlink/components/widget/appointments/new_appointment_detail.dart';
+import 'package:medlink/components/widget/appointments/doctor/new_appointment_detail.dart';
 import 'package:medlink/components/widget/appointments/accpeted_appointment.dart';
 
 import 'package:medlink/components/button/plus.dart';
