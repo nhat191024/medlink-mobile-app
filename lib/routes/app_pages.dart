@@ -176,11 +176,11 @@ class AppPages {
     //   page: () => const SupportScreen(),
     //   binding: SettingBinding(),
     // ),
-    // GetPage(
-    //   name: _Paths.logoutScreen,
-    //   page: () => LogoutScreen(),
-    //   binding: SettingBinding(),
-    // ),
+    GetPage(
+      name: _Paths.logoutScreen,
+      page: () => LogoutScreen(),
+      binding: SettingBinding(),
+    ),
     // GetPage(
     //   name: _Paths.patientListRecordScreen,
     //   page: () => PatientListRecordsScreen(),

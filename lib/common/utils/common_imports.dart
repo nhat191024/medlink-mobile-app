@@ -38,6 +38,7 @@ export 'package:medlink/common/controllers/setting_controller.dart';
 export 'package:medlink/common/bindings/setting_binding.dart';
 export 'package:medlink/common/screens/settings/notifications_setting_screen.dart';
 export 'package:medlink/common/screens/settings/message_setting_screen.dart';
+export 'package:medlink/common/screens/settings/logout_screen.dart';
 
 //profile
 export 'package:medlink/common/controllers/profile_controller.dart';
