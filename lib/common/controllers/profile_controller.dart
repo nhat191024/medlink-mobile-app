@@ -473,6 +473,12 @@ class ProfileController extends GetxController {
     }
   }
 
+  //format price with thousand separator
+  String formatPrice(int price) {
+    final formatted = NumberFormat('#,##0', 'en_US').format(price);
+    return '$formatted ${"currency".tr}';
+  }
+
   //========================================
   // GETTER METHODS
   //========================================
