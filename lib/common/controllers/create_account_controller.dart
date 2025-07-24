@@ -519,7 +519,7 @@ class CreateAccountController extends GetxController {
   // Show error message
   void _showErrorMessage() {
     Get.snackbar(
-      'Error',
+      'error'.tr,
       error.value,
       backgroundColor: AppColors.white,
       colorText: AppColors.errorMain,
