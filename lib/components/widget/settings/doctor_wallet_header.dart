@@ -461,32 +461,13 @@ class DoctorWalletHeader extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.fromLTRB(20, 5, 20, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            label,
-                            style: const TextStyle(
-                              fontSize: 20,
-                              fontFamily: AppFontStyleTextStrings.bold,
-                            ),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: Text(
-                              'submit'.tr,
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontFamily: AppFontStyleTextStrings.bold,
-                                decoration: TextDecoration.underline,
-                                color: AppColors.primary600,
-                              ),
-                            ),
-                          ),
-                        ],
+                      padding: const EdgeInsets.fromLTRB(20, 15, 20, 10),
+                      child: Text(
+                        label,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          fontFamily: AppFontStyleTextStrings.bold,
+                        ),
                       ),
                     ),
                     const Divider(color: AppColors.dividers, thickness: 1),
@@ -498,18 +479,11 @@ class DoctorWalletHeader extends StatelessWidget {
                             labelText: "enter_amount".tr,
                             hintText: "enter".tr,
                             errorText: "",
-                            isError: controller.iswithdrawAmountError,
+                            isError: controller.isRechargeAmountError,
                             obscureText: false.obs,
                             keyboardType: TextInputType.number,
-                            controller: controller.withdrawAmount,
-                            onChanged: (value) {
-                              var amount = double.tryParse(value);
-                              if (value.isNotEmpty) {
-                                controller.iswithdrawAmountError.value = false;
-                              } else if (amount! <= 0) {
-                                controller.iswithdrawAmountError.value = true;
-                              }
-                            },
+                            controller: controller.rechargeAmount,
+                            onChanged: (value) {},
                             rightPadding: 0,
                             leftPadding: 0,
                             isRequire: false,
@@ -533,7 +507,7 @@ class DoctorWalletHeader extends StatelessWidget {
                           ),
                           CustomButtonPlus(
                             onTap: () {
-                              controller.checkWithdrawAmount();
+                              controller.checkRechargeAmount();
                             },
                             btnText: "add".tr,
                             color: AppColors.primaryText,
