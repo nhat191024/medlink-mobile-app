@@ -4,6 +4,7 @@ class TransactionHistoryModel {
   int amount;
   String description;
   String date;
+  DateTime dateTime;
 
   TransactionHistoryModel({
     required this.id,
@@ -11,6 +12,7 @@ class TransactionHistoryModel {
     required this.amount,
     required this.description,
     required this.date,
+    required this.dateTime,
   });
 
   TransactionHistoryModel.fromJson(Map<String, dynamic> json)
@@ -18,7 +20,8 @@ class TransactionHistoryModel {
       type = json['type'],
       description = json['description'] ?? '',
       amount = int.parse(json['amount'].toString()),
-      date = json['created_at'];
+      date = json['created_at_time_human'],
+      dateTime = DateTime.parse(json['created_at']);
 
   Map<String, dynamic> toJson() {
     return {'id': id, 'type': type, 'description': description, 'amount': amount, 'date': date};
