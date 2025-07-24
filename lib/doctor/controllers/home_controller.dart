@@ -65,7 +65,14 @@ class DoctorHomeController extends GetxController {
     userType.value = data['userType'] ?? '';
     isHaveNotificationUnread.value = data['isHaveNotification'] ?? false;
     balance.value = data['balance'] ?? '0.0';
-    isProfileSetuped.value = double.tryParse(data['profileSetupPoint'])! < 100 ? false : true;
+    final profileSetupPoint = data['profileSetupPoint'];
+    double point = 0.0;
+    if (profileSetupPoint is double) {
+      point = profileSetupPoint;
+    } else if (profileSetupPoint is String) {
+      point = double.tryParse(profileSetupPoint) ?? 0.0;
+    }
+    isProfileSetuped.value = point < 100 ? false : true;
 
     if (int.tryParse(balance.value)! < 1000000) {
       isProfileSetuped.value = false;
