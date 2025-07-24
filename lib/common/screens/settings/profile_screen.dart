@@ -729,10 +729,6 @@ class ProfileScreen extends GetView<ProfileController> {
 
   // Helper methods
   void _handleNavigateBack() async {
-    if (settingControllers.identity.contains("doctor")) {
-      await homeControllers?.fetchData();
-    }
-    await settingControllers.loadInfo();
     Get.back();
   }
 
