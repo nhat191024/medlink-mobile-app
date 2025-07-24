@@ -42,6 +42,8 @@ void _listenDeepLinks() {
     if (uri != null) {
       if (uri.path == '/payment-result') {
         Get.toNamed(Routes.paymentResultScreen);
+      } else if (uri.path == "/back") {
+        Get.back();
       }
     }
   });
