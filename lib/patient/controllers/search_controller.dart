@@ -32,15 +32,6 @@ class SearchHeathCareController extends GetxController {
   final RxString selectedDate = ''.obs;
   final RxString selectedTime = ''.obs;
 
-  // Static data
-  static const List<String> testimonialsTitle = [
-    'Bad',
-    'Not happy',
-    'Average',
-    'Good',
-    'Excellent',
-  ];
-
   static const List<String> categoryName = ['doctor', 'pharmacies', 'hospital', 'ambulance'];
 
   // Categories with results
