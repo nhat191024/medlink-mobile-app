@@ -205,6 +205,10 @@ class Words extends Translations {
           "maximum_withdraw": "Maximum amount can be withdrawn",
           "how_many_withdraw": "How many do you want to withdraw?",
           "withdraw_to_bank": "Withdraw to bank account",
+          "ammount_required": "Please enter an amount",
+          "insufficient_funds": "Insufficient balance",
+          "ammount_error": "Amount must be greater than 0",
+          "minimum_balance": "Minimum balance after withdrawal must be 100 EUR",
 
           //patient records
           "patient_records_title": "Patient records",
@@ -269,12 +273,12 @@ class Words extends Translations {
           "service": "Services",
           "introduce": "Introduce",
           "schedule": "Schedule",
-          "unavailable": "Unavailable",
           "available": "Available",
           "rating": "Rating",
           "view_all_review": "View all reviews",
           "edit_profile": "Edit profile",
           "atttach_photo_btn": "Attach Photo",
+          "not_setup": "Not setup",
 
           //edit profile screen
           "full_name_hint_long": "Enter your full name",
@@ -662,6 +666,10 @@ class Words extends Translations {
           "maximum_withdraw": "Số tiền tối đa có thể rút",
           "how_many_withdraw": "Bạn muốn rút bao nhiêu?",
           "withdraw_to_bank": "Rút về tài khoản ngân hàng",
+          "ammount_required": "Vui lòng nhập số tiền",
+          "insufficient_funds": "Số dư không đủ",
+          "ammount_error": "Số tiền phải lớn hơn 0",
+          "minimum_balance": "Số dư tối thiểu sau khi rút phải là 1 000 000 ₫",
 
           //patient records
           "patient_records_title": "Hồ sơ bệnh nhân",
@@ -726,12 +734,12 @@ class Words extends Translations {
           "service": "Dịch vụ",
           "introduce": "Giới thiệu",
           "schedule": "Lịch trình",
-          "unavailable": "Không có sẵn",
           "available": "Có sẵn",
           "rating": "Đánh giá",
           "view_all_review": "Xem tất cả đánh giá",
           "edit_profile": "Chỉnh sửa hồ sơ",
           "atttach_photo_btn": "Đính kèm ảnh",
+          "not_setup": "Chưa thiết lập",
 
           //edit profile screen
           "full_name_hint_long": "Nhập họ tên đầy đủ",
