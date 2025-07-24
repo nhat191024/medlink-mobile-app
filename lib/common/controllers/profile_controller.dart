@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medlink/utils/app_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -275,6 +276,10 @@ class ProfileController extends GetxController {
     officeAddress.text = userData.value.officeAddress == "not_setup".tr
         ? ""
         : userData.value.officeAddress;
+
+    country.text = userData.value.country == "not_setup".tr ? "" : userData.value.country;
+    city.text = userData.value.city == "not_setup".tr ? "" : userData.value.city;
+
     gps.text = userData.value.latitude == ""
         ? ""
         : '${userData.value.latitude}, ${userData.value.longitude}';
