@@ -469,7 +469,7 @@ class SettingControllers extends GetxController {
   Future<void> logout() async {
     try {
       final response = await get(
-        Uri.parse('${Apis.api}setting/logout'),
+        Uri.parse('${Apis.api}/logout'),
         headers: {'Authorization': 'Bearer $_token'},
       );
 
