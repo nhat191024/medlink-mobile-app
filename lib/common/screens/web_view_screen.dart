@@ -5,6 +5,9 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 // Sử dụng controller đã tạo ở trên
 class WebViewScreen extends GetView<WebViewController> {
   String get qrPageUrl => Get.arguments['qrPageUrl'] ?? '';
+  bool get isRerchage => Get.arguments['isRecharge'] ?? false;
+  int get transactionId => Get.arguments['transactionId'] ?? '';
+  String get userType => Get.arguments['userType'] ?? 'healthcare';
 
   WebViewScreen({super.key});
 
@@ -28,11 +31,15 @@ class WebViewScreen extends GetView<WebViewController> {
             pullToRefreshController: controller.pullToRefreshController,
             onWebViewCreated: (webViewController) {
               controller.setWebViewController(webViewController);
+              if (isRerchage) {
+                debugPrint('userType: $userType');
+                controller.setData(transactionId, userType);
+              }
             },
             onLoadStart: (webViewController, url) {
               final urlString = url.toString();
               controller.updateCurrentUrl(urlString);
-              
+
               // Kiểm tra deep link ngay khi bắt đầu load
               if (controller.handleDeepLink(urlString)) {
                 return;
@@ -47,12 +54,12 @@ class WebViewScreen extends GetView<WebViewController> {
             },
             shouldOverrideUrlLoading: (webViewController, navigationAction) async {
               final url = navigationAction.request.url.toString();
-              
+
               // Xử lý deep link cho payment result
               if (controller.handleDeepLink(url)) {
                 return NavigationActionPolicy.CANCEL;
               }
-              
+
               // Cho phép các URL khác
               return NavigationActionPolicy.ALLOW;
             },
