@@ -1,26 +1,26 @@
 class TransactionHistoryModel {
   int id;
-  int type; // 1: income, 2: expense
-  String name;
-  double amount;
+  String type;
+  int amount;
+  String description;
   String date;
 
   TransactionHistoryModel({
     required this.id,
     required this.type,
-    required this.name,
     required this.amount,
+    required this.description,
     required this.date,
   });
 
   TransactionHistoryModel.fromJson(Map<String, dynamic> json)
     : id = json['id'],
       type = json['type'],
-      name = json['name'],
-      amount = json['amount'].toDouble(),
-      date = json['date'];
+      description = json['description'] ?? '',
+      amount = int.parse(json['amount'].toString()),
+      date = json['created_at'];
 
   Map<String, dynamic> toJson() {
-    return {'id': id, 'type': type, 'name': name, 'amount': amount, 'date': date};
+    return {'id': id, 'type': type, 'description': description, 'amount': amount, 'date': date};
   }
 }
