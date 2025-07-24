@@ -369,7 +369,7 @@ class DoctorWalletHeader extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                transaction.name,
+                transaction.description,
                 style: const TextStyle(
                   color: AppColors.primaryText,
                   fontSize: 14,
@@ -377,7 +377,7 @@ class DoctorWalletHeader extends StatelessWidget {
                 ),
               ),
               Text(
-                transaction.type == 2 ? '-${transaction.amount} EUR' : '+${transaction.amount} EUR',
+                transaction.type == 2 ? '-${controller.formatPrice(transaction.amount)}' : '+${controller.formatPrice(transaction.amount)}',
                 style: TextStyle(
                   color: transaction.type == 2 ? AppColors.primary600 : AppColors.infoMain,
                   fontSize: 14,
