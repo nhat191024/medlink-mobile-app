@@ -166,7 +166,8 @@ class Words extends Translations {
           "withdraw": "Withdraw",
           "no_balance": "No balance",
           "no_balance_description_1": "Your balance is",
-          "no_balance_description_2": "please refill your\nwallet.",
+          "no_balance_description_2": "please refill your wallet.",
+          "no_transaction_history": "No transaction history",
           "add_balance": "Add balance",
           "to_account": "To account",
           "from": "From",
@@ -210,7 +211,22 @@ class Words extends Translations {
           "insufficient_funds": "Insufficient balance",
           "ammount_error": "Amount must be greater than 0",
           "minimum_balance": "Minimum balance after withdrawal must be 100 EUR",
-
+          "failed_to_change_password": "Failed to change password",
+          "failed_to_load_transactions_history": "Failed to load transaction history",
+          "failed_to_load_settings": "Failed to load settings",
+          "failed_to_update_settings": "Failed to update settings",
+          "support_sent_successfully": "Support request sent successfully",
+          "failed_to_send_support": "Failed to send support request",
+          "failed_to_logout": "Failed to logout",
+          "service_save_success": "Service saved successfully",
+          "service_save_error": "Failed to save service",
+          "work_schedule_error_1": "Please add time slots for",
+          "work_schedule_error_2": "or set it as all day",
+          "work_schedule_error_3": "Please fill in all start and end times for",
+          "work_schedule_error_4": "End time cannot be earlier than start time",
+          "work_schedule_save_success": "Work schedule saved successfully",
+          "work_schedule_save_error": "Failed to save work schedule",
+          
           //patient records
           "patient_records_title": "Patient records",
           "patient_records_favorite": "Favorite patients",
@@ -300,6 +316,7 @@ class Words extends Translations {
           "GPS_hint": "Enter your latitude, Longitude",
           "company_name_label": "Company - Institution",
           "company_name_hint": "Enter your company - institution",
+          "profile_update_success": "Profile updated successfully",
 
           //feedback screen
           "feedback": "Feedback",
@@ -362,6 +379,7 @@ class Words extends Translations {
           "see_all_detail": "See all detail",
           "back_to_home": "Back to home",
           "booked_success": "Booked successfully",
+          "please_select_a_payment_method": "Please select a payment method",
 
           //common
           "yes": "Yes",
@@ -461,12 +479,22 @@ class Words extends Translations {
           "address_hint": "Enter",
           "address_error": "Address cannot be blank",
 
+          "invalid_file_type": "Invalid file type",
+          "please_select_file": "Please select a JPG or PNG image",
+
+          "file_too_large": "File too large",
+          "image_size_limit": "Image file size must not exceed 5MB.",
+
           //payment result
           'payment_success': "Thanks, your appointment has been booked successfully!",
           'payment_success_description': "Please check your appointment history for receipt and booking details.",
 
           //error messages
-          "full_fill_required": "Please full fill all require fields"
+          "full_fill_required": "Please full fill all require fields",
+
+          "error": "Error",
+          "success": "Success",
+          "warning": "Warning",
         },
         'vi_VN': {
           "currency": "₫",
@@ -628,7 +656,8 @@ class Words extends Translations {
           "withdraw": "Rút tiền",
           "no_balance": "Không có số dư",
           "no_balance_description_1": "Số dư của bạn hiện là",
-          "no_balance_description_2": "vui lòng nạp tiền\nvào ví.",
+          "no_balance_description_2": "vui lòng nạp tiền vào ví.",
+          "no_transaction_history": "Không có lịch sử giao dịch",
           "add_balance": "Thêm số dư",
           "to_account": "Đến tài khoản",
           "from": "Từ",
@@ -672,6 +701,21 @@ class Words extends Translations {
           "insufficient_funds": "Số dư không đủ",
           "ammount_error": "Số tiền phải lớn hơn 0",
           "minimum_balance": "Số dư tối thiểu sau khi rút phải là 1 000 000 ₫",
+          "failed_to_change_password": "Đổi mật khẩu không thành công",
+          "failed_to_load_transactions_history": "Không thể tải lịch sử giao dịch",
+          "failed_to_load_settings": "Không thể tải cài đặt",
+          "failed_to_update_settings": "Không thể cập nhật cài đặt",
+          "support_sent_successfully": "Yêu cầu hỗ trợ đã được gửi thành công",
+          "failed_to_send_support": "Không thể gửi yêu cầu hỗ trợ",
+          "failed_to_logout": "Đăng xuất không thành công",
+          "service_save_success": "Dịch vụ đã được lưu thành công",
+          "service_save_error": "Lỗi khi lưu dịch vụ",
+          "work_schedule_error_1": "Hãy thêm 1 giờ làm việc cho ngày",
+          "work_schedule_error_2": "hoặc đặt làm việc cả ngày",
+          "work_schedule_error_3": "Vui lòng điền đầy đủ giờ bắt đầu và kết thúc cho ngày",
+          "work_schedule_error_4": "Giờ kết thúc không thể sớm hơn giờ bắt đầu",
+          "work_schedule_save_success": "Lịch làm việc đã được lưu thành công",
+          "work_schedule_save_error": "Lỗi khi lưu lịch làm việc",
 
           //patient records
           "patient_records_title": "Hồ sơ bệnh nhân",
@@ -762,6 +806,7 @@ class Words extends Translations {
           "GPS_hint": "Nhập vĩ độ, kinh độ",
           "company_name_label": "Công ty - Tổ chức",
           "company_name_hint": "Nhập công ty - tổ chức",
+          "profile_update_success": "Hồ sơ đã cập nhật thành công",
 
           //feedback screen
           "feedback": "Phản hồi",
@@ -824,6 +869,7 @@ class Words extends Translations {
           "see_all_detail": "Xem tất cả chi tiết",
           "back_to_home": "Về trang chủ",
           "booked_success": "Đặt lịch thành công",
+          "please_select_a_payment_method": "Vui lòng chọn phương thức thanh toán",
 
           //common
           "yes": "Có",
@@ -923,12 +969,22 @@ class Words extends Translations {
           "address_hint": "Nhập",
           "address_error": "Địa chỉ không thể để trống",
 
+          "invalid_file_type": "Loại tệp không hợp lệ",
+          "please_select_file": "Vui lòng chọn tệp hình ảnh JPG hoặc PNG",
+
+          "file_too_large": "Tệp quá lớn",
+          "image_size_limit": "Kích thước tệp hình ảnh không được vượt quá 5MB.",
+
           //payment result
           'payment_success': "Cảm ơn, cuộc hẹn của bạn đã được đặt thành công!",
           'payment_success_description': "Vui lòng kiểm tra lịch sử cuộc hẹn để xem biên lai và chi tiết đặt lịch.",
 
           //error
           "full_fill_required": "Xin vui lòng điền đầy đủ các trường bắt buộc.",
+
+          "error": "Lỗi",
+          "success": "Thành công",
+          "warning": "Cảnh báo",
         },
       };
 }
