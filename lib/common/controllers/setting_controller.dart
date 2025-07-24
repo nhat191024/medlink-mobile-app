@@ -112,6 +112,7 @@ class SettingControllers extends GetxController {
   Future<void> onInit() async {
     isLoading.value = true;
     _loadSettings();
+    await fetchTransactionHistory();
     await loadInfo();
     isLoading.value = false;
     super.onInit();
@@ -312,17 +313,10 @@ class SettingControllers extends GetxController {
       final data = jsonDecode(response.body);
 
       transactionHistories.clear();
-      if (response.statusCode == 200 && data['transactions'] != null) {
-        for (var item in data['transactions']) {
-          transactionHistories.add(
-            TransactionHistoryModel(
-              id: item['id'],
-              type: int.parse(item['type'].toString()),
-              name: item['reason'],
-              amount: item['amount'].toDouble(),
-              date: DateFormat('dd/MM/yyyy').format(DateTime.parse(item['created_at'])),
-            ),
-          );
+      if (response.statusCode == 200) {
+        for (var item in data) {
+          final transaction = TransactionHistoryModel.fromJson(item);
+          transactionHistories.add(transaction);
         }
       }
     } catch (e) {
@@ -332,6 +326,7 @@ class SettingControllers extends GetxController {
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
       );
+      debugPrint('Error loading transaction history: $e');
     } finally {
       isLoadingWallet.value = false;
     }
