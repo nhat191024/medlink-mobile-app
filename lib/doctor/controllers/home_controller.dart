@@ -64,7 +64,7 @@ class DoctorHomeController extends GetxController {
     specialty.value = data['specialty'] ?? '';
     userType.value = data['userType'] ?? '';
     isHaveNotificationUnread.value = data['isHaveNotification'] ?? false;
-    balance.value = data['balance'] ?? '0.0';
+    balance.value = data['balance'] ?? '0';
     final profileSetupPoint = data['profileSetupPoint'];
     double point = 0.0;
     if (profileSetupPoint is double) {

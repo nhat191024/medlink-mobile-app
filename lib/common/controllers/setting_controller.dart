@@ -29,7 +29,7 @@ class SettingControllers extends GetxController {
   //============================================================================
   // WALLET & TRANSACTIONS
   //============================================================================
-  final RxDouble balance = 0.00.obs;
+  final RxInt balance = 0.obs;
   final RxList<TransactionHistoryModel> transactionHistories = <TransactionHistoryModel>[].obs;
   final filterDate = DateTime.now().obs;
   final RxInt selectedBank = 0.obs;
@@ -242,8 +242,7 @@ class SettingControllers extends GetxController {
     }
 
     if (StorageService.checkData(key: 'balance')) {
-      balance.value = double.tryParse(StorageService.readData(key: 'balance')) ?? 0.0;
-      debugPrint('Balance: ${balance.value}');
+      balance.value = int.parse(StorageService.readData(key: 'balance').toString());
     }
   }
 
