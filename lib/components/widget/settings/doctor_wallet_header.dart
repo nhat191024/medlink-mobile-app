@@ -80,7 +80,7 @@ class DoctorWalletHeader extends StatelessWidget {
         const SizedBox(height: 4),
         Obx(
           () => Text(
-            '${controller.balance.value} ${"currency".tr}',
+            controller.formatPrice(controller.balance.value),
             style: const TextStyle(
               color: AppColors.white,
               fontSize: 18,
@@ -152,7 +152,7 @@ class DoctorWalletHeader extends StatelessWidget {
             const SizedBox(height: 4),
             Obx(
               () => Text(
-                '${controller.balance.value} ${"currency".tr}',
+                controller.formatPrice(controller.balance.value),
                 style: const TextStyle(
                   color: AppColors.white,
                   fontSize: 28,
@@ -251,7 +251,7 @@ class DoctorWalletHeader extends StatelessWidget {
               ),
             const SizedBox(height: 10),
             Text(
-              "${"no_balance_description_1".tr} ${controller.balance.value} ${"currency".tr}\n${"no_balance_description_2".tr}",
+              "${"no_balance_description_1".tr} ${controller.formatPrice(controller.balance.value)}\n${"no_balance_description_2".tr}",
               style: const TextStyle(color: AppColors.secondaryText, fontSize: 14),
               textAlign: TextAlign.center,
             ),
