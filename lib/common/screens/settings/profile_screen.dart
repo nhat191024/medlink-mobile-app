@@ -159,7 +159,7 @@ class ProfileScreen extends GetView<ProfileController> {
             rateCount: controller.reviewCounts.value,
           ),
           _buildInfoColumn(
-            controller.userData.value.isAvailable ? 'available'.tr : 'unavailable'.tr,
+            controller.userData.value.isAvailable ? 'available'.tr : 'busy'.tr,
             'schedule'.tr,
             needDivider: true,
             controller.userData.value.isAvailable ? AppColors.successMain : AppColors.errorMain,
@@ -646,7 +646,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 ),
                 const Spacer(),
                 Text(
-                  '\$${service.price}',
+                  controller.formatPrice(service.price),
                   style: const TextStyle(
                     color: AppColors.primaryText,
                     fontSize: 14,
