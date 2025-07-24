@@ -688,4 +688,9 @@ class SettingControllers extends GetxController {
   void debug(String text) {
     debugPrint(text);
   }
+
+  String formatPrice(int price) {
+    final formatted = NumberFormat('#,##0', 'en_US').format(price);
+    return '$formatted ${"currency".tr}';
+  }
 }
