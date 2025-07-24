@@ -4,8 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:medlink/model/transaction_history_model.dart';
 
 class SettingControllers extends GetxController {
-  final token = StorageService.readData(key: LocalStorageKeys.token);
-
   //============================================================================
   // CONSTANTS
   //============================================================================
@@ -340,6 +338,55 @@ class SettingControllers extends GetxController {
     }
   }
 
+  Future<void> rechargeWallet() async {
+    try {
+      if (!checkRechargeAmount()) return;
+
+      final url = Uri.parse('${Apis.api}wallet/recharge-qr');
+      final response = http.MultipartRequest("POST", url);
+
+      response.headers['Authorization'] = 'Bearer $_token';
+      response.headers['Content-Type'] = 'application/json';
+      response.headers['Accept'] = 'application/json';
+
+      response.fields['amount'] = rechargeAmount.text;
+
+      var streamedResponse = await response.send();
+      var responseBody = await streamedResponse.stream.bytesToString();
+      var json = jsonDecode(responseBody);
+      if (streamedResponse.statusCode == 200) {
+        var data = json['data'];
+        var checkoutUrl = data['qrCodeUrl'];
+
+        debugPrint('userType: ${userType.value}');
+
+        Get.toNamed(
+          Routes.webViewScreen,
+          arguments: {
+            'qrPageUrl': checkoutUrl,
+            'isRecharge': true,
+            'transactionId': data['transactionId'],
+            'userType': userType.value,
+          },
+        );
+      } else {
+        Get.snackbar(
+          'error'.tr,
+          json['message'] ?? 'failed_to_recharge_wallet'.tr,
+          colorText: AppColors.errorMain,
+          backgroundColor: AppColors.white,
+        );
+      }
+    } catch (e) {
+      Get.snackbar(
+        'error'.tr,
+        'failed_to_recharge_wallet'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
+    }
+  }
+
   //============================================================================
   // SETTINGS MANAGEMENT METHODS
   //============================================================================
@@ -387,7 +434,7 @@ class SettingControllers extends GetxController {
     try {
       final uri = Uri.parse('${Apis.api}settings/update');
       final response = http.MultipartRequest("POST", uri);
-      response.headers['Authorization'] = 'Bearer $token';
+      response.headers['Authorization'] = 'Bearer $_token';
       response.headers['Accept'] = 'application/json';
       response.headers['Content-Type'] = 'application/json';
 
@@ -612,7 +659,7 @@ class SettingControllers extends GetxController {
     }
   }
 
-  void checkRechargeAmount() {
+  bool checkRechargeAmount() {
     if (rechargeAmount.text.isEmpty) {
       isRechargeAmountError.value = true;
       Get.snackbar(
@@ -621,7 +668,7 @@ class SettingControllers extends GetxController {
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
       );
-      return;
+      return false;
     }
     double amount = double.tryParse(rechargeAmount.text) ?? 0.0;
     if (amount <= 0) {
@@ -632,8 +679,10 @@ class SettingControllers extends GetxController {
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
       );
+      return false;
     } else {
       isRechargeAmountError.value = false;
+      return true;
     }
   }
 

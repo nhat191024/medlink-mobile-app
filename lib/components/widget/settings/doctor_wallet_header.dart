@@ -507,7 +507,7 @@ class DoctorWalletHeader extends StatelessWidget {
                           ),
                           CustomButtonPlus(
                             onTap: () {
-                              controller.checkRechargeAmount();
+                              controller.rechargeWallet();
                             },
                             btnText: "add".tr,
                             color: AppColors.primaryText,
