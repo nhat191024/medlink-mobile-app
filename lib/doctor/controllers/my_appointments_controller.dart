@@ -5,7 +5,7 @@ import 'package:http/http.dart' as http;
 import 'package:medlink/doctor/controllers/home_controller.dart';
 import 'package:medlink/model/appointment_model.dart';
 
-import 'package:medlink/components/widget/appointments/history_appointment_detail.dart';
+import 'package:medlink/components/widget/appointments/doctor/history_appointment_detail.dart';
 import 'package:medlink/components/widget/appointments/doctor/upcoming_appointment_detail.dart';
 import 'package:medlink/components/widget/appointments/blur_dialog.dart';
 
