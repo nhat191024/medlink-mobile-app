@@ -35,6 +35,8 @@ class SettingControllers extends GetxController {
   final RxList<TransactionHistoryModel> transactionHistories = <TransactionHistoryModel>[].obs;
   final filterDate = DateTime.now().obs;
   final RxInt selectedBank = 0.obs;
+  final TextEditingController rechargeAmount = TextEditingController();
+  final RxBool isRechargeAmountError = false.obs;
   final TextEditingController withdrawAmount = TextEditingController();
   final RxBool iswithdrawAmountError = false.obs;
   final RxBool isLoadingWallet = false.obs;
@@ -607,6 +609,31 @@ class SettingControllers extends GetxController {
         colorText: AppColors.errorMain,
         backgroundColor: AppColors.white,
       );
+    }
+  }
+
+  void checkRechargeAmount() {
+    if (rechargeAmount.text.isEmpty) {
+      isRechargeAmountError.value = true;
+      Get.snackbar(
+        'error'.tr,
+        'ammount_required'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
+      return;
+    }
+    double amount = double.tryParse(rechargeAmount.text) ?? 0.0;
+    if (amount <= 0) {
+      isRechargeAmountError.value = true;
+      Get.snackbar(
+        'error'.tr,
+        'invalid_amount'.tr,
+        colorText: AppColors.errorMain,
+        backgroundColor: AppColors.white,
+      );
+    } else {
+      isRechargeAmountError.value = false;
     }
   }
 
