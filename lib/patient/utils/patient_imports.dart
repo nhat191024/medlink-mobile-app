@@ -15,6 +15,10 @@ export 'package:medlink/patient/controllers/booking_controller.dart';
 export 'package:medlink/patient/bindings/booking_binding.dart';
 export 'package:medlink/patient/screens/booking_screen.dart';
 
+//my appointments
+export 'package:medlink/patient/controllers/my_appointments_controller.dart';
+export 'package:medlink/patient/screens/my_appointments_screen.dart';
+
 //payment result screen
 export 'package:medlink/patient/screens/payment_result_screen.dart';
 export 'package:medlink/patient/bindings/payment_result_binding.dart';
