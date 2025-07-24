@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:medlink/utils/app_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
@@ -349,8 +348,8 @@ class ProfileController extends GetxController {
       _handleUpdateSuccess();
     } else {
       debugPrint('Update failed with status code: ${response.statusCode}');
-      // debugPrint(json);
-      debugPrint('Error: ${json['message']}');
+      // debugPrint(jsonEncode(json));
+      // debugPrint('Error: ${json['message']}');
 
       // error.value = '';
       // for (var key in data['message']) {
