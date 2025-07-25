@@ -519,6 +519,9 @@ class SettingControllers extends GetxController {
         Get.deleteAll();
         Get.toNamed(Routes.splashScreen);
       } else {
+        _clearUserData();
+        Get.deleteAll();
+        Get.toNamed(Routes.splashScreen);
         Get.snackbar(
           'error'.tr,
           'failed_to_logout'.tr,
