@@ -107,7 +107,7 @@ class ProfileScreen extends GetView<ProfileController> {
           ),
           if (controller.identity.value.contains('doctor'))
             Text(
-              controller.userData.value.medicalCategory,
+              controller.userData.value.medicalCategory ?? '',
               style: const TextStyle(
                 color: AppColors.secondaryText,
                 fontSize: 14,
@@ -154,10 +154,12 @@ class ProfileScreen extends GetView<ProfileController> {
             rateCount: controller.reviewCounts.value,
           ),
           _buildInfoColumn(
-            controller.userData.value.isAvailable ? 'available'.tr : 'busy'.tr,
+            controller.userData.value.isAvailable == true ? 'available'.tr : 'busy'.tr,
             'schedule'.tr,
             needDivider: true,
-            controller.userData.value.isAvailable ? AppColors.successMain : AppColors.errorMain,
+            controller.userData.value.isAvailable == true
+                ? AppColors.successMain
+                : AppColors.errorMain,
           ),
         ],
       ),
@@ -203,7 +205,7 @@ class ProfileScreen extends GetView<ProfileController> {
         ),
         const SizedBox(height: 10),
         Text(
-          controller.userData.value.introduce,
+          controller.userData.value.introduce ?? '',
           style: const TextStyle(
             color: AppColors.secondaryText,
             fontSize: 14,
@@ -299,7 +301,7 @@ class ProfileScreen extends GetView<ProfileController> {
               const SizedBox(height: 15),
               _buildContactItem(
                 'location'.tr,
-                controller.userData.value.officeAddress,
+                controller.userData.value.officeAddress ?? '',
                 AppImages.mapPinLine,
               ),
               const SizedBox(height: 15),
