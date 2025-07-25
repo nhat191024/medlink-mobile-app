@@ -14,7 +14,7 @@ class PatientHomeController extends GetxController {
   final RxString userType = ''.obs;
   final RxString avatar = ''.obs;
   final RxString location = ''.obs;
-  
+
   // UI state observables
   final RxBool setup = true.obs;
   final RxBool isHaveNotificationUnread = false.obs;
@@ -41,7 +41,7 @@ class PatientHomeController extends GetxController {
     try {
       isLoading.value = true;
       errorMessage.value = '';
-      
+
       await fetchData();
       await saveData();
     } catch (e) {
@@ -53,7 +53,7 @@ class PatientHomeController extends GetxController {
 
   Future<void> fetchData() async {
     final token = StorageService.readData(key: LocalStorageKeys.token);
-    
+
     final response = await get(
       Uri.parse('${Apis.api}patient-summary'),
       headers: _buildHeaders(token),
@@ -104,16 +104,14 @@ class PatientHomeController extends GetxController {
       "zipCode": zipCode.value,
       "userType": userType.value,
       "location": location.value,
+      "identity": "patient",
     };
 
     for (final entry in userData.entries) {
       StorageService.writeStringData(key: entry.key, value: entry.value);
     }
-    
-    StorageService.writeBoolData(
-      key: "haveNotification", 
-      value: isHaveNotificationUnread.value
-    );
+
+    StorageService.writeBoolData(key: "haveNotification", value: isHaveNotificationUnread.value);
   }
 
   bool checkIfDefaultAvatar(String avatar) {
