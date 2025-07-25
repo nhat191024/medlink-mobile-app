@@ -8,10 +8,10 @@ class StarReview extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return RatingBar(
-      initialRating: 0,
-      minRating: 0.5,
+      initialRating: 1,
+      minRating: 1,
       direction: Axis.horizontal,
-      allowHalfRating: true,
+      allowHalfRating: false,
       glow: false,
       unratedColor: AppColors.border,
       itemCount: 5,
