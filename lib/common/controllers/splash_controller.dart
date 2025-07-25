@@ -88,7 +88,7 @@ class SplashController extends GetxController {
   }
 
   void _handleUnauthorized() {
-    StorageService.removeData(key: LocalStorageKeys.token);
+    StorageService.clearAllData();
   }
 
   void _handleError(dynamic error) {
