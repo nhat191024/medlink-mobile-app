@@ -604,9 +604,20 @@ class SettingControllers extends GetxController {
     StorageService.removeData(key: LocalStorageKeys.token);
     StorageService.removeData(key: 'avatar');
     StorageService.removeData(key: 'name');
+    StorageService.removeData(key: 'email');
+    StorageService.removeData(key: 'phone');
+    StorageService.removeData(key: 'address');
+    StorageService.removeData(key: 'gps');
+    StorageService.removeData(key: 'country');
+    StorageService.removeData(key: 'city');
+    StorageService.removeData(key: 'state');
+    StorageService.removeData(key: 'zipCode');
+    StorageService.removeData(key: 'location');
     StorageService.removeData(key: 'specialty');
     StorageService.removeData(key: 'identity');
+    StorageService.removeData(key: 'userType');
     StorageService.removeData(key: 'haveNotification');
+    StorageService.removeData(key: 'balance');
   }
 
   bool checkIfDefaultAvatar(String avatar) {
