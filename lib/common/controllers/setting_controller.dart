@@ -517,11 +517,11 @@ class SettingControllers extends GetxController {
       if (response.statusCode == 200) {
         _clearUserData();
         Get.deleteAll();
-        Get.toNamed(Routes.splashScreen);
+        Get.offAllNamed(Routes.splashScreen);
       } else {
         _clearUserData();
         Get.deleteAll();
-        Get.toNamed(Routes.splashScreen);
+        Get.offAllNamed(Routes.splashScreen);
         Get.snackbar(
           'error'.tr,
           'failed_to_logout'.tr,
