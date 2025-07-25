@@ -516,11 +516,9 @@ class SettingControllers extends GetxController {
 
       if (response.statusCode == 200) {
         StorageService.clearAllData();
-        Get.deleteAll();
         Get.offAllNamed(Routes.splashScreen);
       } else {
         StorageService.clearAllData();
-        Get.deleteAll();
         Get.offAllNamed(Routes.splashScreen);
         Get.snackbar(
           'error'.tr,
