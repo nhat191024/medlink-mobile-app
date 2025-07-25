@@ -1,6 +1,6 @@
 import 'package:medlink/utils/app_imports.dart';
 
-class ProfileModel {
+class DoctorProfileModel {
   int id;
   String phone;
   String userType;
@@ -26,7 +26,7 @@ class ProfileModel {
   double profileCompleteness;
   bool isAvailable;
 
-  ProfileModel({
+  DoctorProfileModel({
     required this.id,
     required this.phone,
     required this.userType,
@@ -53,7 +53,7 @@ class ProfileModel {
     required this.isAvailable,
   });
 
-  ProfileModel.fromJson(Map<String, dynamic> json)
+  DoctorProfileModel.fromJson(Map<String, dynamic> json)
     : id = json['profile']['id'],
       phone = json['profile']['phone'] ?? 'not_setup'.tr,
       userType = json['profile']['userType'],

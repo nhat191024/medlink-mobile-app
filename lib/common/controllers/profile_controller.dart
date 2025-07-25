@@ -2,7 +2,7 @@ import 'package:medlink/utils/app_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-import 'package:medlink/model/profile_model.dart';
+import 'package:medlink/model/doctor_profile_model.dart';
 import 'package:medlink/model/language_model.dart';
 import 'package:medlink/model/service_model.dart';
 import 'package:medlink/model/testimonials_model.dart';
@@ -22,7 +22,7 @@ class ProfileController extends GetxController {
   //========================================
   // USER DATA
   //========================================
-  Rx<ProfileModel> userData = ProfileModel(
+  Rx<DoctorProfileModel> userData = DoctorProfileModel(
     id: 0,
     phone: '',
     userType: '',
@@ -158,7 +158,7 @@ class ProfileController extends GetxController {
     _processTestimonials(data['testimonials']);
     _processRatings(data);
 
-    userData.value = ProfileModel.fromJson(data);
+    userData.value = DoctorProfileModel.fromJson(data);
     isLoading.value = false;
   }
 
