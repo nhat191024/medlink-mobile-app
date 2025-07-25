@@ -131,9 +131,7 @@ class SettingScreen extends GetView<SettingControllers> {
                     Expanded(
                       child: Container(
                         width: Get.width,
-                        margin: EdgeInsets.only(
-                          top: controller.identity.contains("doctor") ? 100 : 10,
-                        ),
+                        margin: EdgeInsets.only(top: 100),
                         decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.only(
