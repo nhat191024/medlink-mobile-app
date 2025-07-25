@@ -288,6 +288,11 @@ class DoctorMyAppointmentsControllers extends GetxController
     }
   }
 
+  String formatPrice(int price) {
+    final formatted = NumberFormat('#,##0', 'en_US').format(price);
+    return '$formatted ${"currency".tr}';
+  }
+
   //=================
   //SEARCH METHODS
   //=================
