@@ -377,6 +377,7 @@ class DoctorMyAppointmentsControllers extends GetxController
         appointment: appointment,
         formatDate: formatDate,
         checkIfDefaultAvatar: checkIfDefaultAvatar,
+        formatPrice: formatPrice,
       ),
       isScrollControlled: true,
     );
