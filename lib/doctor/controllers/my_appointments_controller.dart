@@ -394,6 +394,7 @@ class DoctorMyAppointmentsControllers extends GetxController
         formatDate: formatDate,
         checkIfDefaultAvatar: checkIfDefaultAvatar,
         hoursUntilAppointment: hoursUntilAppointment,
+        formatPrice: formatPrice,
         showBlurDialog: showBlurDialog,
       ),
       isScrollControlled: true,

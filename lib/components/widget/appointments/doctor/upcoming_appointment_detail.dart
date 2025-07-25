@@ -7,6 +7,7 @@ class UpcomingAppointmentDetail extends StatelessWidget {
   final Function(String) formatDate;
   final Function(String) checkIfDefaultAvatar;
   final Function(AppointmentModel) hoursUntilAppointment;
+  final Function(int price) formatPrice;
   final Function(BuildContext, AppointmentModel, int, String, bool, bool) showBlurDialog;
 
   const UpcomingAppointmentDetail({
@@ -16,6 +17,7 @@ class UpcomingAppointmentDetail extends StatelessWidget {
     required this.formatDate,
     required this.checkIfDefaultAvatar,
     required this.hoursUntilAppointment,
+    required this.formatPrice,
     required this.showBlurDialog,
   });
 
@@ -529,7 +531,7 @@ class UpcomingAppointmentDetail extends StatelessWidget {
                 Text(appointment.meetType, style: const TextStyle(color: AppColors.secondaryText)),
                 const Spacer(),
                 Text(
-                  '${appointment.price} EUR',
+                  formatPrice(appointment.price),
                   style: const TextStyle(color: AppColors.primaryText),
                 ),
               ],
@@ -543,7 +545,7 @@ class UpcomingAppointmentDetail extends StatelessWidget {
                 Text('tax_vat'.tr, style: const TextStyle(color: AppColors.secondaryText)),
                 const Spacer(),
                 Text(
-                  '${appointment.tax} EUR',
+                  formatPrice(appointment.tax),
                   style: const TextStyle(color: AppColors.primaryText),
                 ),
               ],
@@ -566,7 +568,7 @@ class UpcomingAppointmentDetail extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '${appointment.total} EUR',
+                  formatPrice(appointment.total),
                   style: const TextStyle(
                     fontSize: 16,
                     fontFamily: AppFontStyleTextStrings.bold,

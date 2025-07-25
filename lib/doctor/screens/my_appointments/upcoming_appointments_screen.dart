@@ -169,7 +169,7 @@ class UpcomingAppointmentsScreen extends GetView<DoctorMyAppointmentsControllers
                                             ),
                                             const SizedBox(width: 10),
                                             Text(
-                                              '${appointment.price} EUR',
+                                              controllers.formatPrice(appointment.price),
                                               style: const TextStyle(
                                                 fontSize: 14,
                                                 fontFamily: AppFontStyleTextStrings.bold,

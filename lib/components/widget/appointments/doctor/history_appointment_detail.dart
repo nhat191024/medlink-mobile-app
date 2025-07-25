@@ -5,12 +5,14 @@ class HistoryAppointmentDetail extends StatelessWidget {
   final AppointmentModel appointment;
   final Function(String) formatDate;
   final Function(String) checkIfDefaultAvatar;
+  final Function(int) formatPrice;
 
   const HistoryAppointmentDetail({
     super.key,
     required this.appointment,
     required this.formatDate,
     required this.checkIfDefaultAvatar,
+    required this.formatPrice,
   });
 
   @override
@@ -62,7 +64,7 @@ class HistoryAppointmentDetail extends StatelessWidget {
                   _ReasonCard(title: 'reason_to_cancel'.tr, reason: appointment.reason),
                 _MedicalProblem(medicalProblem: appointment.medicalProblem),
                 _PatientInfo(appointment: appointment),
-                _BillDetail(appointment: appointment),
+                _BillDetail(appointment: appointment, formatPrice: formatPrice),
                 _PaymentInfo(appointment: appointment),
               ],
             ),
@@ -615,8 +617,9 @@ class _PatientInfoItem extends StatelessWidget {
 // Bill Detail Widget
 class _BillDetail extends StatelessWidget {
   final AppointmentModel appointment;
+  final Function(int price) formatPrice;
 
-  const _BillDetail({required this.appointment});
+  const _BillDetail({required this.appointment, required this.formatPrice});
 
   @override
   Widget build(BuildContext context) {
@@ -640,13 +643,13 @@ class _BillDetail extends StatelessWidget {
           const SizedBox(height: 5),
           const Divider(color: AppColors.dividers, thickness: 1),
           const SizedBox(height: 10),
-          _BillRow(label: appointment.meetType, amount: '${appointment.price} EUR'),
+          _BillRow(label: appointment.meetType, amount: formatPrice(appointment.price)),
           const SizedBox(height: 10),
-          _BillRow(label: 'tax_vat'.tr, amount: '${appointment.tax} EUR'),
+          _BillRow(label: 'tax_vat'.tr, amount: formatPrice(appointment.tax)),
           const SizedBox(height: 10),
           const Divider(color: AppColors.dividers, thickness: 1),
           const SizedBox(height: 10),
-          _BillRow(label: 'total'.tr, amount: '${appointment.total} EUR', isTotal: true),
+          _BillRow(label: 'total'.tr, amount: formatPrice(appointment.total), isTotal: true),
           const SizedBox(height: 15),
         ],
       ),
