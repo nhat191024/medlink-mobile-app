@@ -37,12 +37,7 @@ class SettingScreen extends GetView<SettingControllers> {
                             shape: BoxShape.circle,
                           ),
                           clipBehavior: Clip.antiAlias,
-                          child: Image.network(
-                            controller.avatar.value,
-                            fit: controller.checkIfDefaultAvatar(controller.avatar.value)
-                                ? BoxFit.scaleDown
-                                : BoxFit.cover,
-                          ),
+                          child: Image.network(controller.avatar.value, fit: BoxFit.cover),
                         ),
                       ),
                       Positioned(
