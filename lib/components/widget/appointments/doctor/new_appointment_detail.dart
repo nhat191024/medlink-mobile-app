@@ -10,6 +10,7 @@ class NewAppointmentDetail extends StatelessWidget {
   final Function(String) checkIfDefaultAvatar;
   final Function(BuildContext, AppointmentModel, int, String, bool, bool) showBlurDialog;
   final Function(AppointmentModel, int, String, bool) acceptRejectAppointment;
+  final Function(int price) formatPrice;
   final VoidCallback openCalendar;
 
   const NewAppointmentDetail({
@@ -20,6 +21,7 @@ class NewAppointmentDetail extends StatelessWidget {
     required this.checkIfDefaultAvatar,
     required this.showBlurDialog,
     required this.acceptRejectAppointment,
+    required this.formatPrice,
     required this.openCalendar,
   });
 
@@ -637,7 +639,7 @@ class NewAppointmentDetail extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '${appointment.price} EUR',
+                  formatPrice(appointment.price),
                   style: const TextStyle(
                     fontSize: 14,
                     fontFamily: AppFontStyleTextStrings.regular,
@@ -662,7 +664,7 @@ class NewAppointmentDetail extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '${appointment.tax} EUR',
+                  formatPrice(appointment.tax),
                   style: const TextStyle(
                     fontSize: 14,
                     fontFamily: AppFontStyleTextStrings.regular,
@@ -689,7 +691,7 @@ class NewAppointmentDetail extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  '${appointment.total} EUR',
+                  formatPrice(appointment.total),
                   style: const TextStyle(
                     fontSize: 14,
                     fontFamily: AppFontStyleTextStrings.bold,

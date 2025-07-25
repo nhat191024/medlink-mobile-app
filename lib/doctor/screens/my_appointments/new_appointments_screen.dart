@@ -66,6 +66,7 @@ class DoctorNewAppointmentsScreen extends GetView<DoctorMyAppointmentsController
                                 checkIfDefaultAvatar: controller.checkIfDefaultAvatar,
                                 showBlurDialog: controller.showBlurDialog,
                                 acceptRejectAppointment: controller.acceptRejectAppointment,
+                                formatPrice: controller.formatPrice,
                                 openCalendar: controller.openCalendar,
                               ),
                               isScrollControlled: true,
