@@ -131,12 +131,7 @@ class ProfileScreen extends GetView<ProfileController> {
               : BorderRadius.zero,
         ),
         clipBehavior: Clip.antiAlias,
-        child: Image.network(
-          controller.userData.value.avatar,
-          fit: controller.checkIfDefaultAvatar(controller.userData.value.avatar)
-              ? BoxFit.cover
-              : BoxFit.cover,
-        ),
+        child: Image.network(controller.userData.value.avatar, fit: BoxFit.cover),
       ),
     );
   }
