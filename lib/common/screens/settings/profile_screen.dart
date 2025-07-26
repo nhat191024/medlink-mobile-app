@@ -605,13 +605,30 @@ class ProfileScreen extends GetView<ProfileController> {
             _buildRatingRow(
               Get.context!,
               testimonial.star,
-              testimonial.title,
+              _getDisplayTestimonialTitle(testimonial.title),
               double.parse(testimonial.fraction),
             ),
           ],
         ],
       ),
     );
+  }
+
+  String _getDisplayTestimonialTitle(String title) {
+    switch (title) {
+      case 'Excellent':
+        return 'excellent'.tr;
+      case 'Good':
+        return 'good'.tr;
+      case 'Average':
+        return 'average'.tr;
+      case 'Not happy':
+        return 'not_happy'.tr;
+      case 'Bad':
+        return 'bad'.tr;
+      default:
+        return title;
+    }
   }
 
   Widget _buildReviewsList() {
