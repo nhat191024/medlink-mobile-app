@@ -149,10 +149,6 @@ class PatientMyAppointmentsControllers extends GetxController
       'reason': rejectReason.text,
     });
 
-    // debugPrint(
-    //   'Accept/Reject appointment: ${appointment.id}, Status: $status, Reason: ${rejectReason.text}',
-    // );
-
     var streamedResponse = await response.send();
 
     if (streamedResponse.statusCode == 200) {
