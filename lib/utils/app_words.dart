@@ -158,6 +158,11 @@ class Words extends Translations {
           "write_support_message": "Write support message",
           "message_placeholder": "Type your message here...",
           "send_support": "Send support",
+          "confirm_complete_title": "Appointment Completed?",
+          "confirm_complete_description": "This will mark the appointment as completed and you won't be able to edit it later.",
+          "confirm_complete": "Confirm complete",
+          "appointment_rejected": "Appointment rejected successfully",
+          "appointment_cancelled": "Appointment cancelled successfully",
 
           //message screen
           "message": "Message",
@@ -446,6 +451,7 @@ class Words extends Translations {
           "typing": "Typing...",
           "send": "Send",
           "add": "Add",
+          "confirm": "Confirm",
 
           "full_name_label": "Full Name",
           "full_name_hint": "Your full name",
@@ -663,6 +669,12 @@ class Words extends Translations {
           "write_support_message": "Viết tin nhắn hỗ trợ",
           "message_placeholder": "Nhập tin nhắn của bạn ở đây...",
           "send_support": "Gửi hỗ trợ",
+          "confirm_complete_title": "Hoàn thành cuộc hẹn?",
+          "confirm_complete_description": "Điều này sẽ đánh dấu cuộc hẹn là đã hoàn thành và bạn sẽ không thể chỉnh sửa nó sau này.",
+          "confirm_complete": "Xác nhận hoàn thành",
+          "appointment_rejected": "Cuộc hẹn đã bị từ chối thành công",
+          "appointment_cancelled": "Cuộc hẹn đã bị hủy thành công",
+          "appointment_completed": "Cuộc hẹn đã hoàn thành thành công! Số dư của bạn đã được cập nhật sau 12 giờ.",
 
           //message screen
           "message": "Tin nhắn",
@@ -951,6 +963,7 @@ class Words extends Translations {
           "typing": "Đang nhập...",
           "send": "Gửi",
           "add": "Thêm",
+          "confirm": "Xác nhận",
 
           "full_name_label": "Họ tên đầy đủ",
           "full_name_hint": "Họ tên đầy đủ của bạn",
