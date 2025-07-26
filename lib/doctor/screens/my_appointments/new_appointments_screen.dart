@@ -1,8 +1,6 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/doctor/controllers/my_appointments_controller.dart';
 import 'package:medlink/components/widget/appointments/doctor/new_appointment_detail.dart';
-import 'package:medlink/components/widget/appointments/accpeted_appointment.dart';
-
 import 'package:medlink/components/button/plus.dart';
 
 class DoctorNewAppointmentsScreen extends GetView<DoctorMyAppointmentsControllers> {
@@ -259,13 +257,12 @@ class DoctorNewAppointmentsScreen extends GetView<DoctorMyAppointmentsController
                                               );
                                             },
                                             height: 42,
-                                            width: 155,
-                                            color: AppColors.white,
-                                            borderColor: AppColors.primaryText,
+                                            width: Get.width * 0.4,
+                                            color: AppColors.primary600,
                                             btnText: 'decline'.tr,
                                             fontFamily: AppFontStyleTextStrings.medium,
                                             textSize: 14,
-                                            textColor: AppColors.primaryText,
+                                            textColor: AppColors.white,
                                             topPadding: 0,
                                             bottomPadding: 0,
                                             leftPadding: 0,
@@ -276,21 +273,12 @@ class DoctorNewAppointmentsScreen extends GetView<DoctorMyAppointmentsController
                                               controller.acceptRejectAppointment(
                                                 appointment,
                                                 index,
-                                                "upconming",
+                                                "upcoming",
                                                 false,
-                                              );
-                                              Get.bottomSheet(
-                                                AcceptedAppointment(
-                                                  appointment: appointment,
-                                                  formatDate: controller.formatDate,
-                                                  checkIfDefaultAvatar:
-                                                      controller.checkIfDefaultAvatar,
-                                                ),
-                                                isScrollControlled: true,
                                               );
                                             },
                                             height: 42,
-                                            width: 155,
+                                            width: Get.width * 0.4,
                                             borderColor: AppColors.primaryText,
                                             btnText: 'accept'.tr,
                                             fontFamily: AppFontStyleTextStrings.medium,
