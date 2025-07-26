@@ -97,6 +97,7 @@ class SettingControllers extends GetxController {
   // SUPPORT STATE
   //============================================================================
   final RxBool isSupportErr = false.obs;
+  RefreshController refreshController = RefreshController(initialRefresh: false);
 
   //============================================================================
   // LOADING STATES
@@ -126,6 +127,18 @@ class SettingControllers extends GetxController {
     cardExpiry.dispose();
     cardCvv.dispose();
     super.onClose();
+  }
+
+  void onRefresh() async {
+    fetchTransactionHistory();
+    await loadInfo();
+    refreshController.refreshCompleted();
+  }
+
+  void onLoadMore() async {
+    fetchTransactionHistory();
+    await loadInfo();
+    refreshController.loadComplete();
   }
 
   //============================================================================
