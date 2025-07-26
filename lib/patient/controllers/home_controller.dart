@@ -14,6 +14,7 @@ class PatientHomeController extends GetxController {
   final RxString userType = ''.obs;
   final RxString avatar = ''.obs;
   final RxString location = ''.obs;
+  final RxString balance = ''.obs;
 
   // UI state observables
   final RxBool setup = true.obs;
@@ -60,7 +61,7 @@ class PatientHomeController extends GetxController {
     );
 
     if (response.statusCode == 200) {
-      _parseUserData(jsonDecode(response.body));
+      _updateUserData(jsonDecode(response.body));
     } else {
       throw Exception('Failed to fetch data: ${response.statusCode}');
     }
@@ -74,7 +75,7 @@ class PatientHomeController extends GetxController {
     };
   }
 
-  void _parseUserData(Map<String, dynamic> data) {
+  void _updateUserData(Map<String, dynamic> data) {
     userName.value = data['name'] ?? '';
     email.value = data['email'] ?? '';
     phone.value = data['phone'] ?? '';
@@ -88,6 +89,7 @@ class PatientHomeController extends GetxController {
     location.value = data['location'] ?? '';
     avatar.value = data['avatar'] ?? '';
     isHaveNotificationUnread.value = data['isHaveNotification'] ?? false;
+    balance.value = data['balance'] ?? '0';
   }
 
   Future<void> saveData() async {
@@ -105,6 +107,7 @@ class PatientHomeController extends GetxController {
       "userType": userType.value,
       "location": location.value,
       "identity": "patient",
+      "balance": balance.value,
     };
 
     for (final entry in userData.entries) {
