@@ -1,6 +1,7 @@
 import 'package:medlink/utils/app_imports.dart';
 import 'package:medlink/model/service_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 class ServiceController extends GetxController {
   final token = StorageService.readData(key: LocalStorageKeys.token);
@@ -211,5 +212,10 @@ class ServiceController extends GetxController {
     isServiceDurationError.value = false;
     isBufferTimeError.value = false;
     isSeatsError.value = false;
+  }
+
+  String formatPrice(int price) {
+    final formatted = NumberFormat('#,##0', 'en_US').format(price);
+    return '$formatted ${"currency".tr}';
   }
 }

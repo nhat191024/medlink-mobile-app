@@ -117,7 +117,7 @@ class MyServiceScreen extends GetView<ServiceController> {
                                   Row(
                                     children: [
                                       Text(
-                                        "${"price".tr} ${service.price} €",
+                                        "${"price".tr} ${controller.formatPrice(service.price)}",
                                         style: const TextStyle(
                                           fontSize: 14,
                                           fontFamily: AppFontStyleTextStrings.regular,
@@ -224,7 +224,7 @@ class MyServiceScreen extends GetView<ServiceController> {
                 // ),
                 const SizedBox(height: 20),
                 CustomTextField(
-                  labelText: '${"price".tr} (€)',
+                  labelText: '${"price".tr} ${"currency".tr}',
                   hintText: 'amount'.tr,
                   errorText: "price_required".tr,
                   isError: controller.isServicePriceError,
@@ -239,7 +239,7 @@ class MyServiceScreen extends GetView<ServiceController> {
                     }
                   },
                   backgroundColor: AppColors.white,
-                  suffixText: 'EUR',
+                  suffixText: "currency".tr,
                 ),
                 const SizedBox(height: 20),
                 CustomSelectWithBottomModal(
