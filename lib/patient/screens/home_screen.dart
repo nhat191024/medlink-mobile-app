@@ -171,7 +171,7 @@ class PatientHomeScreen extends GetView<PatientHomeController> {
                 fit: BoxFit.scaleDown,
               ),
             ),
-            const Text("Search by name", style: TextStyle(color: AppColors.disable, fontSize: 16)),
+            Text("search_by_name".tr, style: TextStyle(color: AppColors.disable, fontSize: 16)),
           ],
         ),
       ),
@@ -184,10 +184,10 @@ class PatientHomeScreen extends GetView<PatientHomeController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          buildMenuItem(AppImages.faceMark, "Doctors"),
-          buildMenuItem(AppImages.firstAid, "Hospital"),
-          buildMenuItem(AppImages.firstAidKit, "Pharmacy", color: AppColors.primary600),
-          buildMenuItem(AppImages.heartBeat, "Ambulance"),
+          buildMenuItem(AppImages.faceMark, "doctors".tr),
+          buildMenuItem(AppImages.firstAid, "hospitals".tr),
+          buildMenuItem(AppImages.firstAidKit, "doctors".tr, color: AppColors.primary600),
+          buildMenuItem(AppImages.heartBeat, "pharmacies".tr),
         ],
       ),
     );
@@ -195,12 +195,16 @@ class PatientHomeScreen extends GetView<PatientHomeController> {
 
   Widget _buildEventsSection() {
     return Column(
-      children: [_buildSectionHeader("Event", 4), _buildEventCard(), const SizedBox(height: 30)],
+      children: [
+        _buildSectionHeader("events".tr, 4),
+        _buildEventCard(),
+        const SizedBox(height: 30),
+      ],
     );
   }
 
   Widget _buildFavoriteDoctorsSection() {
-    return Column(children: [_buildSectionHeader("Favorite doctors", 4), _buildDoctorCards()]);
+    return Column(children: [_buildSectionHeader("favorite_doctor".tr, 4), _buildDoctorCards()]);
   }
 
   Widget _buildSectionHeader(String title, int count) {
@@ -229,10 +233,10 @@ class PatientHomeScreen extends GetView<PatientHomeController> {
             ],
           ),
         ),
-        const TextButton(
+        TextButton(
           onPressed: null,
           child: Text(
-            'See all',
+            'see_all'.tr,
             style: TextStyle(
               color: AppColors.primary600,
               fontSize: 14,
@@ -500,7 +504,7 @@ class PatientHomeScreen extends GetView<PatientHomeController> {
               borderRadius: BorderRadius.circular(30),
             ),
             child: const Text(
-              '\$50',
+              '50K',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
             ),
           ),
