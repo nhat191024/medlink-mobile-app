@@ -47,8 +47,13 @@ class ProfileScreen extends GetView<ProfileController> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         _buildProfileHeader(),
-        _buildStatsSection(),
+        if (controller.identity.value.contains('doctor')) ...[
+          _buildDoctorStatsSection(),
+        ] else ...[
+          _buildPatientStatsSection(),
+        ],
         _buildInformationSection(),
+        if (controller.identity.value.contains('patient')) _buildInsuranceSection(),
         if (controller.identity.value.contains('doctor')) _buildServiceSection(),
         _buildContactSection(),
         if (controller.testimonials.isNotEmpty) _buildTestimonialsSection(),
@@ -94,7 +99,7 @@ class ProfileScreen extends GetView<ProfileController> {
     return Center(
       child: Column(
         children: [
-          if (controller.identity.value.contains('doctor')) ...[const SizedBox(height: 80)],
+          SizedBox(height: 80),
           _buildAvatar(),
           const SizedBox(height: 15),
           Text(
@@ -105,7 +110,7 @@ class ProfileScreen extends GetView<ProfileController> {
               fontFamily: AppFontStyleTextStrings.bold,
             ),
           ),
-          if (controller.identity.value.contains('doctor'))
+          if (controller.identity.value.contains('doctor')) ...[
             Text(
               controller.userData.value.medicalCategory ?? '',
               style: const TextStyle(
@@ -114,6 +119,16 @@ class ProfileScreen extends GetView<ProfileController> {
                 fontFamily: AppFontStyleTextStrings.regular,
               ),
             ),
+          ] else ...[
+            Text(
+              '${controller.userData.value.city}, ${controller.userData.value.country}',
+              style: const TextStyle(
+                color: AppColors.secondaryText,
+                fontSize: 14,
+                fontFamily: AppFontStyleTextStrings.regular,
+              ),
+            ),
+          ],
         ],
       ),
     );
@@ -122,13 +137,11 @@ class ProfileScreen extends GetView<ProfileController> {
   Widget _buildAvatar() {
     return Obx(
       () => Container(
-        height: controller.identity.value.contains('doctor') ? 120 : Get.height * 0.3,
-        width: controller.identity.value.contains('doctor') ? 120 : Get.width,
+        height: 120,
+        width: 120,
         decoration: BoxDecoration(
           color: AppColors.primary50,
-          borderRadius: controller.identity.value.contains('doctor')
-              ? BorderRadius.circular(100)
-              : BorderRadius.zero,
+          borderRadius: BorderRadius.circular(100),
         ),
         clipBehavior: Clip.antiAlias,
         child: Image.network(controller.userData.value.avatar, fit: BoxFit.cover),
@@ -136,7 +149,7 @@ class ProfileScreen extends GetView<ProfileController> {
     );
   }
 
-  Widget _buildStatsSection() {
+  Widget _buildDoctorStatsSection() {
     return Container(
       margin: const EdgeInsets.fromLTRB(20, 15, 20, 30),
       padding: const EdgeInsets.fromLTRB(20, 15, 30, 15),
@@ -144,12 +157,11 @@ class ProfileScreen extends GetView<ProfileController> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildInfoColumn(controller.userData.value.city, 'location'.tr, AppColors.primaryText),
+          _buildInfoColumn(controller.userData.value.city, 'location'.tr),
           _buildInfoColumn(
             controller.avgTotal.toString(),
             'rating'.tr,
             needDivider: true,
-            AppColors.primaryText,
             isRating: true,
             rateCount: controller.reviewCounts.value,
           ),
@@ -157,9 +169,46 @@ class ProfileScreen extends GetView<ProfileController> {
             controller.userData.value.isAvailable == true ? 'available'.tr : 'busy'.tr,
             'schedule'.tr,
             needDivider: true,
-            controller.userData.value.isAvailable == true
+            bottomTextColor: controller.userData.value.isAvailable == true
                 ? AppColors.successMain
                 : AppColors.errorMain,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPatientStatsSection() {
+    return Container(
+      margin: const EdgeInsets.fromLTRB(20, 15, 20, 30),
+      padding: const EdgeInsets.fromLTRB(20, 15, 30, 15),
+      decoration: BoxDecoration(color: AppColors.white, borderRadius: BorderRadius.circular(18)),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildInfoColumn(
+            'age'.tr,
+            '${controller.userData.value.age.toString()} ${'age'.tr}',
+            topTextColor: AppColors.primary600,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+          _buildInfoColumn(
+            'gender'.tr,
+            controller.userData.value.gender,
+            topTextColor: AppColors.primary600,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+          _buildInfoColumn(
+            'height'.tr,
+            '${controller.userData.value.height.toString()} cm',
+            topTextColor: AppColors.primary600,
+            crossAxisAlignment: CrossAxisAlignment.center,
+          ),
+          _buildInfoColumn(
+            'weight'.tr,
+            '${controller.userData.value.weight.toString()} kg',
+            topTextColor: AppColors.primary600,
+            crossAxisAlignment: CrossAxisAlignment.center,
           ),
         ],
       ),
@@ -181,7 +230,12 @@ class ProfileScreen extends GetView<ProfileController> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildIntroductionSection(),
+              if (controller.identity.value.contains('doctor')) ...[
+                _buildIntroductionSection(),
+              ] else ...[
+                _buildBloodGroupSection(),
+              ],
+              if (controller.identity.value.contains('patient')) _buildMedicalProblemSection(),
               const SizedBox(height: 15),
               _buildLanguageSection(),
             ],
@@ -210,6 +264,159 @@ class ProfileScreen extends GetView<ProfileController> {
             color: AppColors.secondaryText,
             fontSize: 14,
             fontFamily: AppFontStyleTextStrings.regular,
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBloodGroupSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          'blood_group_label'.tr,
+          style: const TextStyle(
+            color: AppColors.primaryText,
+            fontSize: 14,
+            fontFamily: AppFontStyleTextStrings.medium,
+          ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          children: [
+            Image.asset(AppImages.blood),
+            const SizedBox(width: 5),
+            Text(
+              controller.userData.value.bloodGroup ?? '',
+              style: const TextStyle(
+                color: AppColors.primaryText,
+                fontSize: 14,
+                fontFamily: AppFontStyleTextStrings.regular,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMedicalProblemSection() {
+    return Padding(
+      padding: const EdgeInsets.only(top: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'medical_problem'.tr,
+            style: const TextStyle(
+              color: AppColors.primaryText,
+              fontSize: 14,
+              fontFamily: AppFontStyleTextStrings.medium,
+            ),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            controller.userData.value.medicalHistory ?? '',
+            style: const TextStyle(
+              color: AppColors.secondaryText,
+              fontSize: 14,
+              fontFamily: AppFontStyleTextStrings.regular,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildInsuranceSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _buildSectionTitle('insurance'.tr),
+        Container(
+          margin: const EdgeInsets.fromLTRB(20, 15, 20, 20),
+          padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(24),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "insurance_number".tr,
+                style: const TextStyle(
+                  color: AppColors.secondaryText,
+                  fontSize: 12,
+                  fontFamily: AppFontStyleTextStrings.regular,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                controller.userData.value.insuranceNumber ?? "",
+                style: const TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 14,
+                  fontFamily: AppFontStyleTextStrings.medium,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "insurance_registry".tr,
+                style: const TextStyle(
+                  color: AppColors.secondaryText,
+                  fontSize: 12,
+                  fontFamily: AppFontStyleTextStrings.regular,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                controller.userData.value.insuranceRegistry ?? 'not_setup'.tr,
+                style: const TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 14,
+                  fontFamily: AppFontStyleTextStrings.medium,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "insurance_issuer".tr,
+                style: const TextStyle(
+                  color: AppColors.secondaryText,
+                  fontSize: 12,
+                  fontFamily: AppFontStyleTextStrings.regular,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                controller.userData.value.insuranceIssuer ?? 'not_setup'.tr,
+                style: const TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 14,
+                  fontFamily: AppFontStyleTextStrings.medium,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                "insurance_vaild_from".tr,
+                style: const TextStyle(
+                  color: AppColors.secondaryText,
+                  fontSize: 12,
+                  fontFamily: AppFontStyleTextStrings.regular,
+                ),
+              ),
+              const SizedBox(height: 4),
+              Text(
+                controller.userData.value.insuranceVaildFrom ?? 'not_setup'.tr,
+                style: const TextStyle(
+                  color: AppColors.primaryText,
+                  fontSize: 14,
+                  fontFamily: AppFontStyleTextStrings.medium,
+                ),
+              ),
+            ],
           ),
         ),
       ],
@@ -299,11 +506,19 @@ class ProfileScreen extends GetView<ProfileController> {
               const SizedBox(height: 15),
               _buildContactItem('email_label'.tr, controller.userData.value.email, AppImages.email),
               const SizedBox(height: 15),
-              _buildContactItem(
-                'location'.tr,
-                controller.userData.value.officeAddress ?? '',
-                AppImages.mapPinLine,
-              ),
+              if (controller.identity.value.contains('doctor')) ...[
+                _buildContactItem(
+                  'location'.tr,
+                  controller.userData.value.officeAddress ?? '',
+                  AppImages.mapPinLine,
+                ),
+              ] else ...[
+                _buildContactItem(
+                  'location'.tr,
+                  controller.userData.value.address,
+                  AppImages.mapPinLine,
+                ),
+              ],
               const SizedBox(height: 15),
               Image.asset('assets/images/mapDemo.png'),
             ],
@@ -507,11 +722,13 @@ class ProfileScreen extends GetView<ProfileController> {
 
   Widget _buildInfoColumn(
     String bottomText,
-    String topText,
-    Color color, {
+    String topText, {
+    Color topTextColor = AppColors.secondaryText,
+    Color bottomTextColor = AppColors.primaryText,
     bool isRating = false,
     bool needDivider = false,
     int rateCount = 0,
+    CrossAxisAlignment crossAxisAlignment = CrossAxisAlignment.start,
   }) {
     return Row(
       children: [
@@ -521,12 +738,12 @@ class ProfileScreen extends GetView<ProfileController> {
         ],
         Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start, // Đặt alignment phù hợp
+          crossAxisAlignment: crossAxisAlignment,
           children: [
             Text(
               topText,
-              style: const TextStyle(
-                color: AppColors.secondaryText,
+              style: TextStyle(
+                color: topTextColor,
                 fontSize: 12,
                 fontFamily: AppFontStyleTextStrings.regular,
               ),
@@ -540,7 +757,7 @@ class ProfileScreen extends GetView<ProfileController> {
                       Text(
                         bottomText,
                         style: TextStyle(
-                          color: color,
+                          color: bottomTextColor,
                           fontSize: 14,
                           fontFamily: AppFontStyleTextStrings.medium,
                         ),
@@ -559,7 +776,7 @@ class ProfileScreen extends GetView<ProfileController> {
                 : Text(
                     bottomText,
                     style: TextStyle(
-                      color: color,
+                      color: bottomTextColor,
                       fontSize: 14,
                       fontFamily: AppFontStyleTextStrings.medium,
                     ),
@@ -734,7 +951,7 @@ class ProfileScreen extends GetView<ProfileController> {
   }
 
   void _handleEditProfile() {
-    controller.loadDataToEdit();
+    controller.loadDoctorDataToEdit();
     Get.toNamed(Routes.profileEditScreen);
   }
 }
