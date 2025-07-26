@@ -1,18 +1,25 @@
 import 'package:medlink/model/appointment_model.dart';
 import 'package:medlink/utils/app_imports.dart';
 
+import 'package:medlink/components/button/plus.dart';
+import 'package:medlink/components/widget/notification_modal.dart';
+
 class HistoryAppointmentDetail extends StatelessWidget {
   final AppointmentModel appointment;
+  final int index;
   final Function(String) formatDate;
   final Function(String) checkIfDefaultAvatar;
   final Function(int) formatPrice;
+  final Function(AppointmentModel, int, String, bool) acceptRejectAppointment;
 
   const HistoryAppointmentDetail({
     super.key,
     required this.appointment,
+    required this.index,
     required this.formatDate,
     required this.checkIfDefaultAvatar,
     required this.formatPrice,
+    required this.acceptRejectAppointment,
   });
 
   @override
@@ -66,6 +73,12 @@ class HistoryAppointmentDetail extends StatelessWidget {
                 _PatientInfo(appointment: appointment),
                 _BillDetail(appointment: appointment, formatPrice: formatPrice),
                 _PaymentInfo(appointment: appointment),
+                if (appointment.status == "waiting")
+                  _BuildActionButtons(
+                    appointment: appointment,
+                    index: index,
+                    acceptRejectAppointment: acceptRejectAppointment,
+                  ),
               ],
             ),
           ),
@@ -796,6 +809,41 @@ class _PaymentInfo extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _BuildActionButtons extends StatelessWidget {
+  final AppointmentModel appointment;
+  final int index;
+  final Function(AppointmentModel appointment, int index, String status, bool isUpcoming)
+  acceptRejectAppointment;
+
+  const _BuildActionButtons({
+    required this.appointment,
+    required this.index,
+    required this.acceptRejectAppointment,
+  });
+  @override
+  Widget build(BuildContext context) {
+    return CustomButtonPlus(
+      onTap: () => NotificationModal.showInfo(
+        context: context,
+        title: 'confirm_complete_title'.tr,
+        message: 'confirm_complete_description'.tr,
+        autoClose: false,
+        actionText: 'confirm'.tr,
+        onAction: () => {
+          acceptRejectAppointment(appointment, index, 'completed', false),
+          Get.back(),
+        },
+      ),
+      height: 50,
+      color: AppColors.primaryText,
+      btnText: 'confirm_complete'.tr,
+      fontFamily: AppFontStyleTextStrings.bold,
+      textSize: 16,
+      textColor: AppColors.white,
     );
   }
 }

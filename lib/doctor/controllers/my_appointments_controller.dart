@@ -9,6 +9,8 @@ import 'package:medlink/components/widget/appointments/doctor/history_appointmen
 import 'package:medlink/components/widget/appointments/doctor/upcoming_appointment_detail.dart';
 import 'package:medlink/components/widget/appointments/doctor/blur_dialog.dart';
 
+import 'package:medlink/components/widget/appointments/accpeted_appointment.dart';
+
 class DoctorMyAppointmentsControllers extends GetxController
     with GetSingleTickerProviderStateMixin {
   final homeController = Get.find<DoctorHomeController>();
@@ -53,8 +55,6 @@ class DoctorMyAppointmentsControllers extends GetxController
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
       currentTime.value = DateTime.now();
     });
-    ever(selectedHistoryAppointmentId, (_) => showHistoryDetail(Get.context!));
-    ever(selectedUpcomingAppointmentId, (_) => showUpcomingDetail(Get.context!));
   }
 
   @override
@@ -74,24 +74,6 @@ class DoctorMyAppointmentsControllers extends GetxController
   void onLoadMore() async {
     fetchData();
     refreshController.loadComplete();
-  }
-
-  //=================
-  //DETAIL METHODS
-  //=================
-  void showHistoryDetail(BuildContext context) {
-    var appointment = historyAppointments.firstWhere(
-      (element) => element.id == selectedHistoryAppointmentId.value,
-    );
-    buildHistoryAppointmentDetail(context, appointment);
-  }
-
-  void showUpcomingDetail(BuildContext context) {
-    var appointment = upcomingAppointments.firstWhere(
-      (element) => element.id == selectedUpcomingAppointmentId.value,
-    );
-    var index = upcomingAppointments.indexOf(appointment);
-    buildUpcomingAppointmentDetail(context, appointment, index);
   }
 
   //=================
@@ -151,55 +133,101 @@ class DoctorMyAppointmentsControllers extends GetxController
     bool isUpcoming,
   ) async {
     final uri = Uri.parse('${Apis.api}appointments/status');
-    final response = http.MultipartRequest("POST", uri);
-    response.headers['Authorization'] = 'Bearer $token';
-    response.headers['Accept'] = 'application/json';
-    response.headers['Content-Type'] = 'application/json';
+    final request = http.MultipartRequest("POST", uri)
+      ..headers['Authorization'] = 'Bearer $token'
+      ..headers['Accept'] = 'application/json'
+      ..headers['Content-Type'] = 'application/json';
 
-    if (status.contains("upcoming")) {
-      response.fields.addAll({'appointment_id': appointment.id, 'status': 'upcoming'});
+    Map<String, String> fields = {'appointment_id': appointment.id, 'status': status};
 
-      var streamedResponse = await response.send();
+    if (status.contains('rejected') || status.contains('cancelled')) {
+      fields['reason'] = rejectReason.text;
+    }
 
-      if (streamedResponse.statusCode == 200) {
-        homeController.booking.value -= 1;
-        homeController.upcoming.value += 1;
-        upcomingAppointments.add(appointment.copyWith(status: status));
-        upcomingQuantity.value = upcomingQuantity.value + 1;
-        newQuantity.value = newQuantity.value - 1;
-        newAppointments.removeAt(index);
+    request.fields.addAll(fields);
 
-        Get.snackbar(
-          'success'.tr,
-          'appointment_accepted'.tr,
-          snackPosition: SnackPosition.BOTTOM,
-          backgroundColor: AppColors.successLight,
-          colorText: AppColors.white,
-        );
+    for (final field in request.fields.entries) {
+      debugPrint('${field.key}: ${field.value}');
+    }
+
+    var streamedResponse = await request.send();
+
+    if (streamedResponse.statusCode == 200) {
+      switch (status) {
+        case 'upcoming':
+          debugPrint('upcoming appointment accepted');
+          homeController.booking.value--;
+          homeController.upcoming.value++;
+          upcomingAppointments.add(appointment.copyWith(status: 'upcoming'));
+          upcomingQuantity.value++;
+          newAppointments.removeAt(index);
+          newQuantity.value--;
+          Get.bottomSheet(
+            AcceptedAppointment(
+              appointment: appointment,
+              formatDate: formatDate,
+              checkIfDefaultAvatar: checkIfDefaultAvatar,
+            ),
+            isScrollControlled: true,
+          );
+          break;
+        case 'rejected':
+          debugPrint('appointment rejected');
+          homeController.booking.value--;
+          historyAppointments.add(appointment.copyWith(status: status, reason: rejectReason.text));
+          historyQuantity.value++;
+          newAppointments.removeAt(index);
+          newQuantity.value--;
+          Get.back();
+          Get.snackbar(
+            'success'.tr,
+            'appointment_rejected'.tr,
+            backgroundColor: AppColors.white,
+            colorText: AppColors.successMain,
+          );
+          rejectReason.text = "";
+          break;
+        case 'cancelled':
+          debugPrint('appointment cancelled');
+          homeController.upcoming.value--;
+          historyAppointments.add(appointment.copyWith(status: status, reason: rejectReason.text));
+          upcomingAppointments.removeAt(index);
+          historyQuantity.value++;
+          upcomingQuantity.value--;
+          Get.back();
+          Get.snackbar(
+            'success'.tr,
+            'appointment_cancelled'.tr,
+            backgroundColor: AppColors.successMain,
+            colorText: AppColors.white,
+          );
+          rejectReason.text = "";
+          break;
+        case 'completed':
+          debugPrint('appointment completed');
+          historyAppointments.add(appointment.copyWith(status: status));
+          historyAppointments.removeAt(index);
+          Get.back();
+          Get.snackbar(
+            'success'.tr,
+            'appointment_completed'.tr,
+            backgroundColor: AppColors.successMain,
+            colorText: AppColors.white,
+          );
+          break;
+        default:
+          Get.snackbar(
+            'error'.tr,
+            'unknown_status_error'.tr,
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: AppColors.errorLight,
+            colorText: AppColors.white,
+          );
       }
     } else {
-      response.fields.addAll({
-        'appointment_id': appointment.id,
-        'status': status,
-        'reason': rejectReason.text,
-      });
-
-      var streamedResponse = await response.send();
-
-      if (streamedResponse.statusCode == 200) {
-        historyAppointments.add(appointment.copyWith(status: status, reason: rejectReason.text));
-        if (isUpcoming) {
-          homeController.upcoming.value -= 1;
-          upcomingQuantity.value = upcomingQuantity.value - 1;
-          upcomingAppointments.removeAt(index);
-        } else {
-          homeController.booking.value -= 1;
-          newQuantity.value = newQuantity.value - 1;
-          newAppointments.removeAt(index);
-        }
-        historyQuantity.value = historyQuantity.value + 1;
-        rejectReason.text = "";
-      }
+      debugPrint('Error: ${streamedResponse.statusCode}');
+      var json = await streamedResponse.stream.bytesToString();
+      debugPrint('Response: $json');
     }
   }
 
@@ -371,13 +399,19 @@ class DoctorMyAppointmentsControllers extends GetxController
     );
   }
 
-  Future buildHistoryAppointmentDetail(BuildContext context, AppointmentModel appointment) {
+  Future buildHistoryAppointmentDetail(
+    BuildContext context,
+    AppointmentModel appointment,
+    int index,
+  ) {
     return Get.bottomSheet(
       HistoryAppointmentDetail(
         appointment: appointment,
+        index: index,
         formatDate: formatDate,
         checkIfDefaultAvatar: checkIfDefaultAvatar,
         formatPrice: formatPrice,
+        acceptRejectAppointment: acceptRejectAppointment,
       ),
       isScrollControlled: true,
     );

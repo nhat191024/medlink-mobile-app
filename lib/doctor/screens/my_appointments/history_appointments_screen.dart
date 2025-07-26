@@ -55,7 +55,7 @@ class HistoryAppointmentsScreen extends GetView<DoctorMyAppointmentsControllers>
                             .toList()[index];
                         return GestureDetector(
                           onTap: () {
-                            controller.buildHistoryAppointmentDetail(context, appointment);
+                            controller.buildHistoryAppointmentDetail(context, appointment, index);
                           },
                           child: Card(
                             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
