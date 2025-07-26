@@ -58,9 +58,9 @@ class HistoryAppointmentDetail extends StatelessWidget {
                     ],
                   ),
                 ),
-                if (appointment.status == "1")
+                if (appointment.status == "rejected")
                   _ReasonCard(title: 'reason_to_reject'.tr, reason: appointment.reason),
-                if (appointment.status == "0")
+                if (appointment.status == "cancelled")
                   _ReasonCard(title: 'reason_to_cancel'.tr, reason: appointment.reason),
                 _MedicalProblem(medicalProblem: appointment.medicalProblem),
                 _PatientInfo(appointment: appointment),
@@ -100,7 +100,7 @@ class _StatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (appointment.status == "4") {
+    if (appointment.status == "completed") {
       return Container(
         padding: const EdgeInsets.fromLTRB(10, 6, 10, 6),
         decoration: BoxDecoration(
@@ -122,7 +122,7 @@ class _StatusBadge extends StatelessWidget {
           ],
         ),
       );
-    } else if (appointment.status == "1") {
+    } else if (appointment.status == "rejected") {
       return Container(
         padding: const EdgeInsets.fromLTRB(10, 6, 10, 6),
         decoration: BoxDecoration(

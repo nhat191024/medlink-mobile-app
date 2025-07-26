@@ -111,7 +111,7 @@ class HistoryAppointmentsScreen extends GetView<DoctorMyAppointmentsControllers>
                                           ],
                                         ),
                                         const Spacer(),
-                                        if (appointment.status == "4") ...[
+                                        if (appointment.status == "completed") ...[
                                           Container(
                                             padding: const EdgeInsets.fromLTRB(10, 6, 10, 6),
                                             decoration: BoxDecoration(
@@ -133,7 +133,7 @@ class HistoryAppointmentsScreen extends GetView<DoctorMyAppointmentsControllers>
                                               ],
                                             ),
                                           )
-                                        ] else if (appointment.status == "1") ...[
+                                        ] else if (appointment.status == "rejected") ...[
                                           Container(
                                             padding: const EdgeInsets.fromLTRB(10, 6, 10, 6),
                                             decoration: BoxDecoration(
