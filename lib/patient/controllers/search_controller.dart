@@ -211,4 +211,9 @@ class SearchHeathCareController extends GetxController {
   bool checkIfDefaultAvatar(String avatar) {
     return avatar.split('/').last.contains('default.png');
   }
+
+  String formatPrice(int price) {
+    final formatted = NumberFormat('#,##0', 'en_US').format(price);
+    return '$formatted ${"currency".tr}';
+  }
 }

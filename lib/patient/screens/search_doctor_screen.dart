@@ -142,12 +142,27 @@ class SearchDoctorScreen extends GetView<SearchHeathCareController> {
 
   Widget _buildCategoryLabel(String name) {
     return Text(
-      name,
+      getCategoryName(name),
       style: const TextStyle(
         fontSize: _categoryFontSize,
         fontFamily: AppFontStyleTextStrings.medium,
       ),
     );
+  }
+
+  String getCategoryName(String name) {
+    switch (name) {
+      case "Doctors":
+        return "doctors".tr;
+      case "Hospitals":
+        return "hospitals".tr;
+      case "Pharmacy":
+        return "pharmacies".tr;
+      case "Ambulance":
+        return "ambulances".tr;
+      default:
+        return name;
+    }
   }
 
   ButtonStyle _getCategoryButtonStyle(String categoryName) {
@@ -338,6 +353,7 @@ class SearchDoctorScreen extends GetView<SearchHeathCareController> {
           testimonials: doctor.testimonials,
           topReviews: doctor.topReviews,
           timeSlots: doctor.workSchedule,
+          formatPrice: controller.formatPrice,
         ),
       ),
     );
