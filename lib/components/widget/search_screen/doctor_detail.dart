@@ -30,6 +30,7 @@ class DoctorDetail extends StatelessWidget {
   final List<TestimonialsModel> testimonials;
   final List<TopReviewModel> topReviews;
   final WorkScheduleModel timeSlots;
+  final Function(int)? formatPrice;
 
   DoctorDetail({
     super.key,
@@ -49,6 +50,7 @@ class DoctorDetail extends StatelessWidget {
     required this.testimonials,
     required this.topReviews,
     required this.timeSlots,
+    this.formatPrice,
   });
 
   // Factory constructor to create from DoctorModel
@@ -502,7 +504,7 @@ class DoctorDetail extends StatelessWidget {
           for (var testimonial in testimonials) ...[
             _buildRatingRow(
               testimonial.star,
-              testimonial.title,
+              _getDisplayTestimonialTitle(testimonial.title),
               double.tryParse(testimonial.fraction) ?? 0.0,
             ),
           ],
@@ -511,6 +513,23 @@ class DoctorDetail extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _getDisplayTestimonialTitle(String title) {
+    switch (title) {
+      case 'Excellent':
+        return 'excellent'.tr;
+      case 'Good':
+        return 'good'.tr;
+      case 'Average':
+        return 'average'.tr;
+      case 'Not happy':
+        return 'not_happy'.tr;
+      case 'Bad':
+        return 'bad'.tr;
+      default:
+        return title;
+    }
   }
 
   List<Widget> _buildReviewCards() {
@@ -995,7 +1014,7 @@ class DoctorDetail extends StatelessWidget {
 
   Widget _buildServicePrice(ServiceModel service) {
     return Text(
-      '\$${service.price}',
+      formatPrice!(service.price),
       style: const TextStyle(
         color: AppColors.primaryText,
         fontSize: _bodyFontSize,

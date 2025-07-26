@@ -270,7 +270,7 @@ class DoctorCard extends StatelessWidget {
         ),
         SizedBox(height: 4),
         Text(
-          "\$$minPrice",
+          controller.formatPrice(minPrice),
           style: const TextStyle(
             color: AppColors.primaryText,
             fontSize: _titleFontSize,
