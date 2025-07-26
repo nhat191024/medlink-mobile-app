@@ -160,7 +160,21 @@ class DoctorWalletHeader extends StatelessWidget {
                 ),
               ),
             ),
-            _buildActionButtons(),
+            if (controller.identity.value.contains('doctor')) ...[
+              _buildActionButtons(),
+            ] else ...[
+              CustomButtonPlus(
+                onTap: () => _addBalanceModal(Get.context!, 'add_balance'.tr),
+                btnText: "add_balance".tr,
+                color: AppColors.white,
+                textColor: AppColors.primaryText,
+                width: Get.width * 0.75,
+                height: 44,
+                topPadding: 20,
+                leftPadding: 0,
+                rightPadding: 5,
+              ),
+            ],
           ],
         ),
       ),
@@ -377,7 +391,9 @@ class DoctorWalletHeader extends StatelessWidget {
                 ),
               ),
               Text(
-                transaction.type == 2 ? '-${controller.formatPrice(transaction.amount)}' : '+${controller.formatPrice(transaction.amount)}',
+                transaction.type == 2
+                    ? '-${controller.formatPrice(transaction.amount)}'
+                    : '+${controller.formatPrice(transaction.amount)}',
                 style: TextStyle(
                   color: transaction.type == 2 ? AppColors.primary600 : AppColors.infoMain,
                   fontSize: 14,
