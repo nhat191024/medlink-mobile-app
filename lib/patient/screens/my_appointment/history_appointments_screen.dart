@@ -51,8 +51,7 @@ class PatientHistoryAppointmentsScreen extends GetView<PatientMyAppointmentsCont
                       padding: const EdgeInsets.only(top: 10),
                       itemCount: controllers.historyAppointments.length,
                       itemBuilder: (context, index) {
-                        final appointment = controllers.historyAppointments.reversed
-                            .toList()[index];
+                        final appointment = controllers.historyAppointments.toList()[index];
                         return GestureDetector(
                           onTap: () {
                             controller.buildHistoryAppointmentDetail(context, appointment);
@@ -300,7 +299,9 @@ class PatientHistoryAppointmentsScreen extends GetView<PatientMyAppointmentsCont
                                                 ),
                                               ),
                                             ),
-                                          ] else if (appointment.meetType.contains("Khám tại phòng khám")) ...[
+                                          ] else if (appointment.meetType.contains(
+                                            "Khám tại phòng khám",
+                                          )) ...[
                                             Flexible(
                                               child: Text(
                                                 appointment.officeAddress,
