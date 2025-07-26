@@ -1,6 +1,8 @@
 import 'package:medlink/model/appointment_model.dart';
 import 'package:medlink/utils/app_imports.dart';
 
+import 'package:medlink/components/button/plus.dart';
+
 class UpcomingAppointmentDetail extends StatelessWidget {
   final AppointmentModel appointment;
   final int index;
@@ -660,59 +662,17 @@ class UpcomingAppointmentDetail extends StatelessWidget {
   }
 
   Widget _buildActionButtons(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-      child: Row(
-        children: [
-          Expanded(
-            child: GestureDetector(
-              onTap: () {
-                showBlurDialog(context, appointment, index, "rejected", true, true);
-              },
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: AppColors.primary400,
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  "reject".tr,
-                  style: const TextStyle(
-                    color: AppColors.white,
-                    fontSize: 16,
-                    fontFamily: AppFontStyleTextStrings.medium,
-                  ),
-                ),
-              ),
-            ),
-          ),
-          const SizedBox(width: 15),
-          Expanded(
-            child: GestureDetector(
-              onTap: () {
-                showBlurDialog(context, appointment, index, "cancelled", true, false);
-              },
-              child: Container(
-                height: 50,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: AppColors.disable,
-                ),
-                alignment: Alignment.center,
-                child: Text(
-                  "cancel".tr,
-                  style: const TextStyle(
-                    color: AppColors.white,
-                    fontSize: 16,
-                    fontFamily: AppFontStyleTextStrings.medium,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+    return CustomButtonPlus(
+      onTap: () {
+        showBlurDialog(context, appointment, index, "cancelled", false, false);
+      },
+      height: 50,
+      width: double.infinity,
+      color: AppColors.primaryText,
+      btnText: 'cancel'.tr,
+      fontFamily: AppFontStyleTextStrings.medium,
+      textSize: 14,
+      textColor: AppColors.white,
     );
   }
 }
