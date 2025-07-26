@@ -159,10 +159,12 @@ class WorkSchedulesScreen extends GetView<WorkSchedulesController> {
             child: SizedBox(width: 10, child: Divider(thickness: 1, color: AppColors.primaryText)),
           ),
           Expanded(
-            child: _buildTimeField(
-              timeSlot.endTime,
-              isStartTime: false,
-              startTime: timeSlot.startTime.value,
+            child: Obx(
+              () => _buildTimeField(
+                timeSlot.endTime,
+                isStartTime: false,
+                startTime: timeSlot.startTime.value,
+              ),
             ),
           ),
           IconButton(
@@ -187,7 +189,6 @@ class WorkSchedulesScreen extends GetView<WorkSchedulesController> {
 
         if (pickedTime != null) {
           final formattedTime = controller.formatTimeOfDay(pickedTime);
-
           if (isStartTime) {
             timeObservable.value = formattedTime;
           } else {
