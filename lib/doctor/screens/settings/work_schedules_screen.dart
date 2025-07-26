@@ -87,19 +87,19 @@ class WorkSchedulesScreen extends GetView<WorkSchedulesController> {
   String _getDayDisplayName(String day) {
     switch (day) {
       case 'Monday':
-        return 'Thứ Hai';
+        return 'monday'.tr;
       case 'Tuesday':
-        return 'Thứ Ba';
+        return 'tuesday'.tr;
       case 'Wednesday':
-        return 'Thứ Tư';
+        return 'wednesday'.tr;
       case 'Thursday':
-        return 'Thứ Năm';
+        return 'thursday'.tr;
       case 'Friday':
-        return 'Thứ Sáu';
+        return 'friday'.tr;
       case 'Saturday':
-        return 'Thứ Bảy';
+        return 'saturday'.tr;
       case 'Sunday':
-        return 'Chủ Nhật';
+        return 'sunday'.tr;
       default:
         return day;
     }
