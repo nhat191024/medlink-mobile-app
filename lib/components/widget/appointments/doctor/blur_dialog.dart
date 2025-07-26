@@ -121,7 +121,6 @@ class BlurDialog {
                           onTap: () {
                             if (rejectReason.text.isNotEmpty) {
                               onAcceptReject(appointment, index, status, isUpcoming);
-                              rejectReason.text = "";
                               rejectError.value = false;
                               Get.back();
                             } else {
