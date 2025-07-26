@@ -152,12 +152,27 @@ class SearchCategoryScreen extends GetView<SearchHeathCareController> {
     return Obx(
       () => GridCategory(
         onTap: () => _onCategoryTap(item),
-        name: item['name'],
+        name: getCategoryName(item['name']),
         icon: item['image'],
         isSelected: controller.selectedCategory == item['name'],
         numberOfResults: item['result'],
       ),
     );
+  }
+
+  String getCategoryName(String name) {
+    switch (name) {
+      case "Doctors":
+        return "doctors".tr;
+      case "Hospitals":
+        return "hospitals".tr;
+      case "Pharmacy":
+        return "pharmacies".tr;
+      case "Ambulance":
+        return "ambulances".tr;
+      default:
+        return name;
+    }
   }
 
   void _onCategoryTap(Map<String, dynamic> item) {
