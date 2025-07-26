@@ -100,7 +100,29 @@ class _StatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (appointment.status == "completed") {
+    if (appointment.status == "waiting") {
+      return Container(
+        padding: const EdgeInsets.fromLTRB(10, 6, 10, 6),
+        decoration: BoxDecoration(
+          color: AppColors.otherColor3,
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: Row(
+          children: [
+            SvgPicture.asset(AppImages.checkBroken),
+            const SizedBox(width: 5),
+            Text(
+              "waiting".tr,
+              style: const TextStyle(
+                fontSize: 13,
+                fontFamily: AppFontStyleTextStrings.medium,
+                color: AppColors.white,
+              ),
+            ),
+          ],
+        ),
+      );
+    } else if (appointment.status == "completed") {
       return Container(
         padding: const EdgeInsets.fromLTRB(10, 6, 10, 6),
         decoration: BoxDecoration(
