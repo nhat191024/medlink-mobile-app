@@ -2,7 +2,7 @@ import 'package:medlink/utils/app_imports.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 
-import 'package:medlink/model/doctor_profile_model.dart';
+import 'package:medlink/model/user_profile_model.dart';
 import 'package:medlink/model/language_model.dart';
 import 'package:medlink/model/service_model.dart';
 import 'package:medlink/model/testimonials_model.dart';
@@ -22,15 +22,15 @@ class ProfileController extends GetxController {
   //========================================
   // USER DATA
   //========================================
-  Rx<DoctorProfileModel> userData = DoctorProfileModel(
+  Rx<UserProfileModel> userData = UserProfileModel(
     id: 0,
-    phone: '',
+    phone: 'not_setup'.tr,
     userType: '',
-    email: '',
+    email: 'not_setup'.tr,
     identity: '',
     latitude: '',
     longitude: '',
-    name: '',
+    name: 'not_setup'.tr,
     gender: '',
     avatar: '',
     address: '',
@@ -39,14 +39,6 @@ class ProfileController extends GetxController {
     state: '',
     zipCode: '',
     status: '',
-    doctorProfileId: 0,
-    professionalNumber: '',
-    introduce: '',
-    medicalCategory: '',
-    officeAddress: '',
-    companyName: '',
-    profileCompleteness: 0.0,
-    isAvailable: false,
   ).obs;
 
   //========================================
@@ -153,12 +145,17 @@ class ProfileController extends GetxController {
     final data = jsonDecode(response.body);
 
     _processLanguages(data['languages']);
-    _processServices(data['services']);
-    _processReviews(data['reviews'], data['allReviews']);
-    _processTestimonials(data['testimonials']);
-    _processRatings(data);
+    if (identity.value == "doctor") {
+      _processServices(data['services']);
+      _processReviews(data['reviews'], data['allReviews']);
+      _processTestimonials(data['testimonials']);
+      _processRatings(data);
+      userData.value = UserProfileModel.fromDoctorApiJson(data);
+    } else {
+      userData.value = UserProfileModel.fromPatientApiJson(data);
+      debugPrint('User data processed: ${userData.value.toJson()}');
+    }
 
-    userData.value = DoctorProfileModel.fromJson(data);
     isLoading.value = false;
   }
 
@@ -230,7 +227,7 @@ class ProfileController extends GetxController {
   //========================================
   // EDIT PROFILE METHODS
   //========================================
-  void loadDataToEdit() {
+  void loadDoctorDataToEdit() {
     _loadPhoneData();
     _loadBasicInfo();
     _loadProfessionalInfo();
@@ -256,25 +253,25 @@ class ProfileController extends GetxController {
   void _loadBasicInfo() {
     fullName.text = userData.value.name == "not_setup".tr ? "" : userData.value.name;
     gender.value = userData.value.gender == "not_setup".tr ? "" : userData.value.gender;
-    introduce.text = userData.value.introduce == "not_setup".tr ? "" : userData.value.introduce;
+    introduce.text = (userData.value.introduce == "not_setup".tr ? "" : userData.value.introduce)!;
   }
 
   void _loadProfessionalInfo() {
-    professionalNo.text = userData.value.professionalNumber == "not_setup".tr
+    professionalNo.text = (userData.value.professionalNumber == "not_setup".tr
         ? ""
-        : userData.value.professionalNumber;
-    medicalCategory.value = userData.value.medicalCategory == "not_setup".tr
+        : userData.value.professionalNumber)!;
+    medicalCategory.value = (userData.value.medicalCategory == "not_setup".tr
         ? ""
-        : userData.value.medicalCategory;
-    companyName.text = userData.value.companyName == "not_setup".tr
+        : userData.value.medicalCategory)!;
+    companyName.text = (userData.value.companyName == "not_setup".tr
         ? ""
-        : userData.value.companyName;
+        : userData.value.companyName)!;
   }
 
   void _loadLocationInfo() {
-    officeAddress.text = userData.value.officeAddress == "not_setup".tr
+    officeAddress.text = (userData.value.officeAddress == "not_setup".tr
         ? ""
-        : userData.value.officeAddress;
+        : userData.value.officeAddress)!;
 
     country.text = userData.value.country == "not_setup".tr ? "" : userData.value.country;
     city.text = userData.value.city == "not_setup".tr ? "" : userData.value.city;
@@ -315,7 +312,7 @@ class ProfileController extends GetxController {
     // Basic fields
     request.fields['useDefaultAvatar'] = _getDefaultAvatarFlag();
     request.fields['user_type'] = userData.value.userType;
-    request.fields['identity'] = userData.value.identity;
+    request.fields['identity'] = userData.value.identity!;
     request.fields['name'] = fullName.text;
     request.fields['gender'] = gender.value;
     request.fields['languages'] = jsonEncode(languages.map((lang) => lang.toJson()).toList());
@@ -502,7 +499,7 @@ class ProfileController extends GetxController {
 
   String get userName => userData.value.name;
 
-  double get profileCompleteness => userData.value.profileCompleteness;
+  double? get profileCompleteness => userData.value.profileCompleteness;
 
   //========================================
   // LIFECYCLE METHODS
