@@ -30,8 +30,6 @@ class WebViewController extends GetxController {
   void setData(int id, String type) {
     transactionId = id;
     userType = type;
-
-    debugPrint('setData called with transactionId: $transactionId and userType: $userType');
   }
 
   void setWebViewController(InAppWebViewController controller) {
