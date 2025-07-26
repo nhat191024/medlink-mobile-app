@@ -76,15 +76,16 @@ class WebViewController extends GetxController {
       debugPrint("Back deep link detected, navigating back");
 
       if (cancel == 'false') {
+        debugPrint("Recharge confirmed, transaction ID: $transactionId");
         confirmRechage();
       }
 
       debugPrint(userType);
 
       if (userType == 'patient') {
-        Get.offAllNamed(Routes.patientHomeScreen);
+        Get.toNamed(Routes.patientHomeScreen);
       } else if (userType == 'healthcare') {
-        Get.offAllNamed(Routes.doctorHomeScreen);
+        Get.toNamed(Routes.doctorHomeScreen);
       }
 
       return true;
