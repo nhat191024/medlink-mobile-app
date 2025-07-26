@@ -234,6 +234,11 @@ class Words extends Translations {
           "work_schedule_error_4": "End time cannot be earlier than start time",
           "work_schedule_save_success": "Work schedule saved successfully",
           "work_schedule_save_error": "Failed to save work schedule",
+          "insurance": "Insurance",
+          "insurance_number": "Insurance number",
+          "insurance_registry": "Insurance registration",
+          "insurance_issuer": "Insurance issuer",
+          "insurance_vaild_from": "Insurance valid from",
           
           //patient records
           "patient_records_title": "Patient records",
@@ -390,6 +395,7 @@ class Words extends Translations {
           "please_select_a_payment_method": "Please select a payment method",
 
           //common
+          "age": "Age",
           "yes": "Yes",
           "no": "No",
           "home_visit": "Home visit",
@@ -477,9 +483,9 @@ class Words extends Translations {
           "insurance_registry_label": "Insurance registration",
           "insurance_registry_hint": "Enter your insurance registration",
           "insurance_registry_error": "Insurance registration cannot be blank",
-          "insurance_registry_address_label": "Insurance registration address",
-          "insurance_registry_address_hint": "Enter your insurance registration address",
-          "insurance_registry_address_error": "Insurance registration address cannot be blank",
+          "insurance_registry_address_label": "Insurance issuer address",
+          "insurance_registry_address_hint": "Enter your insurance issuer address",
+          "insurance_registry_address_error": "Insurance issuer address cannot be blank",
           "insurance_vaild_from_label": "Insurance valid from",
           "insurance_vaild_from_hint": "Enter the date",
           "insurance_vaild_from_error": "Insurance valid from cannot be blank",
@@ -733,6 +739,10 @@ class Words extends Translations {
           "work_schedule_error_4": "Giờ kết thúc không thể sớm hơn giờ bắt đầu",
           "work_schedule_save_success": "Lịch làm việc đã được lưu thành công",
           "work_schedule_save_error": "Lỗi khi lưu lịch làm việc",
+          "insurance_number": "Số bảo hiểm",
+          "insurance_registry": "Địa chỉ đăng ký bảo hiểm",
+          "insurance_issuer": "Nơi phát hành bảo hiểm",
+          "insurance_vaild_from": "Bảo hiểm có hiệu lực từ",
 
           //patient records
           "patient_records_title": "Hồ sơ bệnh nhân",
@@ -889,6 +899,7 @@ class Words extends Translations {
           "please_select_a_payment_method": "Vui lòng chọn phương thức thanh toán",
 
           //common
+          "age": "Tuổi",
           "yes": "Có",
           "no": "Không",
           "home_visit": "Khám tại nhà",
@@ -973,12 +984,12 @@ class Words extends Translations {
           "main_insured_error": "Người được bảo hiểm chính không thể để trống",
           "entitled_insured": "Người được bảo hiểm có quyền",
           "entitled_insured_error": "Người được bảo hiểm có quyền không thể để trống",
-          "insurance_registry_label": "Đăng ký bảo hiểm",
-          "insurance_registry_hint": "Nhập đăng ký bảo hiểm",
-          "insurance_registry_error": "Đăng ký bảo hiểm không thể để trống",
-          "insurance_registry_address_label": "Địa chỉ đăng ký bảo hiểm",
-          "insurance_registry_address_hint": "Nhập địa chỉ đăng ký bảo hiểm",
-          "insurance_registry_address_error": "Địa chỉ đăng ký bảo hiểm không thể để trống",
+          "insurance_registry_label": "Nơi đăng ký bảo hiểm",
+          "insurance_registry_hint": "Nhập nơi đăng ký bảo hiểm",
+          "insurance_registry_error": "Nơi đăng ký bảo hiểm không thể để trống",
+          "insurance_registry_address_label": "Nơi cấp bảo hiểm",
+          "insurance_registry_address_hint": "Nhập địa chỉ nơi cấp bảo hiểm",
+          "insurance_registry_address_error": "Địa chỉ nơi cấp bảo hiểm không thể để trống",
           "insurance_vaild_from_label": "Bảo hiểm có hiệu lực từ",
           "insurance_vaild_from_hint": "Nhập ngày",
           "insurance_vaild_from_error": "Bảo hiểm có hiệu lực từ không thể để trống",
