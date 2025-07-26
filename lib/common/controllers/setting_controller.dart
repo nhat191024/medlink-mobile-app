@@ -214,6 +214,7 @@ class SettingControllers extends GetxController {
   // USER INFORMATION METHODS
   //============================================================================
   Future<void> loadInfo() async {
+    await Future.delayed(const Duration(seconds: 1));
     if (StorageService.checkData(key: 'avatar')) {
       avatar.value = StorageService.readData(key: 'avatar');
     }
