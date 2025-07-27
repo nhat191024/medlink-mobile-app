@@ -252,17 +252,22 @@ class BookingController extends GetxController {
   // CALCULATION METHODS
   // ============================================================================
 
-  String calculateTotal(int servicePrice) {
-    int tax = int.parse(calculateTax(servicePrice));
+  int calculateTotal(int servicePrice) {
+    int tax = calculateTax(servicePrice);
     int total = servicePrice + tax;
-    return total.toString();
+    return total;
   }
 
-  String calculateTax(int servicePrice) {
+  int calculateTax(int servicePrice) {
     // Assuming tax is a fixed percentage of the service price
     const int taxPercentage = 10; // 10% tax
     int taxAmount = (servicePrice * taxPercentage / 100).round();
-    return taxAmount.toString();
+    return taxAmount;
+  }
+
+  String formatPrice(int price) {
+    final formatted = NumberFormat('#,##0', 'en_US').format(price);
+    return '$formatted ${"currency".tr}';
   }
 
   // ============================================================================
@@ -288,7 +293,12 @@ class BookingController extends GetxController {
   }
 
   void _showError(String message) {
-    Get.snackbar('error'.tr, message, colorText: AppColors.errorMain, backgroundColor: AppColors.white);
+    Get.snackbar(
+      'error'.tr,
+      message,
+      colorText: AppColors.errorMain,
+      backgroundColor: AppColors.white,
+    );
   }
 
   // ============================================================================

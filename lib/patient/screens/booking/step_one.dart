@@ -135,7 +135,7 @@ class StepOne extends StatelessWidget {
                                 ),
                                 const SizedBox(height: 6),
                                 Text(
-                                  '${service.price} €',
+                                  controller.formatPrice(service.price),
                                   style: TextStyle(
                                     color:
                                         controller.selectedService.value ==

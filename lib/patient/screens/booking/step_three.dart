@@ -370,7 +370,7 @@ class StepThree extends StatelessWidget {
               ),
               const Spacer(),
               Text(
-                '\$${selectedService?.price ?? 0}',
+                controller.formatPrice(selectedService?.price ?? 0),
                 style: const TextStyle(
                   fontSize: 14,
                   fontFamily: AppFontStyleTextStrings.regular,
@@ -396,7 +396,7 @@ class StepThree extends StatelessWidget {
               const Spacer(),
               Text(
                 //10% of the service price
-                '\$${controller.calculateTax(selectedService?.price ?? 0)}',
+                controller.formatPrice(controller.calculateTax(selectedService?.price ?? 0)),
                 style: TextStyle(
                   fontSize: 14,
                   fontFamily: AppFontStyleTextStrings.regular,
@@ -428,7 +428,7 @@ class StepThree extends StatelessWidget {
           ),
           const Spacer(),
           Text(
-            '\$${controller.calculateTotal(selectedService?.price ?? 0)}',
+            controller.formatPrice(controller.calculateTotal(selectedService?.price ?? 0)),
             style: const TextStyle(
               fontSize: 14,
               fontFamily: AppFontStyleTextStrings.bold,
